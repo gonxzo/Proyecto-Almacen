@@ -6,6 +6,7 @@
         @page {
             margin: 0cm 0cm;
             font-family: Arial;
+           
         }
 
         body {
@@ -14,6 +15,7 @@
             margin-right: 1cm;
             margin-bottom: 0.5cm;
             background-color: #ffffff;
+            padding: 20px;
         }
 
         header {
@@ -34,7 +36,7 @@
 
         }
 
-        
+
 
         footer {
             position: fixed;
@@ -48,6 +50,7 @@
             line-height: 35px;
         }
 
+      
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,17 +70,19 @@
             </td>
             <br>
             <td style="text-align:center;width:100%; size=1" colspan="6">
+                
                 <P>
-                <h1>Constructora PEÑA-ANDRADE</h1>
-                <h2>Reporte Pedido de HERRAMIENTAS</h2>
+                <h3>CONSULTORA & CONSTRUCTORA PEÑA-ANDRADE </h3>
+                <h3>REPORTE DE PEDIDOS</h3>
                 </P>
             </td>
             
         </tr>
     </table>
 
-    <main><hr style="width: 100%;height: 2px;">
-        <h3 style="text-align:center;width:100%; height=1">DATOS DEL TRABAJADOR Y LA HERRAMIENTA</h3>
+    <main>
+        <hr style="width: 100%;height: -30px; display:block;">
+        <h3 style="text-align:center;width:100%; height=2">DATOS DEL TRABAJADOR Y LA HERRAMIENTA</h3>
    
        <hr style="width: 100%;height: 2px;">
         <div class='container'>
@@ -114,7 +119,7 @@
                 <hr style="width: 100%;height: 2px;">
                
                 <tr>
-                    <td style="text-align:center;width:100%;" colspan="7">
+                    <td style="text-align:left;width:100%;" colspan="7">
                         <hr style="width: 100%;height: 2px;">
                         <p>
                         <h3>HERRAMIENTA</h3>
@@ -142,12 +147,12 @@
                                     
                                     <tr>
                                         
-                                        <td style="text-align:center;width:100%; " colspan="7">
-                                            <hr style="width: 100%;height: 0.5px;">
+                                        <td style="text-align:left;width:100%; " colspan="7">
+                                            <hr style="width: 100%;height: -20px;">
                                             <font size=2><strong>{{ $herramienta->descripcion }}</font>
                                         </td>
                                         <td style="text-align:center;width:100%; " colspan="5">
-                                            <hr style="width: 100%;height: 0.5px;">
+                                            <hr style="width: 100%;height: -20px;">
                                             <font size=2>{{ $pedido->cantidad }}</font>
                                         </td>
 
@@ -156,11 +161,29 @@
                                  @endforeach
                             @endif
                      @endforeach
+                    </td>
+                    
+                    <tr>
+                        <td style="text-align:center;width:100%; " colspan="6">
+                            <br><br><br><br><br>
+                            <hr style="width: 50%;height: -20px; size:100px; color:blue">
+                            <strong>Firma Trabajador</strong>
+                            <strong></strong>
+                        </td>
+                        <td style="text-align:center;width:100%; " colspan="6">
+                           <br><br><br><br><br>
+                           <hr style="width: 50%;height: -20px; size:100px">
+                            <strong>Firma Almacenero</strong>
+                        </td>
+
+                    </tr>
                 </tr>
             </table>
         </div>
     </main>
+    
     <footer>
+        
     </footer>
 </body>
 

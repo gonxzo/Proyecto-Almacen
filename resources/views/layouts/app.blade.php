@@ -56,6 +56,7 @@
                             <a class="nav-link" href="{{ route('materials.index') }} ">MATERIALES</a>
                          </li>
                          @endcan
+                      
                          @can('materials.index')
                          <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">HERRAMIENTAS</a>
@@ -95,6 +96,20 @@
                                 @can('pedidohs.index')
                                     <a class="dropdown-item" href="{{ route('pedidohs.index') }} ">SALIDA DE HERRAMIENTAS</a>
                                 @endcan
+                            </div>
+                        </li>
+                        @endcan
+                        @can('materials.index')
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">REPORTES</a>
+                            <div class="dropdown-menu" style="background-color: #b1b1b3">
+                                @can('herramientas.index')
+                                    <a class="dropdown-item" href="{{ route('reportes.index') }} ">REPORTE TOTAL</a>
+                                @endcan
+                                @can('clasherramientas.index')
+                                    <a class="dropdown-item" href="{{ route('reportes.index') }} ">REPORTE CLASIFICACION
+                                        HERRAMIENTAS</a>
+                                @endcan
 
                             </div>
                         </li>
@@ -116,18 +131,19 @@
                             </div>
                         </li>
                         @endcan
+            
                      </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('INGRESAR') }}</a>
+                        </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-
-                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('REGISTRARSE') }}</a>
+                            </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -138,7 +154,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Salir') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
@@ -148,6 +164,7 @@
                             </li>
                         @endguest
                     </ul>
+
                 </div>
             </div>
         </nav>

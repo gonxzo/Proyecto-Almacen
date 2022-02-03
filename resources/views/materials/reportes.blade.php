@@ -6,18 +6,10 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                   PEDIDO MATERIALES
-                </div>
-                <div class="card-body">
-
-                    {!! Form::open(['route'=>'pedidocoms.store']) !!}
-
-                    @include('pedidocoms.partials.form')
-                    {!! Form::close() !!}
+                    REPORTES
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
-

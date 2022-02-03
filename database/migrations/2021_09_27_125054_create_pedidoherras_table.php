@@ -15,8 +15,11 @@ class CreatePedidoherrasTable extends Migration
     {
         Schema::create('pedidoherras', function (Blueprint $table) {
             $table->id();
-            $table->string('idph');
-            $table->string('herramienta');
+            $table->integer('idph')->unsigned();
+            $table->foreign('idph')->references('id')->on('pedidohs');
+            $table->integer('herramienta')->unsigned();
+            $table->foreign('herramienta')->references('id')->on('herramientas');
+            
             $table->string('cantidad');
             $table->timestamps();
         });

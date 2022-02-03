@@ -50,6 +50,7 @@ class PedidohController extends Controller
     public function store(Request $request)
     {
         $pedidoh = Pedidoh::create($request->all());
+        $herramientas = Herramienta::all();
         $prueba = $pedidoh->id;
         //return response()->json($prueba);
         $request->validate([
@@ -57,7 +58,7 @@ class PedidohController extends Controller
             'adicionar.*.cantidad' => 'required'
 
         ]);
-        foreach ($request->adicionar as $key => $value) {
+        foreach ($request->adicionar as $key => $value) { 
             $prueba1 = $request->adicionar[$key]['herramienta'];
             $prueba2 = $request->adicionar[$key]['cantidad'];
             $pedidoherra = new Pedidoherra;
@@ -65,7 +66,14 @@ class PedidohController extends Controller
             $pedidoherra->herramienta = $prueba1;
             $pedidoherra->cantidad = $prueba2;
             $pedidoherra->save();
-            // Pedido::create($value);
+            foreach($herramientas as $herramienta)
+            {
+                if($herramienta->id == $prueba1)
+                {
+                    $herramienta->cantidad =  $herramienta->cantidad - $prueba2;
+                    $herramienta->save();
+                }
+            }
         }
         // return response()->json($pedido);
         return redirect()->route('pedidohs.index', $pedidoh->id)
@@ -132,5 +140,17 @@ class PedidohController extends Controller
        $pdf = PDF::loadView('pedidohs.pdf', compact('pedidoh','trabajadors','pedidoherras','herramientas'))->setPaper('A4', 'portrait'); 
 
        return $pdf->stream('pedidohs.pdf');
+    }
+    public function reportetotal()
+    {
+        $pedidohs = Pedidoh::all();
+        $trabajadors=Trabajador::all();
+        $pedidoherras=Pedidoherra::all();
+        $herramientas=Herramienta::all();
+        
+        /* return response()->json($ids); */
+       $pdf = PDF::loadView('pedidohs.reportespdf', compact('pedidohs','trabajadors','pedidoherras','herramientas'))->setPaper('A4', 'landscape'); 
+
+       return $pdf->stream('pedidohs.reportespdf');
     }
 }

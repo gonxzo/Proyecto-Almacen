@@ -39,18 +39,30 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
+            $materials = Material::all();
             $request->validate([
-            'addMoreInputFields.*.idtrab' => 'required',
-            'addMoreInputFields.*.material' => 'required',
-            'addMoreInputFields.*.cantidad' => 'required'
-            
-        ]);
-     
-        foreach ($request->addMoreInputFields as $key => $value) {
-            Pedido::create($value);
-        }
-     
-        return back()->with('success', 'New subject has been added.');
+                'adicionar.*.herramienta' => 'required',
+                'adicionar.*.cantidad' => 'required'
+    
+            ]);
+         
+            foreach ((array) $request->adicionar as $key => $value) { 
+                $idmaterial = $request->adicionar[$key]['material'];
+                $cantmaterial = $request->adicionar[$key]['cantidad'];
+               
+                foreach((array)$materials as $material)
+                    {
+                        if($material->id == $idmaterial)
+                        {
+                            $material->cantidad = $material->cantidad + $cantmaterial;
+                            $material->save();
+                         
+                        }                 
+                    }
+                
+            }
+           
+            return view('materials.ingresos', compact('materials'));
     }
 
     /**

@@ -90,30 +90,43 @@ class MaterialController extends Controller
         $material->delete();
         return back()->with('info','eliminado correctamente');
     }
-    public function upCantidad()
+    public function upCantidad(Request $request)
     {    
-      /*   $id = $request->id;
-        $material= Material::findOrFail($id);
+        $materials = Material::all();
         $request->validate([
-            'addMoreInputFields.*.material' => 'required',
-            'addMoreInputFields.*.cantidad' => 'required'
-            
+            'adicionar.*.herramienta' => 'required',
+            'adicionar.*.cantidad' => 'required'
+
         ]);
-        foreach ($request->addMoreInputFields as $key => $value) {
-            $material= Material::findOrFail($request->id);
-            $material->descripcion = $request->addMoreInputFields[$key]['material'];
-            $material->cantidad = $material->cantidad + $request->addMoreInputFields[$key]['cantidad']; 
+      
+        foreach ((array) $request->adicionar as $key => $value) { 
+            $idmaterial = $request->adicionar[$key]['material'];
+            $cantmaterial = $request->adicionar[$key]['cantidad'];
+            foreach((array)$materials as $material)
+                {
+                    if($material->id == $idmaterial)
+                    {
+                        $material->cantidad = $material->cantidad + $cantmaterial;
+                        $material->save();
+                        dd('ingresa hasta aqui');
+                    }
+                  
+                    
+                }
+            
+            
            
-            $material->save();
-           // Pedido::create($value);
         }
-       // return response()->json($pedido);
-        return redirect()->route('materials.index')
-        ->with('success','Pedido  Guardado con exito!!.'); */
-        $materials=Material::all();
-        $materials=Material::paginate(500);
        
         return view('materials.ingresos', compact('materials')); 
 
     }
+    public function reportes()
+    {
+        $materials=Material::all();
+        $materials=Material::paginate(500);
+       
+        return view('materials.reportes', compact('materials')); 
+    }
+
 }

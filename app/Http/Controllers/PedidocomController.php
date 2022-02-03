@@ -8,6 +8,8 @@ use Dompdf\Dompdf;
 use App\Pedido;
 use App\Trabajador; 
 use App\Material;
+use App\Pedidoh;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\Console;
 
@@ -50,6 +52,7 @@ class PedidocomController extends Controller
      */
     public function store(Request $request)
     {
+        $materials = Material::all();
         $pedidocom=Pedidocom::create($request->all());
         $prueba = $pedidocom->id;
         //return response()->json($prueba);
@@ -64,8 +67,17 @@ class PedidocomController extends Controller
             $pedido = new Pedido;
             $pedido->idtrab = $prueba;
             $pedido->material = $prueba1;
-            $pedido->cantidad = $prueba2;
+            $pedido->cantidad =  $prueba2;
             $pedido->save();
+            foreach($materials as $material)
+            {
+                if($material->id == $prueba1)
+                {
+                    $material->cantidad =  $material->cantidad - $prueba2;
+                    $material->save();
+                }
+            }
+            
            // Pedido::create($value);
         }
        // return response()->json($pedido);
@@ -134,31 +146,19 @@ class PedidocomController extends Controller
 
        return $pdf->stream('pedidocoms.pdf');
     }
-    public function reporteMaterial(Request $request)
+    public function reportetotal()
     {
-        $pedidocoms = Pedidocom::all();   
+        $pedidocoms = Pedidocom::all();
         $trabajadors=Trabajador::all();
         $pedidos=Pedido::all();
         $materials=Material::all();
         
         /* return response()->json($ids); */
-       $pdf = PDF::loadView('pedidocoms.pdf', compact('pedidocoms','trabajadors','materials','pedidos'))->setPaper('A4', 'portrait'); 
+       $pdf = PDF::loadView('pedidocoms.reportespdf', compact('pedidocoms','trabajadors','materials','pedidos'))->setPaper('A4', 'landscape'); 
 
-       return $pdf->stream('pedidocoms.pdf');
+       return $pdf->stream('pedidocoms.reportespdf');
     }
-    public function reporteTotal(Request $request)
-    {
-        $pedidocoms = Pedidocom::all()
-        ->where('pedidocoms.created_at' <= $request->fechaini)
-        ->where('pedidocoms.created_at' <= $request->fechafin);   
-        $trabajadors=Trabajador::all();
-        $pedidos=Pedido::all();
-        $materials=Material::all();
-        
-        
-        /* return response()->json($ids); */
-       $pdf = PDF::loadView('pedidocoms.reportepdf', compact('pedidocoms','trabajadors','materials','pedidos'))->setPaper('A4', 'portrait'); 
-
-       return $pdf->stream('pedidocoms.reportepdf');
-    }
+    
+   
+   
 }

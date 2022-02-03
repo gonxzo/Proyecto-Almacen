@@ -6,6 +6,7 @@
         @page {
             margin: 0cm 0cm;
             font-family: Arial;
+           
         }
 
         body {
@@ -14,9 +15,10 @@
             margin-right: 1cm;
             margin-bottom: 0.5cm;
             background-color: #ffffff;
+            padding: 20px;
         }
 
-        header {
+        header { 
             position: fixed;
             top: 1cm;
             left: 6.5cm;
@@ -34,7 +36,7 @@
 
         }
 
-        
+
 
         footer {
             position: fixed;
@@ -48,6 +50,7 @@
             line-height: 35px;
         }
 
+      
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,6 +59,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>TABLA DE PRODUCTOS</title>
 </head>
+
 
 <body>
    
@@ -67,9 +71,10 @@
             </td>
             <br>
             <td style="text-align:center;width:100%; size=1" colspan="6">
+                <br>
                 <P>
-                <h1>Constructora PEÑA-ANDRADE</h1>
-                <h2>Reporte Pedido de MATERIALES</h2>
+                <h3>CONSULTORA & CONSTRUCTORA PEÑA-ANDRADE </h3>
+                <h3>REPORTE DE PEDIDOS</h3>
                 </P>
             </td>
             
@@ -77,7 +82,7 @@
     </table>
 
     <main><hr style="width: 100%;height: 2px;">
-        <h3 style="text-align:center;width:100%; height=1">DATOS DEL TRABAJADOR Y EL MATERIAL</h3>
+        <h3 style="text-align:center;width:100%; height=1">TRABAJADOR Y LOS MATERIALES PEDIDOS</h3>
    
        <hr style="width: 100%;height: 2px;">
         <div class='container'>
@@ -114,17 +119,17 @@
                 <hr style="width: 100%;height: 2px;">
                
                 <tr>
-                    <td style="text-align:center;width:100%;" colspan="7">
+                    <td style="text-align:left;width:100%;" colspan="7">
                         <hr style="width: 100%;height: 2px;">
                         <p>
-                        <h3>MATERIAL</h3>
+                        <h4>MATERIAL</h4>
                         </p>
                     </td>
                     <td style="text-align:center;width:100%;" colspan="5">
                         <hr style="width: 100%;height: 2px;">
                         <p>
 
-                        <h3>CANTIDAD</h3>
+                        <h4>CANTIDAD</h4>
                         </p>
                     </td>
                 </tr>
@@ -142,12 +147,12 @@
                                     
                                     <tr>
                                         
-                                        <td style="text-align:center;width:100%; " colspan="7">
-                                            <hr style="width: 100%;height: 0.5px;">
+                                        <td style="text-align:left;width:100%; " colspan="7">
+                                            <hr style="width: 100%;height: -20px;">
                                             <font size=2><strong>{{ $material->descripcion }}</font>
                                         </td>
                                         <td style="text-align:center;width:100%; " colspan="5">
-                                            <hr style="width: 100%;height: 0.5px;">
+                                            <hr style="width: 100%;height: -20px;">
                                             <font size=2>{{ $pedido->cantidad }}</font>
                                         </td>
 
@@ -156,7 +161,21 @@
                                  @endforeach
                             @endif
                      @endforeach
-                </tr>
+                     <tr>
+                        <td style="text-align:center;width:100%; " colspan="6">
+                            <br><br><br><br><br>
+                            <hr style="width: 50%;height: -20px; size:100px; color:blue">
+                            <strong>Firma Trabajador</strong>
+                            <strong></strong>
+                        </td>
+                        <td style="text-align:center;width:100%; " colspan="6">
+                           <br><br><br><br><br>
+                           <hr style="width: 50%;height: -20px; size:100px">
+                            <strong>Firma Almacenero</strong>
+                        </td>
+
+                    </tr>               
+                    </tr>
             </table>
         </div>
     </main>

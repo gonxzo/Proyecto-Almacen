@@ -12,7 +12,7 @@
             <div class="table-responsive">
             <table id="usuario" class="table table-striped table-bordered" style="width:100%">
                 <thead>
-                    <tr>
+                    <tr class="grid">
                         <th scope="col">Usuario</th>
                         <th scope="col">Correo Electronico</th>
                         <th scope="col">Mostrar</th>

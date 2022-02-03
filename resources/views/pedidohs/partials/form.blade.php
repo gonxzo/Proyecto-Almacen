@@ -1,6 +1,6 @@
 <div class="card-header"></div>
 <div class="form-row">
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-5">
     <strong>{!! Form::label('trabajador','nombre del trabajador') !!}</strong>
     <select class="form-control" name="idtrab" id="idtrab">
       @foreach($trabajadors as $trabajador)
@@ -10,10 +10,14 @@
   </select>
   </div>
 
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-5">
   <strong>{!! Form::label('asunto','Motivo Pedido') !!}</strong>
       {!! Form::text('asunto', null, ['class'=> 'form-control','onKeyUp' => "this.value=this.value.toUpperCase();"]) !!}
   </div>
+  <div class="form-group col-md-2">
+    <strong>{!! Form::label('asunto', 'Nuevo Registro') !!}</strong>
+    <button type="button" name="add" id="dynamic-ar" class="btn btn-sm btn-primary">Agregar Registro</button>
+</div>
  
 </div>
 <div class="card-header"></div>
@@ -46,13 +50,10 @@
                      </option>
                 @endforeach
            </select></td>
-            <td><input type="text" name="adicionar[0][cantidad]" placeholder="Enter subject" class="form-control" /></td>
-          
-            <td width='20'><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Adicionar</button></td>
+            <td><input type="text" name="adicionar[0][cantidad]" placeholder="Ingrese Una Cantidad" class="form-control" /></td>
         </tr>
-        
     </table>
-  
   <div class="form-group">
   {!! Form::submit('Guardar', ['class'=>'btn btn-sm btn-primary']) !!}
+  <a href="{{route('pedidohs.index')}}"  class="btn btn-sm btn-primary">Volver</a>
   </div>

@@ -19,7 +19,7 @@
                 <div class="table-responsive">
                     <table id="usuario" class="table table-bordered table-sm" style="width:100%">
                         <thead>
-                            <tr>
+                            <tr class="grid">
                                 <th scope="col">Descripcion</th>
                                 <th scope="col">Unidad</th>
                                 <th scope="col">Cantidad</th>

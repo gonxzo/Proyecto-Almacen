@@ -15,7 +15,8 @@ class CreatePedidohsTable extends Migration
     {
         Schema::create('pedidohs', function (Blueprint $table) {
             $table->id();
-            $table->string('idtrab');
+            $table->integer('idtrab')->unsigned();
+            $table->foreign('idtrab')->references('id')->on('trabajadors');
             $table->string('asunto');
             $table->timestamps();
         });

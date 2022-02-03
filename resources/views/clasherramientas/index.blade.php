@@ -19,7 +19,7 @@
                 <div class="table-responsive">
                     <table id="usuario" class="table table-bordered table-sm" style="width:100%">
                         <thead>
-                            <tr>
+                            <tr class="grid">
                                 <th scope="col">Clasificacion</th>
                                 <th scope="col">Mostrar</th>
                                 <th scope="col">Editar</th>

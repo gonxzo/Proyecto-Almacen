@@ -9,8 +9,6 @@
                         INGRESO DE HERRAMIENTAS
                     </div>
                     <div class="card-body">
-
-
                         <div class="card-header"></div>
                         <form action="{{ url('store-input-fields') }}" method="POST">
                             @csrf
@@ -33,7 +31,6 @@
                                     <th>Seleccione Las Herramientas</th>
                                     <th>Cantidad a ingresar</th>
                                 </tr>
-
                                 <tr>
                                     <td> <select class="form-control" name="addMoreInputFields[0][material]">
                                             @foreach ($herramientas as $item)
@@ -43,15 +40,13 @@
                                         </select></td>
                                     <td><input type="text" name="addMoreInputFields[0][cantidad]"
                                             placeholder="Enter subject" class="form-control" /></td>
-
                                     <td width='20'><button type="button" name="add" id="dynamic-ar"
                                             class="btn btn-sm btn-success">Adicionar</button></td>
                                 </tr>
-
                             </table>
-
                             <div class="form-group">
-                                {!! Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) !!}
+                                {!! Form::submit('GUARDAR', ['class' => 'btn btn-sm btn-primary']) !!}
+                                <a href="{{route('herramientas.index')}}"  class="btn btn-sm btn-primary">VOLVER</a>
                             </div>
                     </div>
                 </div>

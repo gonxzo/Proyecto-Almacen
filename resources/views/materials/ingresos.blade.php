@@ -12,7 +12,7 @@
 
 
                         <div class="card-header"></div>
-                        <form action="{{ url('store-input-fields') }}" method="POST">
+                        <form action="{{ url('material-cantidad') }}" method="GET">
                             @csrf
                             @if ($errors->any())
                                 <div class="alert alert-danger" role="alert">
@@ -35,14 +35,14 @@
                                 </tr>
 
                                 <tr>
-                                    <td> <select class="form-control" name="addMoreInputFields[0][material]">
+                                    <td> <select class="form-control" name="adicionar[0][material]">
                                             @foreach ($materials as $item)
                                                 <option value="{{ $item['id'] }}">{{ $item['descripcion'] }}
                                                 </option>
                                             @endforeach
                                         </select></td>
-                                    <td><input type="text" name="addMoreInputFields[0][cantidad]"
-                                            placeholder="Enter subject" class="form-control" /></td>
+                                    <td><input type="text" name="adicionar[0][cantidad]"
+                                            placeholder="Ingrese Cantidad" class="form-control" /></td>
 
                                     <td width='20'><button type="button" name="add" id="dynamic-ar"
                                             class="btn btn-sm btn-success">ADICIONAR</button></td>
@@ -52,7 +52,7 @@
 
                             <div class="form-group">
                                 {!! Form::submit('GUARDAR', ['class' => 'btn btn-sm btn-primary']) !!}
-                              
+                                <a href="{{route('materials.index')}}"  class="btn btn-sm btn-primary">VOLVER</a>
                             </div>
                     </div>
                 </div>
