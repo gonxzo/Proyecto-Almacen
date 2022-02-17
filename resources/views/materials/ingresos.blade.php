@@ -32,6 +32,8 @@
                                 <tr>
                                     <th>Seleccione los Materiales</th>
                                     <th>Cantidad a Ingresar </th>
+                                    <th><button type="button" name="add" id="dynamic-ar"
+                                        class="btn btn-sm btn-success">ADICIONAR</button></th>
                                 </tr>
 
                                 <tr>
@@ -44,8 +46,7 @@
                                     <td><input type="text" name="adicionar[0][cantidad]"
                                             placeholder="Ingrese Cantidad" class="form-control" /></td>
 
-                                    <td width='20'><button type="button" name="add" id="dynamic-ar"
-                                            class="btn btn-sm btn-success">ADICIONAR</button></td>
+                                    <td width='20'></td>
                                 </tr>
 
                             </table>

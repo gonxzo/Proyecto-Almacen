@@ -94,28 +94,35 @@ class HerramientaController extends Controller
         $herramienta->delete();
         return back()->with('info','eliminado correctamente');
     }
-    public function upCantidad()
+    public function upCantidad(Request $request)
     {    
-      /*   $id = $request->id;
-        $material= Material::findOrFail($id);
+        $herramientas = Herramienta::all();
         $request->validate([
-            'addMoreInputFields.*.material' => 'required',
-            'addMoreInputFields.*.cantidad' => 'required'
-            
+            'adicionar.*.herramienta' => 'required',
+            'adicionar.*.cantidad' => 'required'
+
         ]);
-        foreach ($request->addMoreInputFields as $key => $value) {
-            $material= Material::findOrFail($request->id);
-            $material->descripcion = $request->addMoreInputFields[$key]['material'];
-            $material->cantidad = $material->cantidad + $request->addMoreInputFields[$key]['cantidad']; 
+      
+        foreach ((array) $request->adicionar as $key => $value) { 
+            $idherramienta = $request->adicionar[$key]['herramienta'];
+            $cantherra = $request->adicionar[$key]['cantidad'];
+            foreach((array)$herramientas as $herramienta)
+                {
+                    
+                    $herramienta->cantidad = $herramienta->cantidad + 2;
+                    if($herramienta->id == $idherramienta)
+                    {
+                        $herramienta->cantidad = $herramienta->cantidad + $cantherra;
+                        $herramienta->save();
+                       
+                    }
+                  
+                    
+                }
+            
+            
            
-            $material->save();
-           // Pedido::create($value);
         }
-       // return response()->json($pedido);
-        return redirect()->route('materials.index')
-        ->with('success','Pedido  Guardado con exito!!.'); */
-        $herramientas=Herramienta::all();
-        $herramientas=Herramienta::paginate(500);
        
         return view('herramientas.ingresos', compact('herramientas')); 
 

@@ -22,6 +22,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/volver', 'HomeController@volver')->name('volver');
+Route::get('material-cantidad', 'MaterialController@upCantidad')->name('materials.ingresos');
+Route::post('hyerramienta-cantidad', 'HerramientaController@upCantidad')->name('Herramientas.ingresos');
 //Routes
 Route::middleware(['auth'])->group(function () {
     Route::post('roles/store', 'RoleController@store')->name('roles.store')->middleware('can:roles.store');
@@ -58,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('materials/{material}', 'MaterialController@show')->name('materials.show')->middleware('can:materials.show');
     Route::delete('materials/{material}', 'MaterialController@destroy')->name('materials.destroy')->middleware('can:materials.destroy');
     Route::get('materials/{material}/edit', 'MaterialController@edit')->name('materials.edit')->middleware('can:materials.edit');
-    Route::get('material-cantidad', 'MaterialController@upCantidad')->name('materials.ingresos');
+    
     Route::get('material-reporte', 'MaterialController@reportes')->name('materials.reportes');
 
     //REPORTES
@@ -91,7 +93,10 @@ Route::middleware(['auth'])->group(function () {
       Route::delete('pedidocoms/{pedidocom}', 'PedidocomController@destroy')->name('pedidocoms.destroy')->middleware('can:pedidocoms.destroy');
       Route::get('pedidocoms/{pedidocom}/edit', 'PedidocomController@edit')->name('pedidocoms.edit')->middleware('can:pedidocoms.edit');
       Route::get('pedidocoms/{pedidocom}','PedidocomController@generaPDF')->name('pedidocoms.pdf'); 
-      Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf'); 
+      Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf');
+      Route::get('reporte','PedidocomController@reporte')->name('pedidocoms.reporte'); 
+      Route::get('reportefechas','PedidocomController@reportefechas')->name('pedidocoms.reportefechas'); 
+
       //Pedidos HERRAMIENTAS
         Route::post('pedidohs/store', 'PedidohController@store')->name('pedidohs.store')->middleware('can:pedidohs.store');
         Route::get('pedidohs', 'PedidohController@index')->name('pedidohs.index')->middleware('can:pedidohs.index');
@@ -102,6 +107,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('pedidohs/{pedidoh}/edit', 'PedidohController@edit')->name('pedidohs.edit')->middleware('can:pedidohs.edit');
         Route::get('pedidohs/{pedidoh}','PedidohController@generaPDF')->name('pedidohs.pdf'); 
         Route::get('reportesherramienta','PedidohController@reportetotal')->name('pedidohs.reportespdf');
+        Route::get('reportes-herramienta','PedidohController@reportefechas')->name('pedidohs.reportefechas');
         //Pedidos TRABAJADORES
        Route::post('trabajadors/store', 'TrabajadorController@store')->name('trabajadors.store')->middleware('can:trabajadors.store');
        Route::get('trabajadors', 'TrabajadorController@index')->name('trabajadors.index')->middleware('can:trabajadors.index');

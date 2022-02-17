@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-header"></div>
-                        <form action="{{ url('store-input-fields') }}" method="POST">
+                        <form action="{{ url('herramienta-cantidad') }}" method="POST">
                             @csrf
                             @if ($errors->any())
                                 <div class="alert alert-danger" role="alert">
@@ -32,13 +32,13 @@
                                     <th>Cantidad a ingresar</th>
                                 </tr>
                                 <tr>
-                                    <td> <select class="form-control" name="addMoreInputFields[0][material]">
+                                    <td> <select class="form-control" name="adicionar[0][herramienta]">
                                             @foreach ($herramientas as $item)
                                                 <option value="{{ $item['id'] }}">{{ $item['descripcion'] }}
                                                 </option>
                                             @endforeach
                                         </select></td>
-                                    <td><input type="text" name="addMoreInputFields[0][cantidad]"
+                                    <td><input type="text" name="adicionar[0][cantidad]"
                                             placeholder="Enter subject" class="form-control" /></td>
                                     <td width='20'><button type="button" name="add" id="dynamic-ar"
                                             class="btn btn-sm btn-success">Adicionar</button></td>

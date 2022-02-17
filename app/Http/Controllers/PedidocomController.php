@@ -11,6 +11,7 @@ use App\Material;
 use App\Pedidoh;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use SebastianBergmann\Environment\Console;
 
 class PedidocomController extends Controller
@@ -55,11 +56,9 @@ class PedidocomController extends Controller
         $materials = Material::all();
         $pedidocom=Pedidocom::create($request->all());
         $prueba = $pedidocom->id;
-        //return response()->json($prueba);
         $request->validate([
             'addMoreInputFields.*.material' => 'required',
             'addMoreInputFields.*.cantidad' => 'required'
-            
         ]);
         foreach ($request->addMoreInputFields as $key => $value) {
             $prueba1 = $request->addMoreInputFields[$key]['material'];
@@ -77,10 +76,7 @@ class PedidocomController extends Controller
                     $material->save();
                 }
             }
-            
-           // Pedido::create($value);
         }
-       // return response()->json($pedido);
         return redirect()->route('pedidocoms.index',$pedidocom->id)
         ->with('success','Pedido  Guardado con exito!!.');
     }
@@ -157,6 +153,30 @@ class PedidocomController extends Controller
        $pdf = PDF::loadView('pedidocoms.reportespdf', compact('pedidocoms','trabajadors','materials','pedidos'))->setPaper('A4', 'landscape'); 
 
        return $pdf->stream('pedidocoms.reportespdf');
+    }
+    public function reporte()
+    {
+        $pedidocoms=Pedidocom::all();
+        $trabajadors=Trabajador::all();
+        $pedidos=Pedido::all();
+        $materials=Material::all();
+        $pedidocoms=Pedidocom::paginate(500);
+       
+        return view('pedidocoms.reporte', compact('pedidocoms','trabajadors','pedidos','materials'))
+        ->with('success','Pedido  Guardado con exito!!.'); 
+    }
+    public function reportefechas()
+    {
+        
+        $pedidocoms = Pedidocom::all();
+        $trabajadors=Trabajador::all();
+        $pedidos=Pedido::all();
+        $materials=Material::all();
+        
+        /* return response()->json($ids); */
+       $pdf = PDF::loadView('pedidocoms.reportefechas', compact('pedidocoms','trabajadors','materials','pedidos'))->setPaper('A4', 'landscape'); 
+
+       return $pdf->stream('pedidocoms.reportefechas');
     }
     
    

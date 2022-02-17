@@ -103,46 +103,46 @@
                     </td>
                 </tr>
                 @foreach ($pedidos as $pedido)
-               
+                @if ($pedido->id >= 50)
                 <tr>
-                    
-                    @foreach ($materials as $material)
-                    @if ($pedido->material == $material->id)
-                        <td style="text-align:left;width:100%; " colspan="4">
+                     @foreach ($materials as $material)
+                                @if ($pedido->material == $material->id & $pedido->id >= 50)
+                                    <td style="text-align:left;width:100%; " colspan="4">
+                                        <hr style="width: 100%;height: -20px;">
+                                        <font size=1>{{ $material->descripcion }}</font>
+                                    </td>
+                                    <td style="text-align:center;width:100%; " colspan="3">
+                                        <hr style="width: 100%;height: -20px;">
+                                        <font size=1>{{ $pedido->cantidad }}</font>
+                                    </td>
+                                    <td style="text-align:left;width:100%; " colspan="4">
+                                        <hr style="width: 100%;height: -20px;">
+                                        <font size=1>{{ $material->unidad }}</font>
+                                    </td>
+                                @endif
+                            @endforeach
+                            @foreach ($pedidocoms as $pedidocompleto )
+                                @if ($pedidocompleto->id == $pedido->idtrab)
+                                    
+                                        @foreach ($trabajadors as $trabaja )
+                                        @if ($trabaja->id == $pedidocompleto->idtrab)
+                                        <td style="text-align:left;width:100%; " colspan="5">
+                                            <hr style="width: 100%;height: -20px;">
+                                            <font size=2>{{ $trabaja->nombre }} {{ $trabaja->apellidos }}</font>
+                                        </td>
+                                     @endif
+                                    @endforeach
+                                   
+                                    
+                                @endif
+                           @endforeach
+                           <td style="text-align:left;width:100%; " colspan="4">
                             <hr style="width: 100%;height: -20px;">
-                            <font size=1>{{ $material->descripcion }}</font>
+                            <font size=1>{{ $pedido->created_at }}</font>
                         </td>
-                        <td style="text-align:center;width:100%; " colspan="3">
-                            <hr style="width: 100%;height: -20px;">
-                            <font size=1>{{ $pedido->cantidad }}</font>
-                        </td>
-                        <td style="text-align:left;width:100%; " colspan="4">
-                            <hr style="width: 100%;height: -20px;">
-                            <font size=1>{{ $material->unidad }}</font>
-                        </td>
-                    @endif
-                @endforeach
-                @foreach ($pedidocoms as $pedidocompleto )
-                    @if ($pedidocompleto->id == $pedido->idtrab)
-                        @foreach ($trabajadors as $trabaja )
-                            @if ($trabaja->id == $pedidocompleto->idtrab)
-                            <td style="text-align:left;width:100%; " colspan="5">
-                                <hr style="width: 100%;height: -20px;">
-                                <font size=2>{{ $trabaja->nombre }} {{ $trabaja->apellidos }}</font>
-                            </td>
-                           @endif
-                        @endforeach
-                    @endif
-               @endforeach
-               <td style="text-align:left;width:100%; " colspan="4">
-                <hr style="width: 100%;height: -20px;">
-                <font size=1>{{ $pedido->created_at }}</font>
-            </td>
-            </tr>
-            
-         @endforeach
-                   
-                     
+                        </tr> 
+                        @endif
+                     @endforeach
                      <tr>
                         <td style="text-align:center;width:100%; " colspan="6">
                             <br><br><br><br><br>

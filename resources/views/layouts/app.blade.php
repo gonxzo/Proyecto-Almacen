@@ -72,20 +72,12 @@
                             </div>
                         </li>
                         @endcan
-                        @can('materials.index')
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">INGRESOS/PEDIDOS</a>
-                            <div class="dropdown-menu" style="background-color: #b1b1b3">
-                                @can('materials.ingresos')
-                                    <a class="dropdown-item" href="{{ route('materials.ingresos') }} ">INGRESO DE MATERIALES</a>
-                                @endcan
-                                @can('herramientas.ingresos')
-                                    <a class="dropdown-item" href="{{ route('herramientas.ingresos') }} ">INGRESO DE HERRAMIENTAS</a>
-                                @endcan
-
-                            </div>
-                        </li>
-                        @endcan
+                        @can('trabajadors.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('trabajadors.index') }} ">TRABAJADORES</a>
+                         </li>
+                         @endcan
+                       
                         @can('materials.index')
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">SALIDAS/PEDIDOS</a>
@@ -103,12 +95,8 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">REPORTES</a>
                             <div class="dropdown-menu" style="background-color: #b1b1b3">
-                                @can('herramientas.index')
-                                    <a class="dropdown-item" href="{{ route('reportes.index') }} ">REPORTE TOTAL</a>
-                                @endcan
                                 @can('clasherramientas.index')
-                                    <a class="dropdown-item" href="{{ route('reportes.index') }} ">REPORTE CLASIFICACION
-                                        HERRAMIENTAS</a>
+                                    <a class="dropdown-item" href="{{ route('pedidocoms.reporte') }} ">REPORTES POR FECHA</a>
                                 @endcan
 
                             </div>
@@ -118,9 +106,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">PERSONAL</a>
                             <div class="dropdown-menu" style="background-color: #b1b1b3">
-                                @can('trabajadors.index')
+                               {{--  @can('trabajadors.index')
                                     <a class="dropdown-item" href="{{ route('trabajadors.index') }} ">TRABAJADORES</a>
-                                @endcan
+                                @endcan --}}
                                 @can('users.index')
                                     <a class="dropdown-item" href="{{ route('users.index') }} ">USUARIOS</a>
                                 @endcan

@@ -112,10 +112,11 @@ tr:nth-child(even) {
 }
 
 .navbar {
+    position: relative;
     background-color: rgba(0, 0, 0, 0.8);
-    background: url(/img/fondo.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: url(/img/fondo.png);
+    width: 100%;
+    height: auto;
+    filter: brightness(0.5);
+    z-index: 1;
 }

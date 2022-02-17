@@ -153,4 +153,16 @@ class PedidohController extends Controller
 
        return $pdf->stream('pedidohs.reportespdf');
     }
+    public function reportefechas()
+    {
+        $pedidohs = Pedidoh::all();
+        $trabajadors=Trabajador::all();
+        $pedidoherras=Pedidoherra::all();
+        $herramientas=Herramienta::all();
+        
+        /* return response()->json($ids); */
+       $pdf = PDF::loadView('pedidohs.reportefechas', compact('pedidohs','trabajadors','pedidoherras','herramientas'))->setPaper('A4', 'landscape'); 
+
+       return $pdf->stream('pedidohs.reportefechas');
+    }
 }

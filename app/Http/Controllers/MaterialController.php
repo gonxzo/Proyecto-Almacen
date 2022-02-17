@@ -104,11 +104,13 @@ class MaterialController extends Controller
             $cantmaterial = $request->adicionar[$key]['cantidad'];
             foreach((array)$materials as $material)
                 {
+                    dd("ingresa aqui");
+                    $material->cantidad = $material->cantidad + 2;
                     if($material->id == $idmaterial)
                     {
                         $material->cantidad = $material->cantidad + $cantmaterial;
                         $material->save();
-                        dd('ingresa hasta aqui');
+                       
                     }
                   
                     
