@@ -6,7 +6,7 @@
     {!! Form::label('cantidad','Cantidad en Stock') !!}
     {!! Form::text('cantidad', null, ['class'=> 'form-control']) !!}
     {!! Form::label('idclasificacion','Tipo de Herramienta') !!}
-    <select class="form-control" name="marca" id="marca">
+    <select class="form-control" name="idclasificacion" id="idclasificacion">
       @foreach($clasherramientas as $class)
            <option value="{{$class['id']}}">{{$class['descripcion']}} 
            </option>
