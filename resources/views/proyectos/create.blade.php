@@ -3,17 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                  Autoridades
+                    Proyectos
                 </div>
                 <div class="card-body">
 
-                  <form class="" action="{{route('autoridads.store')}}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    @include('autoridads.partials.form')
-                  </form>
+                    {!! Form::open(['route'=>'proyectos.store']) !!}
+
+                    @include('proyectos.partials.form')
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

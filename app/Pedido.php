@@ -8,6 +8,6 @@ class Pedido extends Model
 {
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id','idtrab','material','cantidad',
+        'id','idpedidocom','material','cantidad',
     ];
 }

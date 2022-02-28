@@ -3,7 +3,7 @@
     <select class="form-control" name="idusuario" id="idusuario">
       @foreach($user as $usuario)
            <option value="{{$usuario['id']}}">{{$usuario['name']}} 
-           </option>
+           </option> 
       @endforeach
 </select>
     {!! Form::label('idproyecto','Proyectos') !!}

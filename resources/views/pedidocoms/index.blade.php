@@ -47,9 +47,16 @@
                             @foreach ($pedidocoms as $item)
                                 <tr>
                                     <td>{{ $item->id }} </td>
+                                   
                                     @foreach ($trabajadors as $trab)
                                         @if ($item->idtrab == $trab->id)
-                                            <td>{{ $trab->nombre }} {{ $trab->apellidos }} </td>
+                                            @foreach ($users as $user )
+                                            @if ($user->id == $trab->idusuario)
+                                            <td>{{ $user->name}} </td>
+                                            @endif
+                                                
+                                            @endforeach
+                                            
                                             <td>{{ $trab->cargo }} </td>
                                         @endif
                                     @endforeach

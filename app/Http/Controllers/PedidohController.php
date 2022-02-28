@@ -8,6 +8,7 @@ use Dompdf\Dompdf;
 use App\Pedidoherra;
 use App\Trabajador;
 use App\Herramienta;
+use App\User;
 use Illuminate\Http\Request;
 
 class PedidohController extends Controller
@@ -23,9 +24,10 @@ class PedidohController extends Controller
         $trabajadors = Trabajador::all();
         $herramientas = Herramienta::all(); 
         $pedidoherras = Pedidoherra::all();
+        $users = User::all();
         $pedidohs = Pedidoh::paginate(500);
 
-        return view('pedidohs.index', compact('pedidohs', 'trabajadors', 'herramientas', 'pedidoherras'))
+        return view('pedidohs.index', compact('pedidohs', 'trabajadors', 'herramientas', 'pedidoherras','users'))
             ->with('success', 'Pedido  Guardado con exito!!.');
     }
 
@@ -38,7 +40,8 @@ class PedidohController extends Controller
     {
         $trabajadors = Trabajador::all();
         $herramientas = Herramienta::all();
-        return view('pedidohs.create', compact('trabajadors', 'herramientas'));
+        $users = User::all();
+        return view('pedidohs.create', compact('trabajadors', 'herramientas','users'));
     }
 
     /**
@@ -64,7 +67,7 @@ class PedidohController extends Controller
             $pedidoherra = new Pedidoherra;
             $pedidoherra->idph = $prueba;
             $pedidoherra->herramienta = $prueba1;
-            $pedidoherra->cantidad = $prueba2;
+            $pedidoherra->cantidad = $prueba2; 
             $pedidoherra->save();
             foreach($herramientas as $herramienta)
             {

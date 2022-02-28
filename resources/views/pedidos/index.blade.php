@@ -8,45 +8,40 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                Trabajadores
+                Materiales
             </div>
             <div class="card-body">
-                @can('trabajadors.create')
-                <a href="{{route('trabajadors.create')}}"  class="btn btn-sm btn-primary mb-1">Crear Nuevo Registro</a>
-                <br>
-                @endcan
-
+                <a href="{{ route('pedidocoms.create') }}" class="btn btn-sm btn-primary mb-1">Crear Nuevo
+                    Pedido</a>
                 <div class="table-responsive">
                     <table id="usuario" class="table table-bordered table-sm" style="width:100%">
                         <thead>
-                            <tr>
-                                <th scope="col">Trabajadores</th>
-                                <th scope="col">Proyecto</th>
-                                <th scope="col">Cargo</th>
+                            <tr class="grid">
+                                <th scope="col">Nº Pedido</th>
+                                <th scope="col">Material</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">U. Medida</th>
                                 <th scope="col">Mostrar</th>
-                                <th scope="col">Editar</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($trabajadors as $item)
+                            @foreach ($pedidos as $item)
                             <tr>
-                                @foreach ($users as $user )
-                                    @if ($user->id == $item->idusuario)
-                                    <td >{{$user->name }}</td>
+                                <td >{{$item->idpedidocom }} </td>
+                                @foreach ($materials as $material )
+                                    @if ($material->id == $item->material)
+                                    <td >{{$material->descripcion }} </td>
+                                    <td >{{$item->cantidad }} </td>
+                                    <td >{{$material->unidad }} </td>
                                     @endif
-                                @endforeach   
-                                @foreach ($proyectos as $proy )
-                                    @if ($proy->id == $item->idproyecto)
-                                     <td >{{$proy->nombre }}</td>
-                                    @endif
-                                @endforeach                                
-                                <td >{{$item->cargo }} </td>
+                                @endforeach
                                 <td width = 10px>
-                                    @can('trabajadors.show')
+                                    @can('pedidos.show')
                                     <button  type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal{{$item->id}}">
                                         Visualizar
                                     </button>
+                                    
                                     <div class="modal fade" id="modal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -54,17 +49,17 @@
                                                     <h5 class="modal-title" id="exampleModalLongTitle">DESCRIPCION DEL PROYECTO</h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    @foreach ($users as $user )
-                                                        @if ($user->id == $item->idusuario)
-                                                        <p><strong>Nombre del Trabajador:</strong> {{$user->name}}</p>
+                                                    <p><strong>Numero del Pedido:</strong> {{$item->idpedidocom}}</p>
+                                                    @foreach ($materials as $material )
+                                                        @if ($material->id == $item->material)
+                                                        <p><strong>Nombre Material:</strong> {{$material->descripcion}}</p>
+                                                        <p><strong>Cantidad del material:</strong> {{$item->cantidad}}</p>
+                                                        <p><strong>Unidad de Medida del Material:</strong> {{$material->unidad }}</p>
+                                                        
                                                         @endif
-                                                    @endforeach   
-                                                    @foreach ($proyectos as $proy )
-                                                        @if ($proy->id == $item->idproyecto)
-                                                        <p><strong>Nombre del Proyecto: </strong> {{$proy->nombre}}</p>
-                                                        @endif
-                                                    @endforeach     
-                                                    <p><strong>Cargo del Trabajador: </strong> {{$item->cargo}}</p>
+                                                    @endforeach
+                                                    <p><strong>Fecha del Registro: </strong> {{$item->created_at}}</p>
+                                                    
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                                     </div>
@@ -73,14 +68,9 @@
                                         </div>
                                         @endcan
                                 </td>
-                                <td width = 10px>
-                                    @can('trabajadors.edit')
-                                    <a href="{{route('trabajadors.edit',$item->id)}}" class="btn btn-sm btn-info">Editar</a>
-                                    @endcan
-                                </td>
                                 <td width=10px>
-                                    @can('trabajadors.destroy')
-                                    {!!Form::open(['route'=>['trabajadors.destroy',$item->id],'onclick'=> "return confirm('Esta Seguro de Eliminar este Registro')",'method'=> 'DELETE'])!!}
+                                    @can('pedidos.destroy')
+                                    {!!Form::open(['route'=>['pedidos.destroy',$item->id],'onclick'=> "return confirm('Esta Seguro de Eliminar este Registro')",'method'=> 'DELETE'])!!}
                                     <button class="btn btn-sm btn-danger">Eliminar</button>
                                     {!! Form::close() !!}
                                     @endcan

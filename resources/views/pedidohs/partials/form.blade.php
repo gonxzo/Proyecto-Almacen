@@ -3,10 +3,14 @@
   <div class="form-group col-md-5">
     <strong>{!! Form::label('trabajador','nombre del trabajador') !!}</strong>
     <select class="form-control" name="idtrab" id="idtrab">
-      @foreach($trabajadors as $trabajador)
-           <option value="{{$trabajador['id']}}">{{$trabajador['nombre']}} {{$trabajador['apellidos']}} 
-           </option>
-      @endforeach
+        @foreach ($trabajadors as $trabajador)
+        @foreach ($users as $user )
+            @if ($user->id == $trabajador->idusuario)
+            <option value="{{ $trabajador['id'] }}">{{ $user['name']}}
+            </option>
+            @endif
+        @endforeach
+    @endforeach
   </select>
   </div>
 

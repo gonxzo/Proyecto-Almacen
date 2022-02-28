@@ -2,10 +2,14 @@
 <div class="form-row">
     <div class="form-group col-md-5">
         <strong>{!! Form::label('trabajador', 'Nombre del trabajador') !!}</strong>
-        <select class="form-control" name="idtrab" id="idtrab">
+        <select class="form-control" name="idtrab" id="idtrab" autofocus>
             @foreach ($trabajadors as $trabajador)
-                <option value="{{ $trabajador['id'] }}">{{ $trabajador['nombre'] }} {{ $trabajador['apellidos'] }}
-                </option>
+                @foreach ($users as $user )
+                    @if ($user->id == $trabajador->idusuario)
+                    <option value="{{ $trabajador['id'] }}">{{ $user['name']}}
+                    </option>
+                    @endif
+                @endforeach
             @endforeach
         </select>
     </div>

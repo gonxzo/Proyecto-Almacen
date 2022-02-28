@@ -6,11 +6,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Trabajadores
+                    Materiales
                 </div>
                 <div class="card-body">
-                    {!! Form::model($trabajador, ['route'=>['trabajadors.update',$trabajador->id],'method'=>'PUT' ]) !!}
-                    @include('trabajadors.partials.form')
+
+                    {!! Form::model($material, ['route'=>['materials.update',$material->id],'method'=>'PUT' ]) !!}
+                    @include('materials.partials.form')
                     {!! Form::close() !!}
                 </div>
             </div>

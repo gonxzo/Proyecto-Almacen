@@ -9,6 +9,7 @@ use App\Pedido;
 use App\Trabajador; 
 use App\Material;
 use App\Pedidoh;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,9 +28,10 @@ class PedidocomController extends Controller
         $trabajadors=Trabajador::all();
         $pedidos=Pedido::all();
         $materials=Material::all();
+        $users=User::all();
         $pedidocoms=Pedidocom::paginate(500);
        
-        return view('pedidocoms.index', compact('pedidocoms','trabajadors','pedidos','materials'))
+        return view('pedidocoms.index', compact('pedidocoms','trabajadors','pedidos','materials','users'))
         ->with('success','Pedido  Guardado con exito!!.'); 
     }
 
@@ -42,7 +44,9 @@ class PedidocomController extends Controller
     {
         $trabajadors = Trabajador::all();
         $materials = Material::all();
-        return view('pedidocoms.create', compact('trabajadors','materials'));
+        $users = User::all();
+
+        return view('pedidocoms.create', compact('trabajadors','materials', 'users'));
     }
 
     /**
@@ -51,28 +55,28 @@ class PedidocomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         $materials = Material::all();
         $pedidocom=Pedidocom::create($request->all());
-        $prueba = $pedidocom->id;
+        $idpedidocom = $pedidocom->id;
         $request->validate([
             'addMoreInputFields.*.material' => 'required',
             'addMoreInputFields.*.cantidad' => 'required'
         ]);
         foreach ($request->addMoreInputFields as $key => $value) {
-            $prueba1 = $request->addMoreInputFields[$key]['material'];
-            $prueba2 = $request->addMoreInputFields[$key]['cantidad']; 
+            $idmaterial = $request->addMoreInputFields[$key]['material'];
+            $cantidadmaterial = $request->addMoreInputFields[$key]['cantidad']; 
             $pedido = new Pedido;
-            $pedido->idtrab = $prueba;
-            $pedido->material = $prueba1;
-            $pedido->cantidad =  $prueba2;
+            $pedido->idpedidocom = $idpedidocom;
+            $pedido->material = $idmaterial;
+            $pedido->cantidad =  $cantidadmaterial;
             $pedido->save();
             foreach($materials as $material)
             {
-                if($material->id == $prueba1)
+                if($material->id == $idmaterial)
                 {
-                    $material->cantidad =  $material->cantidad - $prueba2;
+                    $material->cantidad =  $material->cantidad - $cantidadmaterial;
                     $material->save();
                 }
             }
@@ -136,9 +140,9 @@ class PedidocomController extends Controller
         $trabajadors=Trabajador::all();
         $pedidos=Pedido::all();
         $materials=Material::all();
-        
+        $users=User::all();
         /* return response()->json($ids); */
-       $pdf = PDF::loadView('pedidocoms.pdf', compact('pedidocom','trabajadors','materials','pedidos'))->setPaper('A4', 'portrait'); 
+       $pdf = PDF::loadView('pedidocoms.pdf', compact('users','pedidocom','trabajadors','materials','pedidos'))->setPaper('A4', 'portrait'); 
 
        return $pdf->stream('pedidocoms.pdf');
     }
@@ -147,10 +151,11 @@ class PedidocomController extends Controller
         $pedidocoms = Pedidocom::all();
         $trabajadors=Trabajador::all();
         $pedidos=Pedido::all();
+        $users=User::all();
         $materials=Material::all();
         
         /* return response()->json($ids); */
-       $pdf = PDF::loadView('pedidocoms.reportespdf', compact('pedidocoms','trabajadors','materials','pedidos'))->setPaper('A4', 'landscape'); 
+       $pdf = PDF::loadView('pedidocoms.reportespdf', compact('users','pedidocoms','trabajadors','materials','pedidos'))->setPaper('A4', 'landscape'); 
 
        return $pdf->stream('pedidocoms.reportespdf');
     }
@@ -160,9 +165,10 @@ class PedidocomController extends Controller
         $trabajadors=Trabajador::all();
         $pedidos=Pedido::all();
         $materials=Material::all();
+        $users=User::all();
         $pedidocoms=Pedidocom::paginate(500);
        
-        return view('pedidocoms.reporte', compact('pedidocoms','trabajadors','pedidos','materials'))
+        return view('pedidocoms.reporte', compact('pedidocoms','trabajadors','pedidos','materials','users'))
         ->with('success','Pedido  Guardado con exito!!.'); 
     }
     public function reportefechas()

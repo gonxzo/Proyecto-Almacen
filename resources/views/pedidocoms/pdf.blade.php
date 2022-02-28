@@ -90,13 +90,18 @@
                 
                 @foreach ($trabajadors as $trabajador)
                     @if ($pedidocom->idtrab == $trabajador->id)
-                        <tr>
-                            <td style="text-align:left;width:100%; " colspan="10">
-                                <font size=3><strong>Nombre Trabajador: </strong>{{ $trabajador->nombre }}
-                                    {{ $trabajador->apellidos }}</font>
-                            </td>
-                           </tr>
-                        <tr>
+                        @foreach ($users as $user )
+                            @if ($user->id == $trabajador->idusuario)
+                            <tr>
+                                <td style="text-align:left;width:100%; " colspan="10">
+                                    <font size=3><strong>Nombre Trabajador: </strong>{{ $user->name }}</font>
+                                </td>
+                               </tr>
+                            <tr>
+                                
+                            @endif
+                        @endforeach
+                       
                             <td style="text-align:left;width:100%;" colspan="10">
                                 <font size=3><strong>Motivo: </strong>{{ $pedidocom->asunto }}</font>
                             </td>

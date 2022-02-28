@@ -15,8 +15,8 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->integer('idtrab')->unsigned();
-            $table->foreign('idtrab')->references('id')->on('pedidocoms');
+            $table->integer('idpedidocom')->unsigned();
+            $table->foreign('idpedidocom')->references('id')->on('pedidocoms');
             $table->integer('material')->unsigned();
             $table->foreign('material')->references('id')->on('materials');
             $table->string('cantidad');

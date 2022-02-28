@@ -41,16 +41,15 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy')->middleware('can:users.destroy');
     Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')->middleware('can:users.edit');
     Route::get('users.buscar', 'UserController@buscar')->name('users');
-
     
-    //DOCUMENTOS
-    Route::post('documentos/store', 'DocumentoController@store')->name('documentos.store')->middleware('can:documentos.store');
-    Route::get('documentos', 'DocumentoController@index')->name('documentos.index')->middleware('can:documentos.index');
-    Route::get('documentos/create', 'DocumentoController@create')->name('documentos.create')->middleware('can:documentos.create');
-    Route::put('documentos/{documento}', 'DocumentoController@update')->name('documentos.update')->middleware('can:documentos.edit');
-    Route::get('documentos/{documento}', 'DocumentoController@show')->name('documentos.show')->middleware('can:documentos.show');
-    Route::delete('documentos/{documento}', 'DocumentoController@destroy')->name('documentos.destroy')->middleware('can:documentos.destroy');
-    Route::get('documentos/{documento}/edit', 'DocumentoController@edit')->name('documentos.edit')->middleware('can:documentos.edit');
+    //PROYECTOS
+    Route::post('proyectos/store', 'ProyectoController@store')->name('proyectos.store')->middleware('can:proyectos.store');
+    Route::get('proyectos', 'ProyectoController@index')->name('proyectos.index')->middleware('can:proyectos.index');
+    Route::get('proyectos/create', 'ProyectoController@create')->name('proyectos.create')->middleware('can:proyectos.create');
+    Route::put('proyectos/{proyecto}', 'ProyectoController@update')->name('proyectos.update')->middleware('can:proyectos.edit');
+    Route::get('proyectos/{proyecto}', 'ProyectoController@show')->name('proyectos.show')->middleware('can:proyectos.show');
+    Route::delete('proyectos/{proyecto}', 'ProyectoController@destroy')->name('proyectos.destroy')->middleware('can:proyectos.destroy');
+    Route::get('proyectos/{proyecto}/edit', 'ProyectoController@edit')->name('proyectos.edit')->middleware('can:proyectos.edit');
     
     //MATERIALES
     Route::post('materials/store', 'MaterialController@store')->name('materials.store')->middleware('can:materials.store');
@@ -60,7 +59,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('materials/{material}', 'MaterialController@show')->name('materials.show')->middleware('can:materials.show');
     Route::delete('materials/{material}', 'MaterialController@destroy')->name('materials.destroy')->middleware('can:materials.destroy');
     Route::get('materials/{material}/edit', 'MaterialController@edit')->name('materials.edit')->middleware('can:materials.edit');
-    
     Route::get('material-reporte', 'MaterialController@reportes')->name('materials.reportes');
 
     //REPORTES
@@ -92,10 +90,10 @@ Route::middleware(['auth'])->group(function () {
       Route::get('pedidocoms/{pedidocom}', 'PedidocomController@show')->name('pedidocoms.show')->middleware('can:pedidocoms.show');
       Route::delete('pedidocoms/{pedidocom}', 'PedidocomController@destroy')->name('pedidocoms.destroy')->middleware('can:pedidocoms.destroy');
       Route::get('pedidocoms/{pedidocom}/edit', 'PedidocomController@edit')->name('pedidocoms.edit')->middleware('can:pedidocoms.edit');
-      Route::get('pedidocoms/{pedidocom}','PedidocomController@generaPDF')->name('pedidocoms.pdf'); 
-      Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf');
-      Route::get('reporte','PedidocomController@reporte')->name('pedidocoms.reporte'); 
-      Route::get('reportefechas','PedidocomController@reportefechas')->name('pedidocoms.reportefechas'); 
+      Route::get('pedidocoms/{pedidocom}','PedidocomController@generaPDF')->name('pedidocoms.pdf')->middleware('can:pedidocoms.edit');
+      Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf')->middleware('can:pedidocoms.edit');
+      Route::get('reporte','PedidocomController@reporte')->name('pedidocoms.reporte')->middleware('can:pedidocoms.reporte');
+      Route::get('reportefechas','PedidocomController@reportefechas')->name('pedidocoms.reportefechas')->middleware('can:pedidocoms.reportefechas');
 
       //Pedidos HERRAMIENTAS
         Route::post('pedidohs/store', 'PedidohController@store')->name('pedidohs.store')->middleware('can:pedidohs.store');
@@ -105,9 +103,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('pedidohs/{pedidoh}', 'PedidohController@show')->name('pedidohs.show')->middleware('can:pedidohs.show');
         Route::delete('pedidohs/{pedidoh}', 'PedidohController@destroy')->name('pedidohs.destroy')->middleware('can:pedidohs.destroy');
         Route::get('pedidohs/{pedidoh}/edit', 'PedidohController@edit')->name('pedidohs.edit')->middleware('can:pedidohs.edit');
-        Route::get('pedidohs/{pedidoh}','PedidohController@generaPDF')->name('pedidohs.pdf'); 
+        Route::get('pedidohs/{pedidoh}','PedidohController@generaPDF')->name('pedidohs.pdf')->middleware('can:pedidohs.pdf'); 
         Route::get('reportesherramienta','PedidohController@reportetotal')->name('pedidohs.reportespdf');
-        Route::get('reportes-herramienta','PedidohController@reportefechas')->name('pedidohs.reportefechas');
+        Route::get('reportes-herramienta','PedidohController@reportefechas')->name('pedidohs.reportefechas')->middleware('can:pedidohs.reportefechas');
         //Pedidos TRABAJADORES
        Route::post('trabajadors/store', 'TrabajadorController@store')->name('trabajadors.store')->middleware('can:trabajadors.store');
        Route::get('trabajadors', 'TrabajadorController@index')->name('trabajadors.index')->middleware('can:trabajadors.index');
@@ -116,7 +114,25 @@ Route::middleware(['auth'])->group(function () {
        Route::get('trabajadors/{trabajador}', 'TrabajadorController@show')->name('trabajadors.show')->middleware('can:trabajadors.show');
        Route::delete('trabajadors/{trabajador}', 'TrabajadorController@destroy')->name('trabajadors.destroy')->middleware('can:trabajadors.destroy');
        Route::get('trabajadors/{trabajador}/edit', 'TrabajadorController@edit')->name('trabajadors.edit')->middleware('can:trabajadors.edit');
-   
+
+       //PEDIDIOS MATERIAL
+        Route::post('pedidos/store', 'PedidoController@store')->name('pedidos.store')->middleware('can:pedidos.store');
+        Route::get('pedidos', 'PedidoController@index')->name('pedidos.index')->middleware('can:pedidos.index');
+        Route::get('pedidos/create', 'PedidoController@create')->name('pedidos.create')->middleware('can:pedidos.create');
+        Route::put('pedidos/{pedido}', 'PedidoController@update')->name('pedidos.update')->middleware('can:pedidos.edit');
+        Route::get('pedidos/{pedido}', 'PedidoController@show')->name('pedidos.show')->middleware('can:pedidos.show');
+        Route::delete('pedidos/{pedido}', 'PedidoController@destroy')->name('pedidos.destroy')->middleware('can:pedidos.destroy');
+        Route::get('pedidos/{pedido}/edit', 'PedidoController@edit')->name('pedidos.edit')->middleware('can:pedidos.edit');
+
+          //PEDIDIOS HERRAMIENTAS
+          Route::post('pedidoherras/store', 'PedidoherraController@store')->name('pedidoherras.store')->middleware('can:pedidoherras.store');
+          Route::get('pedidoherras', 'PedidoherraController@index')->name('pedidoherras.index')->middleware('can:pedidoherras.index');
+          Route::get('pedidoherras/create', 'PedidoherraController@create')->name('pedidoherras.create')->middleware('can:pedidoherras.create');
+          Route::put('pedidoherras/{pedidoherra}', 'PedidoherraController@update')->name('pedidoherras.update')->middleware('can:pedidoherras.edit');
+          Route::get('pedidoherras/{pedidoherra}', 'PedidoherraController@show')->name('pedidoherras.show')->middleware('can:pedidoherras.show');
+          Route::delete('pedidoherras/{pedidoherra}', 'PedidoherraController@destroy')->name('pedidoherras.destroy')->middleware('can:pedidoherras.destroy');
+          Route::get('pedidoherras/{pedidoherra}/edit', 'PedidoherraController@edit')->name('pedidoherras.edit')->middleware('can:pedidoherras.edit');
+     
     //CLEAR
     Route::get('storage-link',function(){
         return Artisan::call('storage:link');

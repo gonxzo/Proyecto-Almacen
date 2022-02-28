@@ -6,14 +6,13 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                  Documentos
+                    Materiales
                 </div>
                 <div class="card-body">
 
-                  <form class="" action="{{route('documentos.store')}}" method="post" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    @include('documentos.partials.form')
-                  </form>
+                    {!! Form::model($material, ['route'=>['materials.update',$material->id],'method'=>'PUT' ]) !!}
+                    @include('materials.partials.form')
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

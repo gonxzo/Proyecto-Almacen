@@ -6,12 +6,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Trabajadores
+                    Usuario
                 </div>
                 <div class="card-body">
-                    {!! Form::model($trabajador, ['route'=>['trabajadors.update',$trabajador->id],'method'=>'PUT' ]) !!}
-                    @include('trabajadors.partials.form')
-                    {!! Form::close() !!}
+                    <p><strong>Nombre:</strong> {{$user->name}}</p>
+                    <p><strong>Correo Electronico: </strong> {{$user->email}}</p>
                 </div>
             </div>
         </div>

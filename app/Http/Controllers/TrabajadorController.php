@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Trabajador;
+use App\User;
+use App\Proyecto;
 use Illuminate\Http\Request;
 
 class TrabajadorController extends Controller
@@ -15,10 +17,11 @@ class TrabajadorController extends Controller
     public function index()
     {
         $trabajadors=Trabajador::all();
+        $users=User::all();
+        $proyectos=Proyecto::all();
         $trabajadors=Trabajador::paginate(500);
-       
-        return view('trabajadors.index', compact('trabajadors')); 
-    }
+        return view('trabajadors.index', compact('trabajadors','users','proyectos')); 
+    } 
 
     /**
      * Show the form for creating a new resource.
@@ -27,7 +30,9 @@ class TrabajadorController extends Controller
      */
     public function create()
     {
-        return view('trabajadors.create');
+        $user=User::all();
+        $proyecto=Proyecto::all();
+        return view('trabajadors.create', compact('user','proyecto'));
     }
 
     /**
@@ -62,7 +67,9 @@ class TrabajadorController extends Controller
      */
     public function edit(Trabajador $trabajador)
     {
-        return view('trabajadors.edit',compact('trabajador'));
+        $user=User::all();
+        $proyecto=Proyecto::all();
+        return view('trabajadors.edit',compact('trabajador','user','proyecto'));
     }
 
     /**

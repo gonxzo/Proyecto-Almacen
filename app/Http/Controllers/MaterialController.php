@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Material;
 use Illuminate\Http\Request;
-
+ 
 class MaterialController extends Controller
 {
     /**
@@ -16,7 +16,6 @@ class MaterialController extends Controller
     {
         $materials=Material::all();
         $materials=Material::paginate(500);
-       
         return view('materials.index', compact('materials')); 
     }
 

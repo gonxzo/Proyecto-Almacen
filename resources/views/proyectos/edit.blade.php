@@ -3,14 +3,15 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Trabajadores
+                    Poryectos
                 </div>
                 <div class="card-body">
-                    {!! Form::model($trabajador, ['route'=>['trabajadors.update',$trabajador->id],'method'=>'PUT' ]) !!}
-                    @include('trabajadors.partials.form')
+
+                    {!! Form::model($proyecto, ['route'=>['proyectos.update',$proyecto->id],'method'=>'PUT' ]) !!}
+                    @include('proyectos.partials.form2')
                     {!! Form::close() !!}
                 </div>
             </div>
