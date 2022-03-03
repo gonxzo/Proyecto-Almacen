@@ -9,21 +9,25 @@
                    REPORTE DE MATERIALES POR FECHA
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['route'=>'pedidocoms.reporte']) !!}
+                    <form action="{{ route('reporte') }} " method="POST">
+                    @csrf
                     <strong> <h5>REPORTE DE MATERIALES</h5></strong>
                     <div class="form-row">
                         
                         <div class="form-group col-md-6">
-                            <strong>{!! Form::label('fechaini', 'FECHA INICIO') !!}</strong>
-                            {!! Form::date('fechaini', null, ['class' => 'form-control', 'onKeyUp' => 'this.value=this.value.toUpperCase();']) !!}
+                            <strong>{!! Form::label('fechaini1', 'FECHA INICIO')  !!}</strong>
+                            <input type="date" name="fechaini1" id="fechaini" class="form-control">
+                            
+                           {{--  {!! Form::date('fechaini', null, ['class' => 'form-control', 'onKeyUp' => 'this.value=this.value.toUpperCase();']) !!} --}}
                         </div>
                     
                         <div class="form-group col-md-6">
-                            <strong>{!! Form::label('fechafin', 'FECHA FINAL') !!}</strong>
-                            {!! Form::date('fechafin', null, ['class' => 'form-control', 'onKeyUp' => 'this.value=this.value.toUpperCase();']) !!}
+                            <strong>{!! Form::label('fechafin1', 'FECHA FINAL') !!}</strong>
+                            {!! Form::date('fechafin1', null, ['class' => 'form-control', 'onKeyUp' => 'this.value=this.value.toUpperCase();']) !!}
                         </div>
             
                     </div>
+                
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <div class="modal fade" id="modal121" tabindex="-1" role="dialog"
@@ -57,13 +61,11 @@
                         
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal121">
-                            GENERA REPORTE POR FECHAS
-                        </button>
-                        <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal12">
-                            GENERA REPORTE TOTAL
-                        </button>
-                    </div>
+                        <button type="submit" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal121" value="Reporte por fechas">
+                            Reporte por Fechas</button>
+                        <button type="submit" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal12">
+                            GENERA REPORTE TOTAL</button>
+                        
                     <strong> <H5>REPORTE DE HERRAMIENTAS</H5></strong>
                     <div class="form-row">
                         
@@ -118,7 +120,7 @@
                             GENERA REPORTE TOTAL
                         </button>
                     </div>
-                    {!! Form::close() !!}
+                </form>
                 </div>
             </div>
         </div>

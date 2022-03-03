@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     
     //PROYECTOS
     Route::post('proyectos/store', 'ProyectoController@store')->name('proyectos.store')->middleware('can:proyectos.store');
-    Route::get('proyectos', 'ProyectoController@index')->name('proyectos.index')->middleware('can:proyectos.index');
+    Route::get('proyectos/', 'ProyectoController@index')->name('proyectos.index')->middleware('can:proyectos.index');
     Route::get('proyectos/create', 'ProyectoController@create')->name('proyectos.create')->middleware('can:proyectos.create');
     Route::put('proyectos/{proyecto}', 'ProyectoController@update')->name('proyectos.update')->middleware('can:proyectos.edit');
     Route::get('proyectos/{proyecto}', 'ProyectoController@show')->name('proyectos.show')->middleware('can:proyectos.show');
@@ -92,8 +92,9 @@ Route::middleware(['auth'])->group(function () {
       Route::get('pedidocoms/{pedidocom}/edit', 'PedidocomController@edit')->name('pedidocoms.edit')->middleware('can:pedidocoms.edit');
       Route::get('pedidocoms/{pedidocom}','PedidocomController@generaPDF')->name('pedidocoms.pdf')->middleware('can:pedidocoms.edit');
       Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf')->middleware('can:pedidocoms.edit');
-      Route::get('reporte','PedidocomController@reporte')->name('pedidocoms.reporte')->middleware('can:pedidocoms.reporte');
+      Route::get('reporte','PedidocomController@reporte')->name('pedidocoms.reporte');
       Route::get('reportefechas','PedidocomController@reportefechas')->name('pedidocoms.reportefechas')->middleware('can:pedidocoms.reportefechas');
+      Route::post('reportefecha','PedidocomController@reporte_fecha')->name('reporte');
 
       //Pedidos HERRAMIENTAS
         Route::post('pedidohs/store', 'PedidohController@store')->name('pedidohs.store')->middleware('can:pedidohs.store');

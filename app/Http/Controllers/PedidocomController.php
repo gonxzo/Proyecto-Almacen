@@ -159,28 +159,54 @@ class PedidocomController extends Controller
 
        return $pdf->stream('pedidocoms.reportespdf');
     }
-    public function reporte()
+    public function reporte(Request $request)
     {
-        $pedidocoms=Pedidocom::all();
+        $fechainicio = $request->get('fechaini');
+        $fechafin = $request->get('fechafin');
         $trabajadors=Trabajador::all();
-        $pedidos=Pedido::all();
+        $pedidocoms=Pedidocom::all();
         $materials=Material::all();
-        $users=User::all();
-        $pedidocoms=Pedidocom::paginate(500);
-       
-        return view('pedidocoms.reporte', compact('pedidocoms','trabajadors','pedidos','materials','users'))
-        ->with('success','Pedido  Guardado con exito!!.'); 
-    }
-    public function reportefechas()
-    {
+        $users=User::all(); 
+        $datos['pedidos'] = DB::table('pedidos')
+        ->where('created_at', '>=', '2022-03-01' )
+        ->select('pedidos.*')->get();
+  
+       /*  return response()->json($datos); */
+        return view('pedidocoms.reporte',$datos, compact('trabajadors','pedidocoms','materials','users'));
         
+
+    }
+    public function reportefechas(Request $request)
+    {
+        $fechainicio = $request->all();
+        return response()->json($request);
+        $fechafin = $request->get('fechafin');
         $pedidocoms = Pedidocom::all();
         $trabajadors=Trabajador::all();
-        $pedidos=Pedido::all();
         $materials=Material::all();
-        
-        /* return response()->json($ids); */
-       $pdf = PDF::loadView('pedidocoms.reportefechas', compact('pedidocoms','trabajadors','materials','pedidos'))->setPaper('A4', 'landscape'); 
+        $users=User::all(); 
+        $datos['pedidos'] = DB::table('pedidos')
+        ->where('created_at', '>=', '2022-03-01' )
+        ->select('pedidos.*')->get();
+      /*     return response()->json($datos); */
+       $pdf = PDF::loadView('pedidocoms.reportefechas',$datos, compact('pedidocoms','trabajadors','materials','users'))->setPaper('A4', 'landscape'); 
+
+       return $pdf->stream('pedidocoms.reportefechas');
+    }
+    public function reporte_fecha(Request $request)
+    {
+        $fechainicio = $request->get('fechaini1');
+        $fechafin = $request->get('fechafin1');
+      /*   return response()->json($fechainicio); */
+        $pedidocoms = Pedidocom::all();
+        $trabajadors=Trabajador::all();
+        $materials=Material::all();
+        $users=User::all(); 
+        $datos['pedidos'] = DB::table('pedidos')
+        ->whereBetween('created_at', [$fechainicio, $fechafin])
+        ->select('pedidos.*')->get();
+      /*     return response()->json($datos); */
+       $pdf = PDF::loadView('pedidocoms.reportefechas',$datos, compact('pedidocoms','trabajadors','materials','users'))->setPaper('A4', 'landscape'); 
 
        return $pdf->stream('pedidocoms.reportefechas');
     }
