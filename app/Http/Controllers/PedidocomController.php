@@ -179,8 +179,6 @@ class PedidocomController extends Controller
     public function reportefechas(Request $request)
     {
         $fechainicio = $request->all();
-        return response()->json($request);
-        $fechafin = $request->get('fechafin');
         $pedidocoms = Pedidocom::all();
         $trabajadors=Trabajador::all();
         $materials=Material::all();

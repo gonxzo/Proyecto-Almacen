@@ -11,16 +11,34 @@
                 Materiales
             </div>
             <div class="card-body">
-                <a href="{{ route('pedidocoms.create') }}" class="btn btn-sm btn-primary mb-1">Crear Nuevo
-                    Pedido</a>
+                <a href="{{ route('pedidocoms.create') }}" class="btn btn-sm btn-primary mb-1">GASTO MATERIALES</a>
+                <button type="submit" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal12">
+                    REPORTE TOTAL</button>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <div class="modal fade" id="modal12" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <embed src="{{ route('pedidocoms.reportespdf') }}" type="application/pdf"
+                                                width="100%" height="750px" />
+    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                    </div>
                 <div class="table-responsive">
                     <table id="usuario" class="table table-bordered table-sm" style="width:100%">
                         <thead>
                             <tr class="grid">
-                                <th scope="col">Nº Pedido</th>
+                                <th scope="col">Almacen</th>
                                 <th scope="col">Material</th>
-                                <th scope="col">Cantidad</th>
                                 <th scope="col">U. Medida</th>
+                                <th scope="col">Cantidad</th>
                                 <th scope="col">Mostrar</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
@@ -32,8 +50,8 @@
                                 @foreach ($materials as $material )
                                     @if ($material->id == $item->material)
                                     <td >{{$material->descripcion }} </td>
-                                    <td >{{$item->cantidad }} </td>
                                     <td >{{$material->unidad }} </td>
+                                    <td >{{$item->cantidad }} </td>
                                     @endif
                                 @endforeach
                                 <td width = 10px>

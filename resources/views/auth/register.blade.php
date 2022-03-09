@@ -19,7 +19,7 @@
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <small> <H6 style="color:red;">*Introduzca su Nombre Completo</H6> </small>
                                     </span>
                                 @enderror
                             </div>
@@ -33,7 +33,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <small> <H6 style="color:red;">*Este Correo Electronico ya esta en usu</H6> </small>
                                     </span>
                                 @enderror
                             </div>
@@ -46,7 +46,7 @@
 
                                 @error('direccion')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <small> <H6 style="color:red;">*Introduzca su Direccion</H5> </small>
                                     </span>
                                 @enderror
                             </div>
@@ -59,7 +59,7 @@
 
                                 @error('telefono')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <small> <H6 style="color:red;">*Introduzca su Telefono/Celular</H5> </small>
                                     </span>
                                 @enderror
                             </div>
@@ -73,7 +73,7 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <small> <H6 style="color:red;">*Introduzca una contraseña de almenos 8 Digitos</H5> </small>
                                     </span>
                                 @enderror
                             </div>

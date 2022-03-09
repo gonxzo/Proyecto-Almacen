@@ -95,9 +95,7 @@
                     <td style="text-align:left;width:100%;" colspan="4">
                         <h5>UNIDAD</h5>
                     </td>
-                    <td style="text-align:left;width:100%;" colspan="5">
-                        <h5>TRABAJADOR</h5>
-                    </td>
+                 
                     <td style="text-align:left;width:100%;" colspan="4">
                         <h5>FECHA Y HORA</h5>
                     </td>

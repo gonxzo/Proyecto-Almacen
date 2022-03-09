@@ -62,10 +62,8 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal121" value="Reporte por fechas">
-                            Reporte por Fechas</button>
-                        <button type="submit" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal12">
-                            GENERA REPORTE TOTAL</button>
-                        
+                            REPORTE MATERIALES</button>
+                    
                     <strong> <H5>REPORTE DE HERRAMIENTAS</H5></strong>
                     <div class="form-row">
                         
@@ -114,11 +112,9 @@
                     </div>
                     <div class="form-group">
                         <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal122">
-                            GENERA REPORTE POR FECHAS
+                            REPORTE HERRAMIENTAS
                         </button>
-                        <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal123">
-                            GENERA REPORTE TOTAL
-                        </button>
+                      
                     </div>
                 </form>
                 </div>

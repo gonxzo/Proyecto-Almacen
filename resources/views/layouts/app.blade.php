@@ -50,7 +50,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto ">
+                    <strong> <ul class="navbar-nav mr-auto ">
                         @can('materials.index')
                         <li class="nav-item dropdown">
                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ALM. MATERIALES</a>
@@ -62,7 +62,7 @@
                                    <a class="dropdown-item" href="{{ route('pedidos.index') }} ">MATERIAL POR OBRA</a>
                                @endcan
 
-                           </div>
+                           </div> 
                        </li>
                        @endcan
                        @can('herramientas.index')
@@ -134,7 +134,7 @@
                         </li>
                         @endcan
             
-                     </ul>
+                     </ul></strong>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -167,7 +167,7 @@
                             </li>
                         @endguest
                     </ul>
-
+                
                 </div>
             </div>
         </nav>

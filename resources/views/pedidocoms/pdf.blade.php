@@ -66,7 +66,7 @@
     
     <table width="100%">
         <tr>
-            <td colspan="6" style="text-align:center;width:100%;;">
+            <td colspan="6" style="text-align:center;width:100%;">
                 @include('pedidocoms.imagen')
             </td>
             <br>
