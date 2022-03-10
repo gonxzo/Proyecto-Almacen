@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Herramientas
+                    EDITAR ERRAMIENTA
                 </div>
                 <div class="card-body">
 

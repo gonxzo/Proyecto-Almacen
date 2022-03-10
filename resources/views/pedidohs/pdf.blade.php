@@ -92,8 +92,7 @@
                     @if ($pedidoh->idtrab == $trabajador->id)
                         <tr>
                             <td style="text-align:left;width:100%; " colspan="10">
-                                <font size=3><strong>Nombre Trabajador: </strong>{{ $trabajador->nombre }}
-                                    {{ $trabajador->apellidos }}</font>
+                                <font size=3><strong>Nombre Trabajador: </strong>{{ Auth::user()->name }}</font>
                             </td>
                            </tr>
                         <tr>
@@ -119,13 +118,20 @@
                 <hr style="width: 100%;height: 2px;">
                
                 <tr>
-                    <td style="text-align:left;width:100%;" colspan="7">
+                    <td style="text-align:left;width:100%;" colspan="6">
                         <hr style="width: 100%;height: 2px;">
                         <p>
                         <h3>HERRAMIENTA</h3>
                         </p>
                     </td>
-                    <td style="text-align:center;width:100%;" colspan="5">
+                    <td style="text-align:left;width:100%;" colspan="3">
+                        <hr style="width: 100%;height: 2px;">
+                        <p>
+
+                        <h3>UNIDAD</h3>
+                        </p>
+                    </td>
+                    <td style="text-align:left;width:100%;" colspan="3">
                         <hr style="width: 100%;height: 2px;">
                         <p>
 
@@ -147,11 +153,15 @@
                                     
                                     <tr>
                                         
-                                        <td style="text-align:left;width:100%; " colspan="7">
+                                        <td style="text-align:left;width:100%; " colspan="6">
                                             <hr style="width: 100%;height: -20px;">
                                             <font size=2><strong>{{ $herramienta->descripcion }}</font>
                                         </td>
-                                        <td style="text-align:center;width:100%; " colspan="5">
+                                        <td style="text-align:left;width:100%; " colspan="3">
+                                            <hr style="width: 100%;height: -20px;">
+                                            <font size=2>{{ $herramienta->unidad }}</font>
+                                        </td>
+                                        <td style="text-align:center;width:100%; " colspan="3">
                                             <hr style="width: 100%;height: -20px;">
                                             <font size=2>{{ $pedido->cantidad }}</font>
                                         </td>

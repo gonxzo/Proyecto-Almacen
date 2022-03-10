@@ -106,7 +106,8 @@ class PedidocomController extends Controller
     {
         $trabajadors=Trabajador::all();
         $materials=Material::all();
-        return view('pedidocoms.edit',compact('pedidocom', 'trabajadors','materials'));
+        $users=User::all();
+        return view('pedidocoms.edit',compact('pedidocom', 'trabajadors','materials', 'users'));
     }
 
     /**

@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Proyectos
+                    CREAR PROYECTO
                 </div>
                 <div class="card-body">
 

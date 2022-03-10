@@ -45,7 +45,7 @@
                                 <td width = 10px>
                                     @can('trabajadors.show')
                                     <button  type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal{{$item->id}}">
-                                        Visualizar
+                                        Mostrar
                                     </button>
                                     <div class="modal fade" id="modal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">

@@ -6,6 +6,7 @@ use App\Pedido;
 use App\Material;
 use App\Trabajador;
 use App\Pedidocom;
+
 use App\User;
 use Illuminate\Http\Request;
 
@@ -20,10 +21,11 @@ class PedidoController extends Controller
     {
         $materials=Material::all();
         $trabajadors=Trabajador::all();
+        $pedidocoms=Pedidocom::all();
         $users=User::all();
         $pedidos=Pedido::all();
         $pedidos=Pedido::paginate(500);
-        return view('pedidos.index', compact('pedidos','materials','trabajadors','users'));
+        return view('pedidos.index', compact('pedidos','materials','trabajadors','users','pedidocoms'));
     }
 
     /**

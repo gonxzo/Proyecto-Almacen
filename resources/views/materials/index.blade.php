@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                Materiales
+                MATERIAL GENERAL
             </div>
             <div class="card-body">
                 @can('proyectos.create')
@@ -38,7 +38,7 @@
                                 <td width = 10px>
                                     @can('materials.show')
                                     <button  type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal{{$item->id}}">
-                                        Visualizar
+                                        Mostrar
                                     </button>
                                     <div class="modal fade" id="modal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">

@@ -81,7 +81,8 @@
     </table>
 
     <hr style="width: 100%;height: 2px;">
-        <h4 style="text-align:center;width:100%; height=1">REPORTE MENSUAL DE MATERIALES SALIENTES</h4>
+    <h4 style="text-align:center;width:100%; height=1">REPORTE DE MATERIALES USADOS EN CONSTRUCCION - <strong> ALMACEN IRUPANA</strong></h4>
+    <h4 style="text-align:center;width:100%; height=1">ENCARGADO DEL ALMACEN  - <strong>  {{ Auth::user()->name }}</strong></h4>
         
             <table width="100%">
                 <hr style="width: 100%;height: 2px; ">

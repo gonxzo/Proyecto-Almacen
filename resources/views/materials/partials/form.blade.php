@@ -8,6 +8,7 @@
  <div class="form-group">
   {!! Form::submit('Guardar', ['class'=>'btn btn-sm btn-primary']) !!}
   <a href="{{route('materials.index')}}"  class="btn btn-sm btn-primary">Volver</a>
+  
   </div>
 
   

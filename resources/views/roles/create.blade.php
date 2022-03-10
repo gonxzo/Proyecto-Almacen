@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                  Role
+                  CREAR NUEVO ROL
                 </div>
                 <div class="card-body">
 

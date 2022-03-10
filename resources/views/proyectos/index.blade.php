@@ -30,7 +30,7 @@
                                         @can('proyectos.destroy')
                                             <th scope="col">Eliminar</th>
                                         @endcan
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,7 +60,17 @@
                                                                     </p>
                                                                     <p><strong>Tipo de Proyecto: </strong>
                                                                         {{ $item->tipo }}</p>
-                                                                    <p><strong>Fecha de entrega de la Obra: </strong>
+                                                                    <p><strong>Superficie a Construir: </strong>
+                                                                        {{ $item->superficieutil }}</p>
+                                                                    <p><strong>Descripcion del Proyecto: </strong>
+                                                                        {{ $item->tipo }}</p>
+                                                                    <p><strong>Tipo de Proyecto: </strong>
+                                                                        {{ $item->descripcion }}</p>
+                                                                    <p><strong>Fecha Inicio de la Obra: </strong>
+                                                                        {{ $item->fechai }}</p>
+                                                                    <p><strong>Fecha de Finalizacion de la Obra: </strong>
+                                                                            {{ $item->fechae }}</p>
+                                                                    <p><strong>Fecha de Entrega de la Obra: </strong>
                                                                         {{ $item->fechae }}</p>
 
                                                                     <div class="modal-footer">
@@ -77,7 +87,7 @@
                                                 <td width=10px>
                                                     <a href="{{ route('proyectos.edit', $item->id) }}"
                                                         class="btn btn-sm btn-info">Editar</a>
-                                                       
+
                                                 </td>
                                             @endcan
                                             @can('proyectos.destroy')

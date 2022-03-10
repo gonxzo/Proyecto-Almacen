@@ -23,7 +23,7 @@
                     
                         <div class="form-group col-md-6">
                             <strong>{!! Form::label('fechafin1', 'FECHA FINAL') !!}</strong>
-                            {!! Form::date('fechafin1', null, ['class' => 'form-control', 'onKeyUp' => 'this.value=this.value.toUpperCase();']) !!}
+                            <input type="date" name="fechafin1" id="fechafin1" class="form-control">
                         </div>
             
                     </div>
@@ -69,12 +69,12 @@
                         
                         <div class="form-group col-md-6">
                             <strong>{!! Form::label('fechaini', 'FECHA INICIO') !!}</strong>
-                            {!! Form::date('fechaini', null, ['class' => 'form-control', 'onKeyUp' => 'this.value=this.value.toUpperCase();']) !!}
+                            <input type="date" name="fechaini" id="fechaini" class="form-control">
                         </div>
                     
                         <div class="form-group col-md-6">
                             <strong>{!! Form::label('fechafin', 'FECHA FINAL') !!}</strong>
-                            {!! Form::date('fechafin', null, ['class' => 'form-control', 'onKeyUp' => 'this.value=this.value.toUpperCase();']) !!}
+                            <input type="date" name="fechafin" id="fechafin" class="form-control">
                         </div>
             
                     </div>

@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        PEDIDO HERRAMIENTAS
+                       EDITAR PEDIDO HERRAMIENTAS
                     </div>
                     <div class="card-body">
 

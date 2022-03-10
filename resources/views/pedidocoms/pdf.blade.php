@@ -124,13 +124,20 @@
                 <hr style="width: 100%;height: 2px;">
                
                 <tr>
-                    <td style="text-align:left;width:100%;" colspan="7">
+                    <td style="text-align:left;width:100%;" colspan="6">
                         <hr style="width: 100%;height: 2px;">
                         <p>
                         <h4>MATERIAL</h4>
                         </p>
                     </td>
-                    <td style="text-align:center;width:100%;" colspan="5">
+                    <td style="text-align:left;width:100%;" colspan="3">
+                        <hr style="width: 100%;height: 2px;">
+                        <p>
+
+                        <h4>UNIDAD</h4>
+                        </p>
+                    </td>
+                    <td style="text-align:left;width:100%;" colspan="3">
                         <hr style="width: 100%;height: 2px;">
                         <p>
 
@@ -145,18 +152,22 @@
                        
                         @foreach ($pedidos as $pedido)
                         
-                            @if ($pedido->idtrab == $pedidocom->id)
+                            @if ($pedido->idpedidocom == $pedidocom->id)
                                 @foreach ($materials as $material)
                                 
                                     @if ($pedido->material == $material->id)
                                     
                                     <tr>
                                         
-                                        <td style="text-align:left;width:100%; " colspan="7">
+                                        <td style="text-align:left;width:100%; " colspan="6">
                                             <hr style="width: 100%;height: -20px;">
                                             <font size=2><strong>{{ $material->descripcion }}</font>
                                         </td>
-                                        <td style="text-align:center;width:100%; " colspan="5">
+                                        <td style="text-align:left;width:100%; " colspan="3">
+                                            <hr style="width: 100%;height: -20px;">
+                                            <font size=2><strong>{{ $material->unidad }}</font>
+                                        </td>
+                                        <td style="text-align:center;width:100%; " colspan="3">
                                             <hr style="width: 100%;height: -20px;">
                                             <font size=2>{{ $pedido->cantidad }}</font>
                                         </td>

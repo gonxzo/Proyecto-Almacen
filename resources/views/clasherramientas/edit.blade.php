@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    clasificacion de Herramientas
+                   EDITAR CLASIFICACION HERRAMIENTA
                 </div>
                 <div class="card-body">
 

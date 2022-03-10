@@ -11,7 +11,7 @@
  Target Server Version : 100414
  File Encoding         : 65001
 
- Date: 03/03/2022 07:54:07
+ Date: 10/03/2022 20:51:04
 */
 
 SET NAMES utf8mb4;
@@ -169,7 +169,7 @@ INSERT INTO `herramientas` VALUES (46, 'Llave Stilson', 'PZA', '0', 7, NULL, '20
 INSERT INTO `herramientas` VALUES (47, 'Combo 5 libras', 'PZA', '3', 7, NULL, NULL);
 INSERT INTO `herramientas` VALUES (48, 'Manguera transparente de nivel   3/8', 'M', '10', 7, NULL, NULL);
 INSERT INTO `herramientas` VALUES (49, 'Destornillador punta estrella', 'PZA', '4', 7, NULL, NULL);
-INSERT INTO `herramientas` VALUES (50, 'Pata de cabra', 'PZA', '2', 7, NULL, NULL);
+INSERT INTO `herramientas` VALUES (50, 'Pata de cabra', 'PZA', '0', 7, NULL, '2022-03-10 14:35:37');
 INSERT INTO `herramientas` VALUES (51, 'Guantes de seguridad (especial)', 'PZA', '3', 7, NULL, NULL);
 INSERT INTO `herramientas` VALUES (52, 'Escuadra 0.40 x 0.60', 'PZA', '5', 7, NULL, NULL);
 INSERT INTO `herramientas` VALUES (53, 'Alicate', 'PZA', '5', 7, NULL, NULL);
@@ -197,7 +197,7 @@ INSERT INTO `herramientas` VALUES (74, 'Llave perico', 'PZA', '2', 7, NULL, NULL
 INSERT INTO `herramientas` VALUES (75, 'Hojas para sierra mecánica', 'PZA', '5', 7, NULL, NULL);
 INSERT INTO `herramientas` VALUES (76, 'Cepillo de acero', 'PZA', '1', 7, NULL, NULL);
 INSERT INTO `herramientas` VALUES (77, 'Llave universal para tubos', 'PZA', '3', 7, NULL, NULL);
-INSERT INTO `herramientas` VALUES (78, 'Serrucho para madera', 'PZA', '1', 7, NULL, '2022-02-28 03:46:02');
+INSERT INTO `herramientas` VALUES (78, 'Serrucho para madera', 'PZA', '0', 7, NULL, '2022-03-10 14:35:37');
 INSERT INTO `herramientas` VALUES (79, 'Pinza de electricista', 'PZA', '3', 7, NULL, NULL);
 INSERT INTO `herramientas` VALUES (80, 'Sierra metálica', 'PZA', '2', 7, NULL, '2022-02-28 03:46:02');
 INSERT INTO `herramientas` VALUES (81, 'Huincha de 50 mts tela', 'PZA', '1', 7, NULL, NULL);
@@ -244,8 +244,8 @@ INSERT INTO `herramientas` VALUES (121, 'Educador Social ', 'PERSONA', '1', 11, 
 INSERT INTO `herramientas` VALUES (122, 'Técnico Operativo de Área ', 'PERSONA', '1', 11, NULL, NULL);
 INSERT INTO `herramientas` VALUES (123, 'Gorra ', 'PZA', '13', 12, NULL, NULL);
 INSERT INTO `herramientas` VALUES (124, 'Botas ', 'PZA', '5', 12, NULL, NULL);
-INSERT INTO `herramientas` VALUES (125, 'Guantes', 'PZA', '5', 12, NULL, NULL);
-INSERT INTO `herramientas` VALUES (126, 'Overol', 'PZA', '8', 12, NULL, NULL);
+INSERT INTO `herramientas` VALUES (125, 'Guantes', 'PZA', '-5', 12, NULL, '2022-03-10 14:35:37');
+INSERT INTO `herramientas` VALUES (126, 'Overol', 'PZA', '-2', 12, NULL, '2022-03-10 14:35:37');
 INSERT INTO `herramientas` VALUES (127, 'Casco', 'PZA', '12', 12, NULL, NULL);
 INSERT INTO `herramientas` VALUES (128, 'Chaleco de identificación', 'PZA', '15', 12, NULL, NULL);
 INSERT INTO `herramientas` VALUES (129, 'Gasolina para camioneta(s)', 'LT', '1200', 13, NULL, NULL);
@@ -276,14 +276,14 @@ CREATE TABLE `materials`  (
 -- Records of materials
 -- ----------------------------
 INSERT INTO `materials` VALUES (1, 'ABRAZADERA DE 3\'\'', 'PIEZA', '18', '2022-01-29 13:47:08', '2022-02-28 03:13:01');
-INSERT INTO `materials` VALUES (2, 'ALAMBRE DE AMARRE', 'KILOGRAMO', '50', '2022-01-29 13:47:17', '2022-01-31 06:22:05');
-INSERT INTO `materials` VALUES (3, 'ALAMBRE DE COBRE N 10 AWG', 'M', '0', '2022-01-30 13:47:21', '2022-01-31 06:22:05');
-INSERT INTO `materials` VALUES (4, 'ALAMBRE DE COBRE N 12 AWG', 'M', '4', '2022-01-30 13:47:26', '2022-02-28 03:31:39');
-INSERT INTO `materials` VALUES (5, 'ALAMBRE DE COBRE N 14 AWG', 'M', '8', '2022-01-30 13:47:31', NULL);
-INSERT INTO `materials` VALUES (6, 'ALAMBRE GALVANIZADO 12\n', 'KILOGRAMO\n', '65', '2022-01-31 13:47:45', NULL);
-INSERT INTO `materials` VALUES (7, 'ALQUITRÁN\n', 'KILOGRAMO\n', '5', NULL, NULL);
-INSERT INTO `materials` VALUES (8, 'BARANDA METÁLIC', 'M', '44', NULL, '2022-02-28 03:31:39');
-INSERT INTO `materials` VALUES (9, 'BARNIZ', 'LT', '100', NULL, NULL);
+INSERT INTO `materials` VALUES (2, 'ALAMBRE DE AMARRE', 'QUINTAL', '49', '2022-01-29 13:47:17', '2022-03-10 14:26:21');
+INSERT INTO `materials` VALUES (3, 'ALAMBRE DE COBRE N 10 AWG', 'KILOGRAMO', '0', '2022-01-30 13:47:21', '2022-01-31 06:22:05');
+INSERT INTO `materials` VALUES (4, 'ALAMBRE DE COBRE N 12 AWG', 'KILOGRAMO', '4', '2022-01-30 13:47:26', '2022-02-28 03:31:39');
+INSERT INTO `materials` VALUES (5, 'ALAMBRE DE COBRE N 14 AWG', 'KILOGRAMO', '8', '2022-01-30 13:47:31', NULL);
+INSERT INTO `materials` VALUES (6, 'ALAMBRE GALVANIZADO 12', 'QUINTAL', '65', '2022-01-31 13:47:45', '2022-03-09 05:49:48');
+INSERT INTO `materials` VALUES (7, 'ALQUITRÁN\n', 'KILOGRAMO\n', '4', NULL, '2022-03-10 14:26:21');
+INSERT INTO `materials` VALUES (8, 'BARANDA METÁLIC', 'METRO', '44', NULL, '2022-02-28 03:31:39');
+INSERT INTO `materials` VALUES (9, 'BARNIZ', 'LITRO', '100', NULL, NULL);
 INSERT INTO `materials` VALUES (10, 'BISAGRA DE 4\"\n', 'PIEZA\n', '2', NULL, NULL);
 INSERT INTO `materials` VALUES (11, 'BISAGRA PARA METAL\n', 'PIEZA\n', '2', NULL, NULL);
 INSERT INTO `materials` VALUES (12, 'BOTAGUAS DE CERÁMICA UNA CAÍDA\n', 'PIEZA\n', '4', NULL, NULL);
@@ -298,16 +298,16 @@ INSERT INTO `materials` VALUES (20, 'CALAMINA ONDULADA GALV.N°28 PREPINTADA\n',
 INSERT INTO `materials` VALUES (21, 'CALAMINA PLÁSTICA', 'METRO ', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (22, 'CANALETA GALV.CORTE 33 NO. 28 Y ACCES.\n', 'METRO\n', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (23, 'CARTON ALFALTICO ', 'METRO', '0', NULL, NULL);
-INSERT INTO `materials` VALUES (24, 'CEMENTO BLANCO\n', 'KILOGRAMO\n', '40', NULL, '2022-02-28 03:13:01');
-INSERT INTO `materials` VALUES (25, 'CEMENTO COLA\n', 'KILOGRAMO\n', '40', NULL, NULL);
-INSERT INTO `materials` VALUES (26, 'CEMENTO PORTLAND\n', 'KILOGRAMO\n', '-77', NULL, '2022-02-28 03:13:01');
+INSERT INTO `materials` VALUES (24, 'CEMENTO BLANCO', 'BOLSA 1 kg', '40', NULL, '2022-03-09 05:49:10');
+INSERT INTO `materials` VALUES (25, 'CEMENTO COLA', 'BOLSA 20 kg', '40', NULL, '2022-03-09 05:48:53');
+INSERT INTO `materials` VALUES (26, 'CEMENTO PORTLAND', 'BOLSA 45 kg', '980', NULL, '2022-03-10 14:26:21');
 INSERT INTO `materials` VALUES (27, 'CERÁMICA NACIONAL\n', 'METRO\n', '56', NULL, NULL);
 INSERT INTO `materials` VALUES (28, 'CHAPA EXTERIOR ', 'PIEZA', '10', NULL, NULL);
 INSERT INTO `materials` VALUES (30, 'CHICOTILLO 0.40cm italiano\n', 'PIEZA\n', '2', NULL, NULL);
 INSERT INTO `materials` VALUES (31, 'CIELO FALSO pvc Y ACCESORIOS\n', 'METRO\n', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (32, 'CIELO FALSO YESO - PCV + ACCESORIOS', 'METRO', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (33, 'CINTA AISLANTE\n', 'PIEZA\n', '0', NULL, NULL);
-INSERT INTO `materials` VALUES (34, 'CLAVOS\n', 'KILOGRAMO\n', '0', NULL, NULL);
+INSERT INTO `materials` VALUES (34, 'CLAVOS\n', 'KILOGRAMO\n', '-2', NULL, '2022-03-10 14:26:21');
 INSERT INTO `materials` VALUES (35, 'CODO DE 1/2\"FGGALV', 'PIEZA', '7', NULL, '2022-01-31 05:58:41');
 INSERT INTO `materials` VALUES (36, 'CODO PVC DE 1/2\'\'', 'PIEZA\n', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (37, 'CODO PVC DE 5/8\"\n', 'PIEZA\n', '0', NULL, NULL);
@@ -317,11 +317,11 @@ INSERT INTO `materials` VALUES (40, 'CODO PVC DESAGÜE 4\"\n', 'PIEZA\n', '0', N
 INSERT INTO `materials` VALUES (41, 'COPLA PVC-1/2\'\'', 'PIEZA\n', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (42, 'CORDEL', 'METROS', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (43, 'ELECTRODOS', 'KILOGRAMO\n', '14', NULL, NULL);
-INSERT INTO `materials` VALUES (44, 'ESQUINERO DE ALUMINIO ', 'M', '15', NULL, NULL);
-INSERT INTO `materials` VALUES (45, 'FIERRO CORRUGADO 1/2\'\'', 'BR', '-10', NULL, '2022-02-28 03:13:01');
-INSERT INTO `materials` VALUES (46, 'FIERRO CORRUGADO 1/4\'\'', 'BR', '24', NULL, '2022-02-28 03:13:01');
-INSERT INTO `materials` VALUES (47, 'FIERRO CORRUGADO 3/8\'\'', 'BR', '44', NULL, NULL);
-INSERT INTO `materials` VALUES (48, 'FIERRO CORRUGADO 5/16\'\'', 'BR', '55', NULL, NULL);
+INSERT INTO `materials` VALUES (44, 'ESQUINERO DE ALUMINIO ', 'KILOGRAMO', '15', NULL, NULL);
+INSERT INTO `materials` VALUES (45, 'FIERRO CORRUGADO 1/2\'\'', 'BARRA', '-20', NULL, '2022-03-10 14:26:20');
+INSERT INTO `materials` VALUES (46, 'FIERRO CORRUGADO 1/4\'\'', 'BARRA', '14', NULL, '2022-03-10 14:26:21');
+INSERT INTO `materials` VALUES (47, 'FIERRO CORRUGADO 3/8\'\'', 'BARRA', '34', NULL, '2022-03-10 14:26:21');
+INSERT INTO `materials` VALUES (48, 'FIERRO CORRUGADO 5/16\'\'', 'BARRA', '55', NULL, NULL);
 INSERT INTO `materials` VALUES (49, 'GANCHOS J DE 2,5\'\'', 'PIEZA\n', '1000', NULL, NULL);
 INSERT INTO `materials` VALUES (50, 'GRIFERIA PARA LAVAMANOS ', 'PIEZA\n', '400', NULL, NULL);
 INSERT INTO `materials` VALUES (51, 'GRIFERIA PARA LAVAPLATOS ', 'PIEZA\n', '677', NULL, NULL);
@@ -340,18 +340,18 @@ INSERT INTO `materials` VALUES (63, 'LLAVE DE PASO 1/2\"PARA DUCHA\n', 'PIEZA\n'
 INSERT INTO `materials` VALUES (64, 'MADERA DE CONSTRUCCIÓN (3 USOS)\n', 'PIE CUADRADO\n', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (65, 'MASA ACRILICA', 'LITRO', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (66, 'MASA CORRIDA', 'LITRO', '0', NULL, NULL);
-INSERT INTO `materials` VALUES (67, 'MEMBRANA AISLANTE BAJO PISO FLOTANTE ', 'M2', '0', NULL, NULL);
-INSERT INTO `materials` VALUES (68, 'MEMBRANA ASFALTICA CON ALUMINIO ', 'M2', '0', NULL, NULL);
+INSERT INTO `materials` VALUES (67, 'MEMBRANA AISLANTE BAJO PISO FLOTANTE ', 'METRO CUADRADO', '0', NULL, NULL);
+INSERT INTO `materials` VALUES (68, 'MEMBRANA ASFALTICA CON ALUMINIO ', 'METRO CUADRADO', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (69, 'NIPLE PVC DE 1/2\'\'', 'PIEZAS', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (70, 'PANEL LED 24 W EMPOTRABLE', 'PIEZA\n', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (71, 'PEGAMENTO PARA LADRILLO ', 'KILOGRAMO\n', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (72, 'PEGAMENTO PARA PVC\n', 'LITRO\n', '0', NULL, NULL);
-INSERT INTO `materials` VALUES (73, 'PERFIL COSTANERA GALV.50*25*10-2MM(6M)\n', 'M', '0', NULL, NULL);
-INSERT INTO `materials` VALUES (74, 'PERFIL COSTANERA GALV.80*40*15-2MM(6M)\n', 'M', '0', NULL, NULL);
+INSERT INTO `materials` VALUES (73, 'PERFIL COSTANERA GALV.50*25*10-2MM(6M)\n', 'METRO', '0', NULL, NULL);
+INSERT INTO `materials` VALUES (74, 'PERFIL COSTANERA GALV.80*40*15-2MM(6M)\n', 'METRO', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (75, 'PINTURA ANTICORROSIVA\n', 'GALON\n', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (76, 'PINTURA LATEX (BALDE 18 LT)\n', 'BALDE-GAL\n', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (77, 'PINTURA LÁTEX(ENGOMADA-BALDE 18 LT)\n', 'BALDE\n', '0', NULL, NULL);
-INSERT INTO `materials` VALUES (78, 'PISO FLOTANTE HDF 8MM + ACCESORIOS\n', '', '0', NULL, NULL);
+INSERT INTO `materials` VALUES (78, 'PISO FLOTANTE HDF 8MM + ACCESORIOS\n', 'METRO CUADRADO', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (79, 'PLANTIN ', 'UNIDAD', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (80, 'PLETINA DE 1/8\"X 3/4\"-(BAJANTE)\n', 'METRO\n', '0', NULL, NULL);
 INSERT INTO `materials` VALUES (81, 'POLIETILENO 200 MICRONES\n', 'METRO\n', '0', NULL, NULL);
@@ -461,13 +461,13 @@ CREATE TABLE `pedidocoms`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 73 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 74 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of pedidocoms
 -- ----------------------------
 INSERT INTO `pedidocoms` VALUES (71, '10', 'ALMACEN TIAHUNACU', '2022-02-28 03:13:01', '2022-02-28 03:13:01');
-INSERT INTO `pedidocoms` VALUES (72, '10', 'ALMACEN LAJA', '2022-02-28 03:31:39', '2022-02-28 03:31:39');
+INSERT INTO `pedidocoms` VALUES (73, '11', 'ALMACEN IRUPANA', '2022-03-10 14:26:20', '2022-03-10 14:26:20');
 
 -- ----------------------------
 -- Table structure for pedidoherras
@@ -481,7 +481,7 @@ CREATE TABLE `pedidoherras`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of pedidoherras
@@ -490,6 +490,10 @@ INSERT INTO `pedidoherras` VALUES (12, '12', '5', '1', '2022-02-28 03:46:01', '2
 INSERT INTO `pedidoherras` VALUES (13, '12', '78', '2', '2022-02-28 03:46:02', '2022-02-28 03:46:02');
 INSERT INTO `pedidoherras` VALUES (14, '12', '80', '2', '2022-02-28 03:46:02', '2022-02-28 03:46:02');
 INSERT INTO `pedidoherras` VALUES (15, '12', '46', '2', '2022-02-28 03:46:02', '2022-02-28 03:46:02');
+INSERT INTO `pedidoherras` VALUES (16, '13', '50', '2', '2022-03-10 14:35:37', '2022-03-10 14:35:37');
+INSERT INTO `pedidoherras` VALUES (17, '13', '78', '1', '2022-03-10 14:35:37', '2022-03-10 14:35:37');
+INSERT INTO `pedidoherras` VALUES (18, '13', '125', '10', '2022-03-10 14:35:37', '2022-03-10 14:35:37');
+INSERT INTO `pedidoherras` VALUES (19, '13', '126', '10', '2022-03-10 14:35:37', '2022-03-10 14:35:37');
 
 -- ----------------------------
 -- Table structure for pedidohs
@@ -502,12 +506,13 @@ CREATE TABLE `pedidohs`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of pedidohs
 -- ----------------------------
 INSERT INTO `pedidohs` VALUES (12, '10', 'ALMACEN TIAHUNACU', '2022-02-28 03:46:01', '2022-02-28 03:46:01');
+INSERT INTO `pedidohs` VALUES (13, '11', 'ALMACEN IRUPANA HERRAMIENTAS', '2022-03-10 14:35:37', '2022-03-10 14:35:37');
 
 -- ----------------------------
 -- Table structure for pedidos
@@ -521,7 +526,7 @@ CREATE TABLE `pedidos`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of pedidos
@@ -531,8 +536,13 @@ INSERT INTO `pedidos` VALUES (63, '71', '24', '10', '2022-02-21 03:13:01', '2022
 INSERT INTO `pedidos` VALUES (64, '71', '26', '100', '2022-02-22 03:13:01', '2022-02-28 03:13:01');
 INSERT INTO `pedidos` VALUES (65, '71', '45', '20', '2022-03-23 03:13:01', '2022-02-28 03:13:01');
 INSERT INTO `pedidos` VALUES (66, '71', '46', '20', '2022-03-28 03:13:01', '2022-02-28 03:13:01');
-INSERT INTO `pedidos` VALUES (67, '72', '8', '1', '2022-03-28 03:31:39', '2022-02-28 03:31:39');
-INSERT INTO `pedidos` VALUES (68, '72', '4', '2', '2022-03-28 03:31:39', '2022-02-28 03:31:39');
+INSERT INTO `pedidos` VALUES (69, '73', '45', '10', '2022-03-10 14:26:20', '2022-03-10 14:26:20');
+INSERT INTO `pedidos` VALUES (70, '73', '46', '10', '2022-03-10 14:26:21', '2022-03-10 14:26:21');
+INSERT INTO `pedidos` VALUES (71, '73', '47', '10', '2022-03-10 14:26:21', '2022-03-10 14:26:21');
+INSERT INTO `pedidos` VALUES (72, '73', '26', '20', '2022-03-10 14:26:21', '2022-03-10 14:26:21');
+INSERT INTO `pedidos` VALUES (73, '73', '2', '1', '2022-03-10 14:26:21', '2022-03-10 14:26:21');
+INSERT INTO `pedidos` VALUES (74, '73', '7', '1', '2022-03-10 14:26:21', '2022-03-10 14:26:21');
+INSERT INTO `pedidos` VALUES (75, '73', '34', '2', '2022-03-10 14:26:21', '2022-03-10 14:26:21');
 
 -- ----------------------------
 -- Table structure for permission_role
@@ -668,13 +678,14 @@ CREATE TABLE `proyectos`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of proyectos
 -- ----------------------------
 INSERT INTO `proyectos` VALUES (1, 'VIVIENDA SOCIAL TIAHUANACU', 'CONSTRUCCIÓN NUEVA', 'BAÑO, COCINA, COMEDOR, 3 DORMITORIOS, SALA COMEDOR', 'EL PROYECTO CUENTA CON UNA TOPOLOGÍA DE VIVIENDA, CONSTRUIDA EN UN ÁREA DE 60.80 M2 Y CUENTA CON DOS DORMITORIOS, BAÑO, COCINA Y ESTAR-COMEDOR. EL SISTEMA CONSTRUCTIVO ES EL TRADICIONAL: CON CIMIENTOS Y SOBRECIMIENTOS DE HºCº, VIGA CADENA DE HºAº LADRILLO DE 6 H EN MUROS Y CUBIERTA DE CALAMINA GALVANIZADA N°… ETC', '2022-02-24', '2022-03-24', '2022-04-01', '2022-02-24 16:54:36', '2022-02-24 16:54:36');
 INSERT INTO `proyectos` VALUES (2, 'VIVIENDA SOCIAL LAJA', 'CONSTRUCCIÓN NUEVA', 'BAÑO, COCINA, COMEDOR, 3 DORMITORIOS, SALA COMEDOR', 'LA OBRA', '2022-02-28', '2022-04-07', '2022-04-08', '2022-02-28 03:30:53', '2022-02-28 03:30:53');
+INSERT INTO `proyectos` VALUES (3, 'VIVIENDA SOCIAL IRUPANA', 'CONSTRUCCIÓN NUEVA', 'BAÑO, COCINA, 3 DORMITORIOS, SALA, COMEDOR', 'EL PROYECTO CUENTA CON UNA TOPOLOGÍA DE VIVIENDA, CONSTRUIDA EN UN ÁREA DE 60.80 M2 Y CUENTA CON DOS DORMITORIOS, BAÑO, COCINA Y ESTAR-COMEDOR. EL SISTEMA CONSTRUCTIVO ES EL TRADICIONAL: CON CIMIENTOS Y SOBRECIMIENTOS DE HºCº, VIGA CADENA DE HºAº LADRILLO DE 6 H EN MUROS Y CUBIERTA DE CALAMINA GALVANIZADA N°… ETC', '2022-03-03', '2022-05-31', '2022-07-01', '2022-03-10 14:20:46', '2022-03-10 14:20:46');
 
 -- ----------------------------
 -- Table structure for role_user
@@ -691,13 +702,14 @@ CREATE TABLE `role_user`  (
   INDEX `role_user_user_id_index`(`user_id`) USING BTREE,
   CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of role_user
 -- ----------------------------
 INSERT INTO `role_user` VALUES (2, 1, 22, NULL, NULL);
 INSERT INTO `role_user` VALUES (3, 4, 45, '2022-02-28 17:11:00', '2022-02-28 17:11:00');
+INSERT INTO `role_user` VALUES (4, 4, 47, '2022-03-10 14:56:38', '2022-03-10 14:56:38');
 
 -- ----------------------------
 -- Table structure for roles
@@ -736,13 +748,13 @@ CREATE TABLE `trabajadors`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of trabajadors
 -- ----------------------------
-INSERT INTO `trabajadors` VALUES (9, 22, 1, 'ALMACENERO', '2022-02-24', '2022-02-24 17:06:06', '2022-02-24 17:06:06');
-INSERT INTO `trabajadors` VALUES (10, 22, 1, 'GERENTE', '2022-02-28', '2022-02-28 03:29:52', '2022-02-28 03:29:52');
+INSERT INTO `trabajadors` VALUES (10, 46, 1, 'ALMACENERO', '2022-02-24', '2022-02-24 17:06:06', '2022-03-10 14:17:24');
+INSERT INTO `trabajadors` VALUES (11, 47, 1, 'ALMACENERO', '2022-03-02', '2022-03-10 14:18:32', '2022-03-10 14:18:32');
 
 -- ----------------------------
 -- Table structure for users
@@ -761,12 +773,14 @@ CREATE TABLE `users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 48 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (22, 'Federico del Castillo', 'gonzalo.carani@gmail.com', '', 0, NULL, '$2y$10$YEV3hkgZkAKE5PI/AzMLVumV65nn2faDy5YDy1cCtwcxmR5KF3AoG', NULL, '2021-08-09 18:47:39', '2022-02-24 15:19:13');
+INSERT INTO `users` VALUES (22, 'BARI SAMANTA MAMANI', 'samantashine@gmail.com', '', 0, NULL, '$2y$10$YEV3hkgZkAKE5PI/AzMLVumV65nn2faDy5YDy1cCtwcxmR5KF3AoG', NULL, '2021-08-09 18:47:39', '2022-02-24 15:19:13');
 INSERT INTO `users` VALUES (45, 'MARCO CALLE MAMANI', 'marco@gmail.com', 'EL ALTO Z. CIUDAD SATELITE AV. DEL POLICIA', 78945645, NULL, '$2y$10$OMcbXVXHhespHabEWCgg5eXk5eKodM0UZUh4HoWesRIA100PAR35G', NULL, '2022-02-28 17:08:55', '2022-02-28 17:08:55');
+INSERT INTO `users` VALUES (46, 'CARLOS MARQUEZ MENDOZA', 'carlo@gmail.com', 'EL ALTO VILLA DOLORES CALLE 14', 67767898, NULL, '$2y$10$qAxvP5AFhKzfumRKUUsWOuGZwsBjRcEstfKI7yCpaBV/q8TwbcAcu', NULL, '2022-03-09 05:39:23', '2022-03-09 05:39:23');
+INSERT INTO `users` VALUES (47, 'JUAN MARCELO MENDOZA', 'juan@gmail.com', 'EL ALTO CALLE 5 NRO 177', 65498754, NULL, '$2y$10$NDO3b6GwBt9ML9OjRJ3AcuudzcnpF7BKp1X/soL7LoSKdzSLnCjqe', NULL, '2022-03-10 14:14:07', '2022-03-10 14:14:07');
 
 SET FOREIGN_KEY_CHECKS = 1;

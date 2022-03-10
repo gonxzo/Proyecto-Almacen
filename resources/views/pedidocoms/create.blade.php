@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                   PEDIDO MATERIALES
+                   CREAR PEDIDO
                 </div>
                 <div class="card-body">
 
