@@ -102,13 +102,11 @@
             <td style="text-align:center;width:100%;" colspan="3">
                 <h5>CANTIDAD</h5>
             </td>
-            <td style="text-align:left;width:100%;" colspan="4">
+            <td style="text-align:left;width:100%;" colspan="3">
                 <h5>UNIDAD</h5>
             </td>
-            <td style="text-align:left;width:100%;" colspan="5">
-                <h5>TRABAJADOR</h5>
-            </td>
-            <td style="text-align:left;width:100%;" colspan="4">
+        
+            <td style="text-align:left;width:100%;" colspan="3">
                 <h5>FECHA Y HORA</h5>
             </td>
         </tr>
@@ -117,11 +115,11 @@
                 @if ($gasto->idpedidoh == Auth::user()->id)
                     @foreach ($herramientas as $herramienta )
                         @if ($herramienta->id == $gasto->idherramienta)
-                        <td style="text-align:left;width:100%; " colspan="4">
+                        <td style="text-align:left;width:100%; " colspan="3">
                             <hr style="width: 100%;height: -20px;">
                             <font size=1>{{ $herramienta->descripcion }}</font>
                         </td>
-                        <td style="text-align:center;width:100%; " colspan="4">
+                        <td style="text-align:center;width:100%; " colspan="3">
                             <hr style="width: 100%;height: -20px;">
                             <font size=1>{{ $herramienta->unidad }}</font>
                         </td>
@@ -129,11 +127,11 @@
                         @endif
                         
                     @endforeach  
-                    <td style="text-align:left;width:100%; " colspan="4">
+                    <td style="text-align:left;width:100%; " colspan="3">
                         <hr style="width: 100%;height: -20px;">
                         <font size=1>{{ $gasto->cantidad }}</font>
                     </td>
-                    <td style="text-align:left;width:100%; " colspan="4">
+                    <td style="text-align:left;width:100%; " colspan="3">
                         <hr style="width: 100%;height: -20px;">
                         <font size=3>{{ $gasto->created_at }}</font>
                     </td>  

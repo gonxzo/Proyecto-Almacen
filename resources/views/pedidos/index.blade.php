@@ -8,13 +8,12 @@
                         MATERIALES POR OBRA
                     </div>
                     <div class="card-body">
-                     @can('pedidos.create')
-                     <a href="{{ route('pedidos.create') }}" class="btn btn-sm btn-primary mb-1">Gasto de Matriales</a>
-                     @endcan
-                       
-                      
-                        <button type="submit" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal12">
-                            Reporte Total</button>
+                        @can('pedidos.create')
+                            <a href="{{ route('pedidos.create') }}" class="btn btn-sm btn-primary mb-1">Gasto de Matriales</a>
+                        @endcan
+                        <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal12">
+                            Reporte Total
+                        </button>
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <div class="modal fade" id="modal12" tabindex="-1" role="dialog"
@@ -41,15 +40,15 @@
                                         <th scope="col">Mostrar</th>
                                         <th scope="col">Eliminar</th>
                                     </tr>
-                                </thead> 
+                                </thead>
                                 <tbody>
                                     @foreach ($trabajadors as $trab)
                                         @if ($trab->idusuario == Auth::user()->id)
                                             @foreach ($pedidocoms as $pedcom)
                                                 @if ($pedcom->idtrab == $trab->id)
                                                     @foreach ($pedidos as $item)
-                                                         @if ($item->idpedidocom == $pedcom->id)
-                                                         <tr>
+                                                        @if ($item->idpedidocom == $pedcom->id)
+                                                            <tr>
                                                                 <td>{{ $pedcom->asunto }} </td>
                                                                 @foreach ($materials as $material)
                                                                     @if ($material->id == $item->material)
@@ -118,8 +117,7 @@
                                                                     @endcan
                                                                 </td>
                                                             </tr>
-                                                            @endif
-                                                        
+                                                        @endif
                                                     @endforeach
                                                 @endif
                                             @endforeach
@@ -128,8 +126,7 @@
                                                 @foreach ($pedidocoms as $pedcom)
                                                     @if ($pedcom->idtrab == $trab->id)
                                                         @foreach ($pedidos as $item)
-                                                            
-                                                                @if ($item->idpedidocom == $pedcom->id)
+                                                            @if ($item->idpedidocom == $pedcom->id)
                                                                 <tr>
                                                                     <td>{{ $pedcom->asunto }} </td>
                                                                     @foreach ($materials as $material)
@@ -204,8 +201,7 @@
                                                                         @endcan
                                                                     </td>
                                                                 </tr>
-                                                                @endif
-                                                            
+                                                            @endif
                                                         @endforeach
                                                     @endif
                                                 @endforeach

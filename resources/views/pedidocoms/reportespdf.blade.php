@@ -85,10 +85,14 @@
         @if ($trab->idusuario == Auth::user()->id)
             @foreach ($pedidocoms as $pedcom)
                 @if ($pedcom->idtrab == $trab->id)
+                
                     <h4 style="text-align:center;width:100%; height=1">REPORTE DE MATERIALES USADOS EN CONSTRUCCION -
-                        <strong> {{ $pedcom->asunto }}</strong></h4>
+                        <strong> {{ $pedcom->asunto }}</strong>
+                    </h4>
                     <h4 style="text-align:center;width:100%; height=1">ENCARGADO DEL ALMACEN - <strong>
                             {{ Auth::user()->name }}</strong></h4>
+                      
+
                 @endif
             @endforeach
         @endif
@@ -113,22 +117,21 @@
         </tr>
 
         @foreach ($gastos as $gasto)
-            <tr>
+
                 @if ($gasto->idpedidocom == Auth::user()->id)
-                    @foreach ($materials as $material )
+                <tr>
+                    @foreach ($materials as $material)
                         @if ($material->id == $gasto->idmaterial)
-                        <td style="text-align:left;width:100%; " colspan="4">
-                            <hr style="width: 100%;height: -20px;">
-                            <font size=1>{{ $material->descripcion }}</font>
-                        </td>
-                        <td style="text-align:center;width:100%; " colspan="4">
-                            <hr style="width: 100%;height: -20px;">
-                            <font size=1>{{ $material->unidad }}</font>
-                        </td>
-                       
+                            <td style="text-align:left;width:100%; " colspan="4">
+                                <hr style="width: 100%;height: -20px;">
+                                <font size=1>{{ $material->descripcion }}</font>
+                            </td>
+                            <td style="text-align:center;width:100%; " colspan="4">
+                                <hr style="width: 100%;height: -20px;">
+                                <font size=1>{{ $material->unidad }}</font>
+                            </td>
                         @endif
-                        
-                    @endforeach  
+                    @endforeach
                     <td style="text-align:left;width:100%; " colspan="4">
                         <hr style="width: 100%;height: -20px;">
                         <font size=1>{{ $gasto->cantidad }}</font>
@@ -136,11 +139,12 @@
                     <td style="text-align:left;width:100%; " colspan="4">
                         <hr style="width: 100%;height: -20px;">
                         <font size=3>{{ $gasto->created_at }}</font>
-                    </td>  
+                    </td>
+                </tr>
                 @endif
-       
-               
-            </tr>
+
+
+           
         @endforeach
 
 
@@ -155,9 +159,6 @@
                 <br><br><br><br><br>
                 <hr style="width: 50%;height: -20px; size:100px">
                 <strong>Firma Almacenero</strong>
-
-
-
         </tr>
     </table>
 

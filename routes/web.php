@@ -103,6 +103,7 @@ Route::middleware(['auth'])->group(function () {
       Route::post('reportefecha','PedidocomController@reporte_fecha')->name('reporte');
       Route::get('reportes-herramienta','PedidocomController@reportefechas1')->name('pedidohs.reportefechas')->middleware('can:pedidohs.reportefechas');
       Route::post('reportefechaherramienta','PedidocomController@reporte_fecha1')->name('reporteherras');
+      Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf');
 
       //Pedidos HERRAMIENTAS
       
