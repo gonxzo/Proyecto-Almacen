@@ -8,8 +8,10 @@ use Dompdf\Dompdf;
 use App\Pedidoherra;
 use App\Trabajador;
 use App\Herramienta;
+use App\Gastoherras;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PedidohController extends Controller
 {
@@ -150,21 +152,45 @@ class PedidohController extends Controller
         $trabajadors=Trabajador::all();
         $pedidoherras=Pedidoherra::all();
         $herramientas=Herramienta::all();
+        $gastoherras=Gastoherras::all();
         
         /* return response()->json($ids); */
-       $pdf = PDF::loadView('pedidohs.reportespdf', compact('pedidohs','trabajadors','pedidoherras','herramientas'))->setPaper('A4', 'landscape'); 
+       $pdf = PDF::loadView('pedidohs.reportespdf', compact('gastoherras','pedidohs','trabajadors','pedidoherras','herramientas'))->setPaper('A4', 'landscape'); 
 
        return $pdf->stream('pedidohs.reportespdf');
     }
-    public function reportefechas()
+    
+    public function reportefechas(Request $request)
     {
+        $fechainicio = $request->get('fechaini');
+        $fechafin = $request->get('fechafin');
         $pedidohs = Pedidoh::all();
+        $users = User::all();
         $trabajadors=Trabajador::all();
-        $pedidoherras=Pedidoherra::all();
         $herramientas=Herramienta::all();
+        $datos['pedidoherras'] = DB::table('pedidoherras')
+        ->whereBetween('created_at', [$fechainicio, $fechafin])
+        ->select('pedidoherras.*')->get();
         
         /* return response()->json($ids); */
-       $pdf = PDF::loadView('pedidohs.reportefechas', compact('pedidohs','trabajadors','pedidoherras','herramientas'))->setPaper('A4', 'landscape'); 
+        $pdf = PDF::loadView('pedidohs.reportefechas', $datos,compact('users','pedidohs','trabajadors','herramientas'))->setPaper('A4', 'landscape'); 
+
+       return $pdf->stream('pedidohs.reportefechas');
+    }
+
+    public function reporte_fecha(Request $request)
+    {
+        $fechainicio = $request->get('fechaini');
+        $fechafin = $request->get('fechafin');
+        $pedidohs = Pedidoh::all();
+        $users = User::all();
+        $trabajadors=Trabajador::all();
+        $herramientas=Herramienta::all();
+        $datos['pedidoherras'] = DB::table('pedidoherras')
+        ->whereBetween('created_at', [$fechainicio, $fechafin])
+        ->select('pedidoherras.*')->get();
+        /* return response()->json($ids); */
+       $pdf = PDF::loadView('pedidohs.reportefechas', $datos,compact('users','pedidohs','trabajadors','herramientas'))->setPaper('A4', 'landscape'); 
 
        return $pdf->stream('pedidohs.reportefechas');
     }

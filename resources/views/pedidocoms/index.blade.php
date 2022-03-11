@@ -21,12 +21,10 @@
                                     <div class="modal-body">
                                         <embed src="{{ route('pedidocoms.reportespdf') }}" type="application/pdf"
                                             width="100%" height="750px" />
-
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <br>
                         <div class="table-responsive">
                             <table id="usuario" class="table table-bordered table-sm" style="width:100%">
@@ -37,7 +35,6 @@
                                         <th scope="col">Cargo</th>
                                         <th scope="col">Fecha Pedido</th>
                                         <th scope="col">Reporte</th>
-                                        {{-- <th scope="col">Mostrar</th> --}}
                                         <th scope="col">Editar</th>
                                         <th scope="col">Eliminar</th>
                                     </tr>
@@ -47,16 +44,13 @@
                             @foreach ($pedidocoms as $item)
                                 <tr>
                                     <td>{{ $item->id }} </td>
-                                   
                                     @foreach ($trabajadors as $trab)
                                         @if ($item->idtrab == $trab->id)
-                                            @foreach ($users as $user )
-                                            @if ($user->id == $trab->idusuario)
-                                            <td>{{ $user->name}} </td>
-                                            @endif
-                                                
+                                            @foreach ($users as $user)
+                                                @if ($user->id == $trab->idusuario)
+                                                    <td>{{ $user->name }} </td>
+                                                @endif
                                             @endforeach
-                                            
                                             <td>{{ $trab->cargo }} </td>
                                         @endif
                                     @endforeach
@@ -73,28 +67,24 @@
                                                     <div class="modal-body">
                                                         <embed src="{{ route('pedidocoms.pdf', $item->id) }}"
                                                             type="application/pdf" width="100%" height="750px" />
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
-                                  
-                                    <td width=10px>
-                                        @can('pedidocoms.edit')
-
+                                    @can('pedidocoms.edit')
+                                        <td width=10px>
                                             <a href="{{ route('pedidocoms.edit', $item->id) }}"
                                                 class="btn btn-sm btn-info">Editar</a>
-                                        @endcan
-                                    </td>
-                                    <td width=10px>
-                                        @can('pedidocoms.destroy')
-
+                                        </td>
+                                    @endcan
+                                    @can('pedidocoms.destroy')
+                                        <td width=10px>
                                             {!! Form::open(['route' => ['pedidocoms.destroy', $item->id], 'onclick' => "return confirm('Esta Seguro de Eliminar este Registro')", 'method' => 'DELETE']) !!}
                                             <button class="btn btn-sm btn-danger">Eliminar</button>
                                             {!! Form::close() !!}
-                                        @endcan
-                                    </td>
+                                        </td>
+                                    @endcan
                                 </tr>
                             @endforeach
                             </tfoot>
@@ -105,5 +95,4 @@
         </div>
     </div>
     </div>
-
 @endsection

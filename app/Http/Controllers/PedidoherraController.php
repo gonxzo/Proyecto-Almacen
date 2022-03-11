@@ -6,11 +6,12 @@ use App\Pedidoherra;
 use App\Pedidoh;
 use App\Trabajador;
 use App\Herramienta;
+use App\Gastoherras;
 use App\User;
 use Illuminate\Http\Request;
 
 class PedidoherraController extends Controller
-{
+{ 
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +37,12 @@ class PedidoherraController extends Controller
      */
     public function create()
     {
-        
+        $trabajadors = Trabajador::all();
+        $herramientas = Herramienta::all();
+        $users = User::all();
+        $pedidohs = Pedidoh::all();
+        $pedidoherras = Pedidoherra::all();
+        return view('pedidoherras.create', compact('pedidohs','pedidoherras','trabajadors','herramientas', 'users'));
     }
 
     /**
@@ -47,7 +53,32 @@ class PedidoherraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pedidoherras = Pedidoherra::all();
+        $iduser = $request->get('idpedidoh');
+        $request->validate([
+            'adicionar.*.herramienta' => 'required',
+            'adicionar.*.cantidad' => 'required'
+        ]);
+        foreach ($request->adicionar as $key => $value) {
+            $idmaterial = $request->adicionar[$key]['herramienta'];
+            $cantidadmaterial = $request->adicionar[$key]['cantidad']; 
+            $gasto = new Gastoherras;
+            $gasto->idpedidoh =  $iduser;
+            $gasto->idherramienta = $idmaterial;
+            $gasto->cantidad =  $cantidadmaterial;
+            $gasto->save();
+            foreach($pedidoherras as $pedido)
+            {
+                if($pedido->herramienta == $idmaterial)
+                {
+                    $pedido->cantidad =  $pedido->cantidad - $cantidadmaterial;
+                    
+                    $pedido->save();
+                }
+            }
+        }
+        return redirect()->route('pedidoherras.index')
+        ->with('success','Pedido  Guardado con exito!!.');
     }
 
     /**

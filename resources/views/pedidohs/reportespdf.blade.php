@@ -6,7 +6,7 @@
         @page {
             margin: 0cm 0cm;
             font-family: Arial;
-           
+
         }
 
         body {
@@ -18,7 +18,7 @@
             padding: 50px;
         }
 
-        header { 
+        header {
             position: fixed;
             top: 1cm;
             left: 6.5cm;
@@ -50,7 +50,6 @@
             line-height: 35px;
         }
 
-      
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,8 +61,8 @@
 
 
 <body>
-   
-    
+
+
     <table width="100%">
         <tr>
             <td colspan="6" style="text-align:center;width:100%;;">
@@ -77,85 +76,90 @@
                 <h3>REPORTE DE PEDIDOS</h3>
                 </P>
             </td>
-          </tr>
+        </tr>
     </table>
 
     <hr style="width: 100%;height: 2px;">
-    <h4 style="text-align:center;width:100%; height=1">REPORTE DE MATERIALES USADOS EN CONSTRUCCION - <strong> ALMACEN IRUPANA</strong></h4>
-    <h4 style="text-align:center;width:100%; height=1">ENCARGADO DEL ALMACEN  - <strong>  {{ Auth::user()->name }}</strong></h4>
-        
-            <table width="100%">
-                <hr style="width: 100%;height: 2px; ">
-                <tr>
-                    <td style="text-align:left;width:100%;" colspan="3">
-                        <h5>HERRAMIENTA</h5>
-                    </td>
-                    <td style="text-align:center;width:100%;" colspan="3">
-                        <h5>CANTIDAD</h5>
-                    </td>
-                    <td style="text-align:left;width:100%;" colspan="4">
-                        <h5>UNIDAD</h5>
-                    </td>
-                    <td style="text-align:left;width:100%;" colspan="5">
-                        <h5>TRABAJADOR</h5>
-                    </td>
-                    <td style="text-align:left;width:100%;" colspan="4">
-                        <h5>FECHA Y HORA</h5>
-                    </td>
-                </tr>
-                @foreach ($pedidoherras as $pedido)
-                <tr>
-                     @foreach ($herramientas as $herras)
-                                @if ($pedido->herramienta == $herras->id)
-                                    <td style="text-align:left;width:100%; " colspan="3">
-                                        <hr style="width: 100%;height: -20px;">
-                                        <font size=1>{{ $herras->descripcion }}</font>
-                                    </td>
-                                    <td style="text-align:center;width:100%; " colspan="3">
-                                        <hr style="width: 100%;height: -20px;">
-                                        <font size=1>{{ $pedido->cantidad }}</font>
-                                    </td>
-                                    <td style="text-align:left;width:100%; " colspan="4">
-                                        <hr style="width: 100%;height: -20px;">
-                                        <font size=1>{{ $herras->unidad }}</font>
-                                    </td>
-                                @endif
-                            @endforeach
-                            @foreach ($pedidohs as $pedidoh )
-                                @if ($pedidoh->id == $pedido->idph)
-                                    @foreach ($trabajadors as $trabaja )
-                                        @if ($trabaja->id == $pedidoh->idtrab)
-                                        <td style="text-align:left;width:100%; " colspan="5">
-                                            <hr style="width: 100%;height: -20px;">
-                                            <font size=2>{{ $trabaja->nombre }} {{ $trabaja->apellidos }}</font>
-                                        </td>
-                                       @endif
-                                    @endforeach
-                                @endif
-                           @endforeach
-                           <td style="text-align:left;width:100%; " colspan="4">
+    @foreach ($trabajadors as $trab)
+        @if ($trab->idusuario == Auth::user()->id)
+            @foreach ($pedidohs as $pedcom)
+                @if ($pedcom->idtrab == $trab->id)
+                    <h4 style="text-align:center;width:100%; height=1">REPORTE DE MATERIALES USADOS EN CONSTRUCCION -
+                        <strong> {{ $pedcom->asunto }}</strong>
+                    </h4>
+                    <h4 style="text-align:center;width:100%; height=1">ENCARGADO DEL ALMACEN - <strong>
+                            {{ Auth::user()->name }}</strong></h4>
+                @endif
+            @endforeach
+        @endif
+    @endforeach
+    <table width="100%">
+        <hr style="width: 100%;height: 2px; ">
+        <tr>
+            <td style="text-align:left;width:100%;" colspan="3">
+                <h5>HERRAMIENTA</h5>
+            </td>
+            <td style="text-align:center;width:100%;" colspan="3">
+                <h5>CANTIDAD</h5>
+            </td>
+            <td style="text-align:left;width:100%;" colspan="4">
+                <h5>UNIDAD</h5>
+            </td>
+            <td style="text-align:left;width:100%;" colspan="5">
+                <h5>TRABAJADOR</h5>
+            </td>
+            <td style="text-align:left;width:100%;" colspan="4">
+                <h5>FECHA Y HORA</h5>
+            </td>
+        </tr>
+        @foreach ($gastoherras as $gasto)
+            <tr>
+                @if ($gasto->idpedidoh == Auth::user()->id)
+                    @foreach ($herramientas as $herramienta )
+                        @if ($herramienta->id == $gasto->idherramienta)
+                        <td style="text-align:left;width:100%; " colspan="4">
                             <hr style="width: 100%;height: -20px;">
-                            <font size=1>{{ $pedido->created_at }}</font>
+                            <font size=1>{{ $herramienta->descripcion }}</font>
                         </td>
-                        </tr> 
-                     @endforeach
-                     <tr>
-                        <td style="text-align:center;width:100%; " colspan="6">
-                            <br><br><br><br><br>
-                            <hr style="width: 50%;height: -20px; size:100px; color:blue">
-                            <strong>Firma Trabajador</strong>
-                            <strong></strong>
+                        <td style="text-align:center;width:100%; " colspan="4">
+                            <hr style="width: 100%;height: -20px;">
+                            <font size=1>{{ $herramienta->unidad }}</font>
                         </td>
-                        <td style="text-align:center;width:100%; " colspan="6">
-                           <br><br><br><br><br>
-                           <hr style="width: 50%;height: -20px; size:100px">
-                            <strong>Firma Almacenero</strong>
-                     
+                       
+                        @endif
+                        
+                    @endforeach  
+                    <td style="text-align:left;width:100%; " colspan="4">
+                        <hr style="width: 100%;height: -20px;">
+                        <font size=1>{{ $gasto->cantidad }}</font>
+                    </td>
+                    <td style="text-align:left;width:100%; " colspan="4">
+                        <hr style="width: 100%;height: -20px;">
+                        <font size=3>{{ $gasto->created_at }}</font>
+                    </td>  
+                @endif
+       
+               
+            </tr>
+        @endforeach
 
-                                
-                    </tr>
-            </table>
-        
+            <tr>
+                <td style="text-align:center;width:100%; " colspan="6">
+                    <br><br><br><br><br>
+                    <hr style="width: 50%;height: -20px; size:100px; color:blue">
+                    <strong>Firma Trabajador</strong>
+                    <strong></strong>
+                </td>
+                <td style="text-align:center;width:100%; " colspan="6">
+                    <br><br><br><br><br>
+                    <hr style="width: 50%;height: -20px; size:100px">
+                    <strong>Firma Almacenero</strong>
+
+
+            
+            </tr>
+    </table>
+
     <footer>
     </footer>
 </body>

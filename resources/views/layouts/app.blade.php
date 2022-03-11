@@ -105,7 +105,7 @@
                             </div>
                         </li>
                         @endcan
-                        @can('clasherramientas.index')
+                        @can('pedidocoms.reporte')
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">REPORTES</a>
                             <div class="dropdown-menu" style="background-color: #b1b1b3">

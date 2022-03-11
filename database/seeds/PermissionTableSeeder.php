@@ -37,7 +37,7 @@ class PermissionTableSeeder extends Seeder
         Permission::create([
             'name'=>'ROLES',
             'slug'=>'roles.index',
-            'description'=>'NAVEGA LA TABLA USUARIOS',
+            'description'=>'NAVEGA LA TABLA ROLES',
         ]);
         Permission::create([
             'name'=>'ROLES',
@@ -58,6 +58,33 @@ class PermissionTableSeeder extends Seeder
             'name'=>'ROLES',
             'slug'=>'roles.destroy',
             'description'=>'ELIMINA UN ROL EN ESPECIFICO',
+        ]);
+        //TRABAJADORES
+
+        Permission::create([
+            'name'=>'TRABAJADORES',
+            'slug'=>'trabajadors.index',
+            'description'=>'NAVEGA LA TABLA TRABAJADORES',
+        ]);
+        Permission::create([
+            'name'=>'TRABAJADORES',
+            'slug'=>'trabajadors.show',
+            'description'=>'VISUALIZA A UN TRABAJADOR EN ESPECIFICO',
+        ]);
+        Permission::create([
+            'name'=>'TRABAJADORES',
+            'slug'=>'trabajadors.create',
+            'description'=>'CREA UN NUEVO TRABAJADOR EN EL SISTEMA',
+        ]);
+        Permission::create([
+            'name'=>'TRABAJADORES',
+            'slug'=>'trabajadors.edit',
+            'description'=>'EDITA UN TRABAJADOR EN ESPECIFICO',
+        ]);
+        Permission::create([
+            'name'=>'TRABAJADORES',
+            'slug'=>'trabajadors.destroy',
+            'description'=>'ELIMINA UN TRABAJADOR EN ESPECIFICO',
         ]);
 
         //PROYECTOS
@@ -172,64 +199,65 @@ class PermissionTableSeeder extends Seeder
         Permission::create([
             'name'=>'ALMACEN MATERIAL',
             'slug'=>'pedidocoms.index',
-            'description'=>'NAVEGA LA TABLA ALMACEN MATERIAL',
+            'description'=>'NAVEGA LA TABLA ENVIO MATERIAL A ALMACENES',
         ]);
         Permission::create([
             'name'=>'ALMACEN MATERIAL',
             'slug'=>'pedidocoms.show',
-            'description'=>'VISUALIZA A UN ALMACEN MATERIAL EN ESPECIFICO',
+            'description'=>'VISUALIZA A UN ENVIO DE MATERIAL EN ESPECIFICO',
         ]);
         Permission::create([
             'name'=>'ALMACEN MATERIAL',
             'slug'=>'pedidocoms.create',
-            'description'=>'CREA UN NUEVO ALMACEN MATERIAL EN EL SISTEMA',
+            'description'=>'CREA UN NUEVO ENVIO DE MATERIAL A ALMACENES',
         ]);
         Permission::create([
             'name'=>'ALMACEN MATERIAL',
             'slug'=>'pedidocoms.edit',
-            'description'=>'EDITA UN ALMACEN MATERIAL EN ESPECIFICO',
+            'description'=>'EDITA UN ENVIO DE MATERIAL A ALMACENES EN ESPECIFICO',
         ]);
         Permission::create([
             'name'=>'ALMACEN MATERIAL',
             'slug'=>'pedidocoms.destroy',
-            'description'=>'ELIMINA UN ALMACEN MATERIAL EN ESPECIFICO',
+            'description'=>'ELIMINA UN ENVIO DE MATERIAL A ALMACENES EN ESPECIFICO',
         ]);
+        //REPORTES EN EL SISTEMA POR FECHAS
         Permission::create([
             'name'=>'ALMACEN MATERIAL',
             'slug'=>'pedidocoms.reporte',
-            'description'=>'EDITA UN REPORTE GENERAL EN ESPECIFICO',
+            'description'=>'GENERA UN REPORTE DE ENVIO DE MATERIAL A ALMACEN',
         ]);
         Permission::create([
-            'name'=>'ALMACEN MATERIAL',
+            'name'=>'REPORTE POR FECHAS',
             'slug'=>'pedidocoms.reportefechas',
-            'description'=>'ELIMINA UN REPORTE POR FECHAS EN ESPECIFICO',
+            'description'=>'GENERA UN REPORTE POR ENVIO DE MATERIAL',
         ]);
 
          //ALMACEN HERRAMIENTAS
          Permission::create([
             'name'=>'ALMACEN HERRAMIENTAS',
             'slug'=>'pedidohs.index',
-            'description'=>'NAVEGA LA TABLA ALMACEN MATERIAL',
+            'description'=>'NAVEGA LA TABLA ENVIO DE HERRAMIENTAS A ALMACENES',
         ]);
         Permission::create([
             'name'=>'ALMACEN HERRAMIENTAS',
             'slug'=>'pedidohs.show',
-            'description'=>'VISUALIZA A UN ALMACEN MATERIAL EN ESPECIFICO',
+            'description'=>'VISUALIZA A UN ENVIO DE HERRAMIENTAS EN ESPECIFICO',
         ]);
         Permission::create([
             'name'=>'ALMACEN HERRAMIENTAS',
             'slug'=>'pedidohs.create',
-            'description'=>'CREA UN NUEVO ALMACEN HERRAMIENTAS EN EL SISTEMA',
+            'description'=>'CREA UN NUEVO ENVIO DE HERRAMIENTAS EN EL SISTEMA',
         ]);
         Permission::create([
             'name'=>'ALMACEN HERRAMIENTAS',
             'slug'=>'pedidohs.edit',
-            'description'=>'EDITA UN ALMACEN HERRAMIENTAS EN ESPECIFICO',
+            'description'=>'EDITA UN ALMACEN ENVIO DE HERRAMIENTAS EN ESPECIFICO',
         ]);
         Permission::create([
             'name'=>'ALMACEN HERRAMIENTAS',
             'slug'=>'pedidohs.destroy',
-            'description'=>'ELIMINA UN ALMACEN HERRAMIENTAS EN ESPECIFICO',
+            'description'=>'ELIMINA UN ALMACEN ENVIO DE HERRAMIENTAS EN ESPECIFICO',
         ]);
         Permission::create([
             'name'=>'ALMACEN HERRAMIENTAS',
@@ -239,7 +267,7 @@ class PermissionTableSeeder extends Seeder
         Permission::create([
             'name'=>'ALMACEN HERRAMIENTAS',
             'slug'=>'pedidohs.reportefechas',
-            'description'=>'ELIMINA UN REPORTE POR FECHAS EN ESPECIFICO',
+            'description'=>'GENERA UN REPORTE POR ENVIO DE HERRAMIENTAS',
         ]);
 
         

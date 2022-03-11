@@ -6,7 +6,7 @@ use App\Pedido;
 use App\Material;
 use App\Trabajador;
 use App\Pedidocom;
-
+use App\Gasto;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,13 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        return view('pedidos.create');
+        $trabajadors = Trabajador::all();
+        $materials = Material::all();
+        $users = User::all();
+        $pedidocoms = Pedidocom::all();
+        $pedidos = Pedido::all();
+        return view('pedidos.create', compact('pedidos','pedidocoms','trabajadors','materials', 'users'));
+        
     }
 
     /**
@@ -46,24 +52,32 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-            $materials = Material::all();
-            $request->validate([
-                'adicionar.*.herramienta' => 'required',
-                'adicionar.*.cantidad' => 'required'
-            ]);
-            foreach ((array) $request->adicionar as $key => $value) { 
-                $idmaterial = $request->adicionar[$key]['material'];
-                $cantmaterial = $request->adicionar[$key]['cantidad'];
-                foreach((array)$materials as $material)
-                    {
-                        if($material->id == $idmaterial)
-                        {
-                            $material->cantidad = $material->cantidad + $cantmaterial;
-                            $material->save();
-                        }                 
-                    }
+        $pedidos = Pedido::all();
+        $iduser = $request->get('idpedidocom');
+        $request->validate([
+            'addMoreInputFields.*.material' => 'required',
+            'addMoreInputFields.*.cantidad' => 'required'
+        ]);
+        foreach ($request->addMoreInputFields as $key => $value) {
+            $idmaterial = $request->addMoreInputFields[$key]['material'];
+            $cantidadmaterial = $request->addMoreInputFields[$key]['cantidad']; 
+            $gasto = new Gasto;
+            $gasto->idpedidocom = $iduser;
+            $gasto->idmaterial = $idmaterial;
+            $gasto->cantidad =  $cantidadmaterial;
+            $gasto->save();
+            foreach($pedidos as $pedido)
+            {
+                if($pedido->material == $idmaterial)
+                {
+                    $pedido->cantidad =  $pedido->cantidad - $cantidadmaterial;
+                    
+                    $pedido->save();
+                }
             }
-            return view('materials.ingresos', compact('materials'));
+        }
+        return redirect()->route('pedidos.index')
+        ->with('success','Pedido  Guardado con exito!!.');
     }
 
     /**

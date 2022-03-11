@@ -10,9 +10,9 @@
                 </div>
                 <div class="card-body">
 
-                    {!! Form::open(['route'=>'materials.store']) !!}
+                    {!! Form::open(['route'=>'pedidoherras.store']) !!}
 
-                    @include('materials.partials.form')
+                    @include('pedidoherras.partials.form')
                     {!! Form::close() !!}
                 </div>
             </div>

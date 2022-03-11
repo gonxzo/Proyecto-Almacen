@@ -17,6 +17,7 @@ class HerramientaController extends Controller
     {
         $herramientas=Herramienta::all();
         $clasherramientas=Clasherramienta::all();
+
         $herramientas=Herramienta::paginate(500);
        
         return view('herramientas.index', compact('herramientas', 'clasherramientas'));

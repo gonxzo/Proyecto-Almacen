@@ -50,8 +50,11 @@
         <tr>
             <td> <select class="form-control" name="adicionar[0][herramienta]" >
                 @foreach($herramientas as $item)
-                     <option value="{{$item['id']}}">{{$item['descripcion']}} 
-                     </option>
+                    @if ($item->idclasificacion == 7)
+                    <option value="{{$item['id']}}">{{$item['descripcion']}} 
+                    </option>
+                    @endif
+                   
                 @endforeach
            </select></td>
             <td><input type="text" name="adicionar[0][cantidad]" placeholder="Ingrese Una Cantidad" class="form-control" /></td>
