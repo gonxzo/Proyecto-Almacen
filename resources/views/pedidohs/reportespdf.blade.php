@@ -111,8 +111,9 @@
             </td>
         </tr>
         @foreach ($gastoherras as $gasto)
-            <tr>
+            
                 @if ($gasto->idpedidoh == Auth::user()->id)
+                <tr>
                     @foreach ($herramientas as $herramienta )
                         @if ($herramienta->id == $gasto->idherramienta)
                         <td style="text-align:left;width:100%; " colspan="3">
@@ -134,11 +135,12 @@
                     <td style="text-align:left;width:100%; " colspan="3">
                         <hr style="width: 100%;height: -20px;">
                         <font size=3>{{ $gasto->created_at }}</font>
-                    </td>  
+                    </td>
+                </tr>  
                 @endif
        
                
-            </tr>
+          
         @endforeach
 
             <tr>
