@@ -49,7 +49,6 @@
             text-align: center;
             line-height: 35px;
         }
-
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,74 +83,72 @@
     <strong>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</strong>
     <table width="100%">
         @foreach ($pedidocoms as $pedcom)
-      
-        <tr>
-            @foreach ($trabajadors as $trab )
-                @if ($trab->id == $pedcom->idtrab)
-                
-                    @foreach ($users as $user )
-                    @if ($user->id == $trab->idusuario)
-                   
-                    <td style="text-align:left;width:100%; " colspan="4">
-                        <strong>NOMBRE DEL TRABAJADOR: </strong><font size=3>{{$user->name }}</font>
-                    </td>
-                     <td style="text-align:left;width:100%; " colspan="4">
-                        <strong>NOMBRE DEL ALMACEN: </strong><font size=3>{{ $pedcom->asunto }}</font>
-                    </td>
-                    
+            <tr>
+                @foreach ($trabajadors as $trab)
+                    @if ($trab->id == $pedcom->idtrab)
+                        @foreach ($users as $user)
+                            @if ($user->id == $trab->idusuario)
+                                <td style="text-align:left;width:100%; " colspan="4">
+                                    <strong>NOMBRE DEL TRABAJADOR: </strong>
+                                    <font size=3>{{ $user->name }}</font>
+                                </td>
+                                <td style="text-align:left;width:100%; " colspan="4">
+                                    <strong>NOMBRE DEL ALMACEN: </strong>
+                                    <font size=3>{{ $pedcom->asunto }}</font>
+                                </td>
+
+            <tr>
+                <hr>
+                <td style="text-align:left;width:100%;" colspan="3">
+                    <h5>MATERIAL</h5>
+                </td>
+                <td style="text-align:left;width:100%;" colspan="3">
+                    <h5>CANTIDAD</h5>
+                </td>
+                <td style="text-align:left;width:100%;" colspan="3">
+                    <h5>UNIDAD</h5>
+                </td>
+                <td style="text-align:left;width:100%;" colspan="3">
+                    <h5>FECHA Y HORA</h5>
+                </td>
+            </tr>
+            @foreach ($pedidos as $pedido)
+                @if ($pedido->idpedidocom == $pedcom->id)
                     <tr>
-                      <hr>
-                        <td style="text-align:left;width:100%;" colspan="3">
-                            <h5>MATERIAL</h5>
-                        </td>
-                        <td style="text-align:left;width:100%;" colspan="3">
-                            <h5>CANTIDAD</h5>
-                        </td>
-                        <td style="text-align:left;width:100%;" colspan="3">
-                            <h5>UNIDAD</h5>
-                        </td>
-                         <td style="text-align:left;width:100%;" colspan="3">
-                            <h5>FECHA Y HORA</h5>
+
+                        @foreach ($materials as $material)
+                            @if ($pedido->material == $material->id)
+                                <td style="text-align:left;width:100%; " colspan="3">
+                                    <hr style="width: 100%;height: -20px;">
+                                    <font size=1>{{ $material->descripcion }}</font>
+                                </td>
+                                <td style="text-align:left;width:100%; " colspan="3">
+                                    <hr style="width: 100%;height: -20px;">
+                                    <font size=1>{{ $pedido->cantidad }}</font>
+                                </td>
+                                <td style="text-align:left;width:100%; " colspan="3">
+                                    <hr style="width: 100%;height: -20px;">
+                                    <font size=1>{{ $material->unidad }}</font>
+                                </td>
+                            @endif
+                        @endforeach
+
+                        <td style="text-align:left;width:100%; " colspan="3">
+                            <hr style="width: 100%;height: -20px;">
+                            <font size=1>{{ $pedido->created_at }}</font>
                         </td>
                     </tr>
-                    @foreach ($pedidos as $pedido)
-                       @if ($pedido->idpedidocom == $pedcom->id)
-                      
-                        <tr>
-                          
-                            @foreach ($materials as $material)
-                                @if ($pedido->material == $material->id)
-                                
-                                    <td style="text-align:left;width:100%; " colspan="3">
-                                        <hr style="width: 100%;height: -20px;">
-                                        <font size=1>{{ $material->descripcion }}</font>
-                                    </td>
-                                    <td style="text-align:left;width:100%; " colspan="3">
-                                        <hr style="width: 100%;height: -20px;">
-                                        <font size=1>{{ $pedido->cantidad }}</font>
-                                    </td>
-                                    <td style="text-align:left;width:100%; " colspan="3">
-                                        <hr style="width: 100%;height: -20px;">
-                                        <font size=1>{{ $material->unidad }}</font>
-                                    </td>
-                                @endif
-                            @endforeach
-                           
-                            <td style="text-align:left;width:100%; " colspan="3">
-                                <hr style="width: 100%;height: -20px;">
-                                <font size=1>{{ $pedido->created_at }}</font>
-                            </td>
-                        </tr>
-                        @endif
-                    @endforeach
-                    @endif  
-                    @endforeach
-              
+                    
                 @endif
+               
             @endforeach
+        @endif
+        @endforeach
+        @endif
+        @endforeach
         </tr>
         @endforeach
-       
+
         <tr>
             <td style="text-align:center;width:100%; " colspan="6">
                 <br><br><br><br><br>
@@ -167,7 +164,10 @@
 
 
         </tr>
-     
+        <img src="img/grafica1.png" alt="" width="500" height="400">
+        <img src="img/grafica2.png" alt="" width="500" height="400">
+        <img src="img/grafica3.png" alt="" width="500" height="400">
+        <img src="img/grafica4.png" alt="" width="500" height="400">
     </table>
 
     <footer>

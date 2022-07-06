@@ -84,7 +84,7 @@
     <main><hr style="width: 100%;height: 2px;">
         <h3 style="text-align:center;width:100%; height=1">TRABAJADOR Y LOS MATERIALES PEDIDOS</h3>
    
-       <hr style="width: 100%;height: 2px;">
+       <hr style="width: 100%;height: 2px;"> 
         <div class='container'>
             <table width="100%">
                 

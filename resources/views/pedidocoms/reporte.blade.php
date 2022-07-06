@@ -14,7 +14,7 @@
                             <strong>
                                 <h5>REPORTE DE MATERIALES</h5>
                             </strong>
-                            <div class="form-row">
+                            <div class="form-row"> 
 
                                 <div class="form-group col-md-4">
                                     <strong>{!! Form::label('fechaini1', 'FECHA INICIO') !!}</strong>
