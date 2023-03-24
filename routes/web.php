@@ -96,14 +96,14 @@ Route::middleware(['auth'])->group(function () {
       Route::get('pedidocoms/{pedidocom}', 'PedidocomController@show')->name('pedidocoms.show')->middleware('can:pedidocoms.show');
       Route::delete('pedidocoms/{pedidocom}', 'PedidocomController@destroy')->name('pedidocoms.destroy')->middleware('can:pedidocoms.destroy');
       Route::get('pedidocoms/{pedidocom}/edit', 'PedidocomController@edit')->name('pedidocoms.edit')->middleware('can:pedidocoms.edit');
-      Route::get('pedidocoms/{pedidocom}','PedidocomController@generaPDF')->name('pedidocoms.pdf')->middleware('can:pedidocoms.edit');
+      Route::get('pedidocoms/{pedidocom}','PedidocomController@generaPDF')->name('pedidocoms.pdf')->middleware('can:pedidocoms.pdf');
       Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf')->middleware('can:pedidocoms.reportespdf');
       Route::get('reporte','PedidocomController@reporte')->name('pedidocoms.reporte');
       Route::get('reportefechas','PedidocomController@reportefechas')->name('pedidocoms.reportefechas')->middleware('can:pedidocoms.reportefechas');
       Route::post('reportefecha','PedidocomController@reporte_fecha')->name('reporte');
       Route::get('reportes-herramienta','PedidocomController@reportefechas1')->name('pedidohs.reportefechas')->middleware('can:pedidohs.reportefechas');
       Route::post('reportefechaherramienta','PedidocomController@reporte_fecha1')->name('reporteherras');
-      Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf');
+      Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf'); 
 
       //Pedidos HERRAMIENTAS
       

@@ -54,7 +54,7 @@
                         </option>
                     @endforeach
                 </select></td>
-            <td><input type="text" name="addMoreInputFields[0][cantidad]" placeholder="Ingrese Una Cantidad"
+            <td><input type="textArea" name="addMoreInputFields[0][cantidad]" placeholder="Ingrese Una Cantidad"
                     class="form-control" /></td>
         </tr>
     </table>

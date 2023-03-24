@@ -1,12 +1,12 @@
 <div class="card-header"></div>
 <div class="form-row">
 
-    <div class="form-group col-md-2">
-        <strong>{!! Form::label('asunto', 'Nro.') !!}</strong><br>
+    <div class="form-group col-md-3">
+        <strong>{!! Form::label('asunto', 'Nro. de Pedido') !!}</strong><br>
         <input type="text" name="idpedidocom" value="{{ Auth::User()->id }}" class="form-control" />
         
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-5">
         <strong>{!! Form::label('asunto', 'PERSONAL A CARGO DEL ALMACEN') !!}</strong><br>
         {{ Auth::User()->name }}<br>
         
@@ -24,7 +24,7 @@
         <div class="alert alert-danger" role="alert">
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>{{ 'LLenar los Campos Material y Cantidad del Formulario' }}</li>
                 @endforeach
             </ul>
         </div>

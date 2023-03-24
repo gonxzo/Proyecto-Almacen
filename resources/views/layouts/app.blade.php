@@ -26,6 +26,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/select2.min.js') }}" defer></script>
     <script src="{{ asset('js/composicion/funciones.js') }}" defer></script>
+    <script src="{{ asset('js/componentes.js') }}" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" defer></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>

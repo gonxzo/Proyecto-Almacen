@@ -140,9 +140,10 @@ class PedidohController extends Controller
         $trabajadors=Trabajador::all();
         $pedidoherras=Pedidoherra::all();
         $herramientas=Herramienta::all();
+        $users=User::all();
         
         /* return response()->json($ids); */
-       $pdf = PDF::loadView('pedidohs.pdf', compact('pedidoh','trabajadors','pedidoherras','herramientas'))->setPaper('A4', 'portrait'); 
+       $pdf = PDF::loadView('pedidohs.pdf', compact('pedidoh','trabajadors','pedidoherras','herramientas','users'))->setPaper('A4', 'portrait'); 
 
        return $pdf->stream('pedidohs.pdf');
     }

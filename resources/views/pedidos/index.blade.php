@@ -9,7 +9,7 @@
                     </div>
                     <div class="card-body">
                         @can('pedidos.create')
-                            <a href="{{ route('pedidos.create') }}" class="btn btn-sm btn-primary mb-1">Gasto de Matriales</a>
+                            <a href="{{ route('pedidos.create') }}" class="btn btn-sm btn-primary mb-1">Gasto de Materiales</a>
                         @endcan
                         <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal12">
                             Reporte Total
@@ -109,13 +109,40 @@
                                                                             </div>
                                                                         @endcan
                                                                 </td>
-                                                                <td width=10px>
+                                                                
                                                                     @can('pedidos.destroy')
-                                                                        {!! Form::open(['route' => ['pedidos.destroy', $item->id], 'onclick' => "return confirm('Esta Seguro de Eliminar este Registro')", 'method' => 'DELETE']) !!}
-                                                                        <button class="btn btn-sm btn-danger">Eliminar</button>
-                                                                        {!! Form::close() !!}
+                                                                    <td width=10px>
+                                                                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                                                        data-target="#modal2{{ $item->id }}">
+                                                                        Eliminar
+                                                                    </button>
+                                                                    <div class="modal fade" id="modal2{{ $item->id }}" tabindex="-1"
+                                                                        role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <img src="img/imgeliminar.jpg"
+                                                                                        width="50"
+                                                                                        height="50">
+                                                                                    ¿Desea Eliminar el Proyecto y todos sus Registros...?
+                                                                                    <div class="modal-footer">
+                                                                                        {!! Form::open(['route' => ['pedidos.destroy', $item->id], 'method' => 'DELETE']) !!}
+                                                                                        <button class="btn btn-sm btn-info">Eliminar</button>
+                                                                                        {!! Form::close() !!}
+                                                                                        <button type="button" class="btn btn-sm btn-info"
+                                                                                            data-dismiss="modal">Cancelar</button>
+                                                                                    </div>
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+        
+                                                                    </td>
                                                                     @endcan
-                                                                </td>
+                                                                
                                                             </tr>
                                                         @endif
                                                     @endforeach

@@ -76,7 +76,7 @@
                 </P>
             </td>
           </tr>
-    </table>
+    
 
     @foreach ($pedidohs as $pedcom)
       
@@ -109,7 +109,7 @@
                         <h5>FECHA Y HORA</h5>
                     </td>
                 </tr> 
-            {{--     @foreach ($pedidoherras as $pedido)
+                @foreach ($pedidoherras as $pedido)
                    @if ($pedido->idpedidoh == $pedcom->id)
                   
                     <tr>
@@ -138,7 +138,7 @@
                         </td>
                     </tr>
                     @endif
-                @endforeach --}}
+                @endforeach
                 @endif  
                 @endforeach
           
@@ -146,7 +146,7 @@
         @endforeach
     </tr>
     @endforeach
-   
+</table>
         
     <footer>
     </footer>

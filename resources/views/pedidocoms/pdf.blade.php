@@ -8,14 +8,21 @@
             font-family: Arial;
            
         }
-
+       
+ 
+ 
         body {
+        
+            width:100%;
+  
             margin-top: 0.5cm;
             margin-left: 1cm;
             margin-right: 1cm;
-            margin-bottom: 0.5cm;
+            margin-bottom: 0.5cm; 
+            background-image: url(img/fondopdf.png);
+            background-repeat:no-repeat;
             background-color: #ffffff;
-            padding: 20px;
+            padding: 10px;
         }
 
         header { 
@@ -35,7 +42,66 @@
             width: 270px;
 
         }
+        .nombre {
+            position: absolute;
+            bottom: 500px;
+            left: 200px;
+            top: 215px;
+            z-index: 99999;
+        }
+        .envio {
+            position: absolute;
+            bottom: 500px;
+            left: 200px;
+            top: 245px;
+            z-index: 99999;
+        }
+        .cargo {
+            position: absolute;
+            bottom: 500px;
+            left: 530px;
+            top: 215px;
+            z-index: 99999;
+        }
+        .fecha {
+            position: absolute;
+            bottom: 500px;
+            left: 200px;
+            top: 350px;
+            z-index: 99999;
+        }
+        .contenido {
+            position: absolute;
+            bottom: 500px;
+            left: 10px;
+            top: 350px;
+            width: 100%;
+            z-index: 99999;
+        }
+        #qr {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            background-image: url("../img/pin1.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 6px;
+            border: solid rgba(255, 255, 255, 1.0) 3px;
+            box-shadow: 0 1px 7px #999;
+            bottom: 500px;
+            right: -30px;
+            top: 597px;
+            z-index: 99999;
+        }
 
+        #firma {
+            position: absolute;
+            bottom: 500px;
+            left: 50px;
+            top: 1010px;
+            z-index: 99999;
+        }
 
 
         footer {
@@ -55,36 +121,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>TABLA DE PRODUCTOS</title>
+   {{--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> --}}
+    <title>MATERIALES</title>
 </head>
 
 
 <body>
    
     
-    <table width="100%">
-        <tr>
-            <td colspan="6" style="text-align:center;width:100%;">
-                @include('pedidocoms.imagen')
-            </td>
-            <br>
-            <td style="text-align:center;width:100%; size=1" colspan="6">
-                <br>
-                <P>
-                <h3>CONSULTORA & CONSTRUCTORA PEÑA-ANDRADE </h3>
-                <h3>REPORTE DE PEDIDOS</h3>
-                </P>
-            </td>
-            
-        </tr>
-    </table>
 
-    <main><hr style="width: 100%;height: 2px;">
-        <h3 style="text-align:center;width:100%; height=1">TRABAJADOR Y LOS MATERIALES PEDIDOS</h3>
-   
-       <hr style="width: 100%;height: 2px;"> 
+
+    <main>
+    
         <div class='container'>
             <table width="100%">
                 
@@ -94,7 +143,7 @@
                             @if ($user->id == $trabajador->idusuario)
                             <tr>
                                 <td style="text-align:left;width:100%; " colspan="10">
-                                    <font size=3><strong>Nombre Trabajador: </strong>{{ $user->name }}</font>
+                                   <p class="nombre"> <font size=3><strong></strong>{{ $user->name }}</font></p>
                                 </td>
                                </tr>
                             <tr>
@@ -103,47 +152,51 @@
                         @endforeach
                        
                             <td style="text-align:left;width:100%;" colspan="10">
-                                <font size=3><strong>Motivo: </strong>{{ $pedidocom->asunto }}</font>
+                                <p class="envio"> <font size=3>{{ $pedidocom->asunto }}</font></p>
                             </td>
                           
                         </tr>
                         <tr>
                            
                             <td style="text-align:left;width:100%; border-color:rgb(12, 36, 104);;"colspan="4">
-                                <font size=3><strong>Cargo: </strong>{{ $trabajador->cargo }}</font>
+                                <p class="cargo"> <font size=3>{{ $trabajador->cargo }}</font></p>
                             </td>
                             <td style="text-align:left;width:100%;" colspan="4">
-                                <font size=3><strong>Hora y Fecha: </strong>{{ $pedidocom->created_at }}</font>
+                                <p class="fecha"> <font size=3><{{ $pedidocom->created_at }}</font></p>
                             </td>
-                            <td style="text-align:left;width:100%; " colspan="4">
-                                <font size=3><strong> Edad: </strong>{{ $trabajador->edad }} Años</font>
-                            </td>
+                           
                         </tr>
                     @endif
                 @endforeach
-                <hr style="width: 100%;height: 2px;">
+            </table>
+            <table class="contenido">
+            
                
-                <tr>
+                <tr class="trr"> 
                     <td style="text-align:left;width:100%;" colspan="6">
-                        <hr style="width: 100%;height: 2px;">
+                        
                         <p>
                         <h4>MATERIAL</h4>
+                        <hr style="width: 100%;height: 0.1px;">
                         </p>
                     </td>
                     <td style="text-align:left;width:100%;" colspan="3">
-                        <hr style="width: 100%;height: 2px;">
+                        
                         <p>
 
                         <h4>UNIDAD</h4>
+                        <hr style="width: 100%;height: 0.1px;">
                         </p>
                     </td>
                     <td style="text-align:left;width:100%;" colspan="3">
-                        <hr style="width: 100%;height: 2px;">
+                      
                         <p>
 
                         <h4>CANTIDAD</h4>
+                        <hr style="width: 100%;height: 0.1px;">
                         </p>
                     </td>
+                   
                 </tr>
                
                 <tr>
@@ -160,16 +213,19 @@
                                     <tr>
                                         
                                         <td style="text-align:left;width:100%; " colspan="6">
-                                            <hr style="width: 100%;height: -20px;">
-                                            <font size=2><strong>{{ $material->descripcion }}</font>
+                                            
+                                            <font size=2>{{ $material->descripcion }}</font>
+                                                <hr style="width: 100%;height: 0.1px;">
                                         </td>
                                         <td style="text-align:left;width:100%; " colspan="3">
-                                            <hr style="width: 100%;height: -20px;">
-                                            <font size=2><strong>{{ $material->unidad }}</font>
+                                           
+                                            <font size=2>{{ $material->unidad }}</font>
+                                                <hr style="width: 100%;height: 0.1px;">
                                         </td>
                                         <td style="text-align:center;width:100%; " colspan="3">
-                                            <hr style="width: 100%;height: -20px;">
+                                            
                                             <font size=2>{{ $pedido->cantidad }}</font>
+                                            <hr style="width: 100%;height: 0.1px;">
                                         </td>
 
                                     </tr>
@@ -178,20 +234,16 @@
                             @endif
                      @endforeach
                      <tr>
-                        <td style="text-align:center;width:100%; " colspan="6">
-                            <br><br><br><br><br>
-                            <hr style="width: 50%;height: -20px; size:100px; color:blue">
-                            <strong>Firma Trabajador</strong>
-                            <strong></strong>
+                        <img id="firma" src="img/firma.png">
+                        
+                      
+                        <td>
+                            <img id="qr"
+                                src="data:image/png;base64, {{ base64_encode(QrCode::size(130)->generate('CONSULTORA & CONSTRUCTORA PEÑA-ANDRADE - PLANILLA GENERAL DE LOS TRABAJADORES')) }} ">
                         </td>
-                        <td style="text-align:center;width:100%; " colspan="6">
-                           <br><br><br><br><br>
-                           <hr style="width: 50%;height: -20px; size:100px">
-                            <strong>Firma Almacenero</strong>
-                        </td>
-
-                    </tr>               
+                    </tr>        
                     </tr>
+                
             </table>
         </div>
     </main>
