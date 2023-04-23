@@ -36,6 +36,7 @@
             width: 270px;
 
         }
+
         #qr {
             position: absolute;
             width: 110px;
@@ -59,7 +60,9 @@
             left: 50px;
             top: 670px;
             z-index: 99999;
-        }        footer {
+        }
+
+        footer {
             position: fixed;
             bottom: 0cm;
             left: 0cm;
@@ -75,73 +78,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+   
     <title>TABLA DE PRODUCTOS</title>
 </head>
 
 
 <body>
+
+<br><br>
 <br>
-<br><br><br><br><br>
+<br>
+<br>
     @foreach ($trabajadors as $trab)
         @if ($trab->idusuario == Auth::user()->id)
-            @foreach ($pedidohs as $pedcom)
-                @if ($pedcom->idtrab == $trab->id)
-                    <h4 style="text-align:center;width:100%; height=1">REPORTE DE HERRAMIENTAS USADOS EN CONSTRUCCION -
-                        <strong> {{ $pedcom->asunto }}</strong>
+            @foreach ($regpedidomaterials as $pedcom)
+                @if ($pedcom->idtrabajador == $trab->id)
+                
+                    <h4 style="text-align:center;width:100%; height=1">REPORTE DE MATERIALES USADOS EN CONSTRUCCION -
+                        <strong> {{ $pedcom->detalle }}</strong>
                     </h4>
-                    <h3 style="text-align:center;width:100%; height=1">ENCARGADO DEL ALMACEN - <strong>
-                            {{ Auth::user()->name }}</strong></h3>
-                            @break
+                    <h4 style="text-align:center;width:100%; height=1">ENCARGADO DEL ALMACEN - <strong>
+                            {{ Auth::user()->name }}</strong></h4>
+                      
+
                 @endif
             @endforeach
         @endif
     @endforeach
+    <h3 style="text-align:center;width:100%; height=1">MATERIALES USADOS EN CONSTRUCCION</strong></h3>
     <table width="100%">
-        <hr style="width: 100%;height: 0px; ">
+       
         <tr>
-            <td style="text-align:left;width:100%;" colspan="3">
-                <h5>HERRAMIENTA</h5>
+            <td style="text-align:left;width:100%;" colspan="4">
+                <h5>MATERIAL</h5>
             </td>
             <td style="text-align:center;width:100%;" colspan="3">
                 <h5>CANTIDAD</h5>
             </td>
-            <td style="text-align:left;width:100%;" colspan="3">
+            <td style="text-align:left;width:100%;" colspan="4">
                 <h5>UNIDAD</h5>
             </td>
-        
-            <td style="text-align:left;width:100%;" colspan="3">
+
+            <td style="text-align:left;width:100%;" colspan="4">
                 <h5>FECHA Y HORA</h5>
             </td>
         </tr>
-        @foreach ($gastoherras as $gasto)
-            
-                @if ($gasto->idpedidoh == Auth::user()->id)
+
+        @foreach ($gastomaterials as $gasto)
+
+                @if ($gasto->idregpedido == Auth::user()->id)
                 <tr>
-                    @foreach ($herramientas as $herramienta )
-                        @if ($herramienta->id == $gasto->idherramienta)
-                        <td style="text-align:left;width:100%; " colspan="3">
-                            <hr style="width: 100%;height: 0px;">
-                            <font size=3>{{ $herramienta->descripcion }}</font>
-                        </td>
-                        <td style="text-align:center;width:100%; " colspan="3">
-                            <hr style="width: 100%;height: 0px;">
-                            <font size=3>{{ $herramienta->unidad }}</font>
-                        </td>
-                       
+                    @foreach ($materials as $material)
+                        @if ($material->id == $gastomaterial->idmaterial)
+                            <td style="text-align:left;width:100%; " colspan="4">
+                                <hr style="width: 100%;height: 0px;">
+                                <font size=3>{{ $material->descripcion }}</font>
+                            </td>
+                            <td style="text-align:center;width:100%; " colspan="4">
+                                <hr style="width: 100%;height: 0px;">
+                                <font size=3>{{ $material->unidad }}</font>
+                            </td>
                         @endif
-                        
-                    @endforeach  
-                    <td style="text-align:left;width:100%; " colspan="3">
+                    @endforeach
+                    <td style="text-align:left;width:100%; " colspan="4">
                         <hr style="width: 100%;height: 0px;">
                         <font size=3>{{ $gasto->cantidad }}</font>
                     </td>
-                    <td style="text-align:left;width:100%; " colspan="3">
+                    <td style="text-align:left;width:100%; " colspan="4">
                         <hr style="width: 100%;height: 0px;">
                         <font size=3>{{ $gasto->created_at }}</font>
                     </td>
-                </tr>  
+                </tr>
                 @endif
+
+
+           
         @endforeach
     </table>
     <table>

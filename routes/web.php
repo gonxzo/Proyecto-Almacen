@@ -21,11 +21,11 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('pedidoherras/store', 'PedidoherraController@store')->name('pedidoherras.store');
+Route::post('pedidoherramientas/store', 'PedidoherramientaController@store')->name('pedidoherramientas.store');
 Route::post('materials/store', 'MaterialController@store')->name('materials.store');
-Route::post('pedidocoms/store', 'PedidocomController@store')->name('pedidocoms.store');
-Route::post('pedidohs/store', 'PedidohController@store')->name('pedidohs.store');
-Route::post('pedidos/store', 'PedidoController@store')->name('pedidos.store');
+Route::post('regpedidomaterial/store', 'RegpedidomaterialController@store')->name('regpedidomaterial.store');
+Route::post('regpedidoherramientas/store', 'RegpedidoherramientaController@store')->name('regpedidoherramientas.store');
+Route::post('pedidomaterials/store', 'PedidomaterialController@store')->name('pedidomaterials.store');
 Route::get('/volver', 'HomeController@volver')->name('volver');
 Route::get('material-cantidad', 'MaterialController@upCantidad')->name('materials.ingresos');
 Route::post('hyerramienta-cantidad', 'HerramientaController@upCantidad')->name('Herramientas.ingresos');
@@ -90,20 +90,20 @@ Route::middleware(['auth'])->group(function () {
       Route::get('clasherramientas/{clasherramienta}/edit', 'ClasherramientaController@edit')->name('clasherramientas.edit')->middleware('can:clasherramientas.edit');
       //Pedidos completos
      
-      Route::get('pedidocoms', 'PedidocomController@index')->name('pedidocoms.index')->middleware('can:pedidocoms.index');
-      Route::get('pedidocoms/create', 'PedidocomController@create')->name('pedidocoms.create')->middleware('can:pedidocoms.create');
-      Route::put('pedidocoms/{pedidocom}', 'PedidocomController@update')->name('pedidocoms.update')->middleware('can:pedidocoms.edit');
-      Route::get('pedidocoms/{pedidocom}', 'PedidocomController@show')->name('pedidocoms.show')->middleware('can:pedidocoms.show');
-      Route::delete('pedidocoms/{pedidocom}', 'PedidocomController@destroy')->name('pedidocoms.destroy')->middleware('can:pedidocoms.destroy');
-      Route::get('pedidocoms/{pedidocom}/edit', 'PedidocomController@edit')->name('pedidocoms.edit')->middleware('can:pedidocoms.edit');
-      Route::get('pedidocoms/{pedidocom}','PedidocomController@generaPDF')->name('pedidocoms.pdf')->middleware('can:pedidocoms.pdf');
-      Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf')->middleware('can:pedidocoms.reportespdf');
-      Route::get('reporte','PedidocomController@reporte')->name('pedidocoms.reporte');
-      Route::get('reportefechas','PedidocomController@reportefechas')->name('pedidocoms.reportefechas')->middleware('can:pedidocoms.reportefechas');
-      Route::post('reportefecha','PedidocomController@reporte_fecha')->name('reporte');
-      Route::get('reportes-herramienta','PedidocomController@reportefechas1')->name('pedidohs.reportefechas')->middleware('can:pedidohs.reportefechas');
-      Route::post('reportefechaherramienta','PedidocomController@reporte_fecha1')->name('reporteherras');
-      Route::get('reportesmaterial','PedidocomController@reportetotal')->name('pedidocoms.reportespdf'); 
+      Route::get('regpedidomaterials', 'PedidocomController@index')->name('regpedidomaterials.index')->middleware('can:regpedidomaterials.index');
+      Route::get('regpedidomaterials/create', 'RegpedidomaterialController@create')->name('regpedidomaterials.create')->middleware('can:regpedidomaterials.create');
+      Route::put('regpedidomaterials/{regpedidomaterial}', 'RegpedidomaterialController@update')->name('regpedidomaterials.update')->middleware('can:regpedidomaterials.edit');
+      Route::get('regpedidomaterials/{regpedidomaterial}', 'RegpedidomaterialController@show')->name('regpedidomaterials.show')->middleware('can:regpedidomaterials.show');
+      Route::delete('regpedidomaterials/{regpedidomaterial}', 'RegpedidomaterialController@destroy')->name('regpedidomaterials.destroy')->middleware('can:regpedidomaterials.destroy');
+      Route::get('regpedidomaterials/{regpedidomaterial}/edit', 'RegpedidomaterialController@edit')->name('regpedidomaterials.edit')->middleware('can:regpedidomaterials.edit');
+      Route::get('regpedidomaterials/{regpedidomaterial}','RegpedidomaterialController@generaPDF')->name('regpedidomaterials.pdf')->middleware('can:regpedidomaterials.pdf');
+      Route::get('reportesmaterial','RegpedidomaterialController@reportetotal')->name('regpedidomaterials.reportespdf')->middleware('can:regpedidomaterials.reportespdf');
+      Route::get('reporte','RegpedidomaterialController@reporte')->name('regpedidomaterials.reporte');
+      Route::get('reportefechas','RegpedidomaterialController@reportefechas')->name('regpedidomaterials.reportefechas')->middleware('can:regpedidomaterials.reportefechas');
+      Route::post('reportefecha','RegpedidomaterialController@reporte_fecha')->name('reporte');
+      Route::get('reportes-herramienta','RegpedidoherramientaController@reportefechas1')->name('regpedidoherramientas.reportefechas')->middleware('can:regpedidoherramientas.reportefechas');
+      Route::post('reportefechaherramienta','RegpedidomaterialController@reporte_fecha1')->name('reporteherras');
+      Route::get('reportesmaterial','RegpedidomaterialController@reportetotal')->name('regpedidomaterials.reportespdf'); 
 
       //Pedidos HERRAMIENTAS
       
@@ -128,12 +128,12 @@ Route::middleware(['auth'])->group(function () {
 
        //PEDIDIOS MATERIAL
       
-        Route::get('pedidos', 'PedidoController@index')->name('pedidos.index')->middleware('can:pedidos.index');
-        Route::get('pedidos/create', 'PedidoController@create')->name('pedidos.create')->middleware('can:pedidos.create');
-        Route::put('pedidos/{pedido}', 'PedidoController@update')->name('pedidos.update')->middleware('can:pedidos.edit');
-        Route::get('pedidos/{pedido}', 'PedidoController@show')->name('pedidos.show')->middleware('can:pedidos.show');
-        Route::delete('pedidos/{pedido}', 'PedidoController@destroy')->name('pedidos.destroy')->middleware('can:pedidos.destroy');
-        Route::get('pedidos/{pedido}/edit', 'PedidoController@edit')->name('pedidos.edit')->middleware('can:pedidos.edit');
+        Route::get('pedidomaterials', 'PedidomaterialController@index')->name('pedidomaterials.index')->middleware('can:pedidomaterials.index');
+        Route::get('pedidomaterials/create', 'PedidomaterialController@create')->name('pedidomaterials.create')->middleware('can:pedidomaterials.create');
+        Route::put('pedidomaterials/{pedidomaterial}', 'PedidomaterialController@update')->name('pedidomaterials.update')->middleware('can:pedidomaterials.edit');
+        Route::get('pedidomaterials/{pedidomaterial}', 'PedidomaterialController@show')->name('pedidomaterials.show')->middleware('can:pedidomaterials.show');
+        Route::delete('pedidomaterials/{pedidomaterial}', 'PedidomaterialController@destroy')->name('pedidomaterials.destroy')->middleware('can:pedidomaterials.destroy');
+        Route::get('pedidomaterials/{pedidomaterial}/edit', 'PedidomaterialController@edit')->name('pedidomaterials.edit')->middleware('can:pedidomaterials.edit');
 
           //PEDIDIOS HERRAMIENTAS
          

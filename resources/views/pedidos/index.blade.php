@@ -9,10 +9,10 @@
                     </div>
                     <div class="card-body">
                         @can('pedidos.create')
-                            <a href="{{ route('pedidos.create') }}" class="btn btn-sm btn-primary mb-1">Gasto de Materiales</a>
+                            <a href="{{ route('pedidomaterials.create') }}" class="btn btn-sm btn-primary mb-1">Gasto de Materiales</a>
                         @endcan
                         <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal12">
-                            Reporte Total
+                            Reporte Gasto de Materiales
                         </button>
                         <div class="form-row">
                             <div class="form-group col-md-3">
@@ -21,7 +21,7 @@
                                     <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-body">
-                                                <embed src="{{ route('pedidocoms.reportespdf') }}" type="application/pdf"
+                                                <embed src="{{ route('regpedidomaterials.reportespdf') }}" type="application/pdf"
                                                     width="100%" height="750px" />
                                             </div>
                                         </div>
@@ -44,21 +44,21 @@
                                 <tbody>
                                     @foreach ($trabajadors as $trab)
                                         @if ($trab->idusuario == Auth::user()->id)
-                                            @foreach ($pedidocoms as $pedcom)
-                                                @if ($pedcom->idtrab == $trab->id)
-                                                    @foreach ($pedidos as $item)
-                                                        @if ($item->idpedidocom == $pedcom->id)
+                                            @foreach ($regpedidomaterial as $pedcom)
+                                                @if ($pedcom->idtrabajador == $trab->id)
+                                                    @foreach ($pedidomaterials as $item)
+                                                        @if ($item->idregpedido == $pedcom->id)
                                                             <tr>
-                                                                <td>{{ $pedcom->asunto }} </td>
+                                                                <td>{{ $pedcom->detalle }} </td>
                                                                 @foreach ($materials as $material)
-                                                                    @if ($material->id == $item->material)
+                                                                    @if ($material->id == $item->idmaterial)
                                                                         <td>{{ $material->descripcion }} </td>
                                                                         <td>{{ $material->unidad }} </td>
                                                                         <td>{{ $item->cantidad }} </td>
                                                                     @endif
                                                                 @endforeach
                                                                 <td width=10px>
-                                                                    @can('pedidos.show')
+                                                                    @can('pedidomaterials.show')
                                                                         <button type="button" class="btn btn-sm btn-success"
                                                                             data-toggle="modal"
                                                                             data-target="#modal{{ $item->id }}">
@@ -80,9 +80,9 @@
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                         <p><strong>Numero del Pedido:</strong>
-                                                                                            {{ $item->idpedidocom }}</p>
+                                                                                            {{ $item->idregpedido }}</p>
                                                                                         @foreach ($materials as $material)
-                                                                                            @if ($material->id == $item->material)
+                                                                                            @if ($material->id == $item->idmaterial)
                                                                                                 <p><strong>Nombre
                                                                                                         Material:</strong>
                                                                                                     {{ $material->descripcion }}
@@ -110,7 +110,7 @@
                                                                         @endcan
                                                                 </td>
                                                                 
-                                                                    @can('pedidos.destroy')
+                                                                    @can('pedidomaterials.destroy')
                                                                     <td width=10px>
                                                                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
                                                                         data-target="#modal2{{ $item->id }}">
@@ -127,9 +127,9 @@
                                                                                     <img src="img/imgeliminar.jpg"
                                                                                         width="50"
                                                                                         height="50">
-                                                                                    ¿Desea Eliminar el Proyecto y todos sus Registros...?
+                                                                                    ¿Desea Eliminar el Registro y todos su contenido...?
                                                                                     <div class="modal-footer">
-                                                                                        {!! Form::open(['route' => ['pedidos.destroy', $item->id], 'method' => 'DELETE']) !!}
+                                                                                        {!! Form::open(['route' => ['pedidomaterials.destroy', $item->id], 'method' => 'DELETE']) !!}
                                                                                         <button class="btn btn-sm btn-info">Eliminar</button>
                                                                                         {!! Form::close() !!}
                                                                                         <button type="button" class="btn btn-sm btn-info"
@@ -150,21 +150,21 @@
                                             @endforeach
                                         @else
                                             @if (Auth::user()->id == 22)
-                                                @foreach ($pedidocoms as $pedcom)
-                                                    @if ($pedcom->idtrab == $trab->id)
-                                                        @foreach ($pedidos as $item)
-                                                            @if ($item->idpedidocom == $pedcom->id)
+                                                @foreach ($regpedidomaterials as $pedcom)
+                                                    @if ($pedcom->idtrabajador == $trab->id)
+                                                        @foreach ($pedidomaterials as $item)
+                                                            @if ($item->idregpedido == $pedcom->id)
                                                                 <tr>
-                                                                    <td>{{ $pedcom->asunto }} </td>
+                                                                    <td>{{ $pedcom->detalle }} </td>
                                                                     @foreach ($materials as $material)
-                                                                        @if ($material->id == $item->material)
+                                                                        @if ($material->id == $item->idmaterial)
                                                                             <td>{{ $material->descripcion }} </td>
                                                                             <td>{{ $material->unidad }} </td>
                                                                             <td>{{ $item->cantidad }} </td>
                                                                         @endif
                                                                     @endforeach
                                                                     <td width=10px>
-                                                                        @can('pedidos.show')
+                                                                        @can('pedidomaterials.show')
                                                                             <button type="button" class="btn btn-sm btn-success"
                                                                                 data-toggle="modal"
                                                                                 data-target="#modal{{ $item->id }}">
@@ -187,7 +187,7 @@
                                                                                         <div class="modal-body">
                                                                                             <p><strong>Numero del
                                                                                                     Pedido:</strong>
-                                                                                                {{ $item->idpedidocom }}</p>
+                                                                                                {{ $item->idregpedido }}</p>
                                                                                             @foreach ($materials as $material)
                                                                                                 @if ($material->id == $item->material)
                                                                                                     <p><strong>Nombre
@@ -220,8 +220,8 @@
                                                                             @endcan
                                                                     </td>
                                                                     <td width=10px>
-                                                                        @can('pedidos.destroy')
-                                                                            {!! Form::open(['route' => ['pedidos.destroy', $item->id], 'onclick' => "return confirm('Esta Seguro de Eliminar este Registro')", 'method' => 'DELETE']) !!}
+                                                                        @can('pedidomaterials.destroy')
+                                                                            {!! Form::open(['route' => ['pedidomaterials.destroy', $item->id], 'onclick' => "return confirm('Esta Seguro de Eliminar este Registro')", 'method' => 'DELETE']) !!}
                                                                             <button
                                                                                 class="btn btn-sm btn-danger">Eliminar</button>
                                                                             {!! Form::close() !!}

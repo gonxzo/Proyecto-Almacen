@@ -8,22 +8,24 @@
             font-family: Arial;
            
         }
-
+       
+ 
+ 
         body {
+        
             width:100%;
   
-  margin-top: 0.5cm;
-  margin-left: 1cm;
-  margin-right: 1cm;
-  margin-bottom: 0.5cm; 
-  background-image: url(img/fondopdf.png);
-  background-repeat:no-repeat;
-  background-color: #ffffff;
-  padding: 10px;
-    }
+            margin-top: 0.5cm;
+            margin-left: 1cm;
+            margin-right: 1cm;
+            margin-bottom: 0.5cm; 
+            background-image: url(img/fondopdf.png);
+            background-repeat:no-repeat;
+            background-color: #ffffff;
+            padding: 10px;
+        }
 
-
-        header {
+        header { 
             position: fixed;
             top: 1cm;
             left: 6.5cm;
@@ -65,9 +67,8 @@
             position: absolute;
             bottom: 500px;
             left: 200px;
-            top: 280px;
+            top: 350px;
             z-index: 99999;
-            width: 300px;
         }
         .contenido {
             position: absolute;
@@ -103,8 +104,6 @@
         }
 
 
-
-
         footer {
             position: fixed;
             bottom: 0cm;
@@ -122,102 +121,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   
-    <title>HERRAMIENTAS</title>
+   {{--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> --}}
+    <title>MATERIALES</title>
 </head>
 
+
 <body>
-     <main>
+   
+    
+
+
+    <main>
+    
         <div class='container'>
             <table width="100%">
                 
                 @foreach ($trabajadors as $trabajador)
-                    @if ($pedidoh->idtrab == $trabajador->id)
-                    @foreach ($users as $user )
-                    @if ($user->id == $trabajador->idusuario)
-                    <tr>
-                        <td style="text-align:left;width:100%; " colspan="10">
-                           <p class="nombre"> <font size=3><strong></strong>{{ $user->name }}</font></p>
-                        </td>
-                       </tr>
-                    <tr>
-                        
-                    @endif
-                @endforeach
-                        <tr>
+                    @if ($regpedidomaterial->idtrabajador == $trabajador->id)
+                        @foreach ($users as $user )
+                            @if ($user->id == $trabajador->idusuario)
+                            <tr>
+                                <td style="text-align:left;width:100%; " colspan="10">
+                                   <p class="nombre"> <font size=3><strong></strong>{{ $user->name }}</font></p>
+                                </td>
+                               </tr>
+                            <tr>
+                                
+                            @endif
+                        @endforeach
+                       
                             <td style="text-align:left;width:100%;" colspan="10">
-                                <p class="envio"> {{ $pedidoh->asunto }}</font></p>
+                                <p class="envio"> <font size=3>{{ $regpedidomaterial->detalle }}</font></p>
                             </td>
                           
                         </tr>
                         <tr>
                            
                             <td style="text-align:left;width:100%; border-color:rgb(12, 36, 104);;"colspan="4">
-                                <p class="cargo"> {{ $trabajador->cargo }}</font></p>
+                                <p class="cargo"> <font size=3>{{ $trabajador->cargo }}</font></p>
                             </td>
                             <td style="text-align:left;width:100%;" colspan="4">
-                                <p class="fecha">  {{ $pedidoh->created_at }}</font></p>
+                                <p class="fecha"> <font size=3><{{ $regpedidomaterial->created_at }}</font></p>
                             </td>
                            
                         </tr>
                     @endif
                 @endforeach
-                    </table>
-                    <table class="contenido">
+            </table>
+            <table class="contenido">
+            
                
-                <tr>
+                <tr class="trr"> 
                     <td style="text-align:left;width:100%;" colspan="6">
-                       
+                        
                         <p>
-                        <h3>HERRAMIENTA</h3>
-                        <hr style="width: 100%;height: 0.5px;">
+                        <h4>MATERIAL</h4>
+                        <hr style="width: 100%;height: 0.1px;">
                         </p>
                     </td>
                     <td style="text-align:left;width:100%;" colspan="3">
                         
                         <p>
 
-                        <h3>UNIDAD</h3>
-                        <hr style="width: 100%;height: 0.5px;">
+                        <h4>UNIDAD</h4>
+                        <hr style="width: 100%;height: 0.1px;">
                         </p>
                     </td>
                     <td style="text-align:left;width:100%;" colspan="3">
-                       
+                      
                         <p>
 
-                        <h3>CANTIDAD</h3>
-                        <hr style="width: 100%;height: 0.5px;">
+                        <h4>CANTIDAD</h4>
+                        <hr style="width: 100%;height: 0.1px;">
                         </p>
                     </td>
+                   
                 </tr>
                
                 <tr>
                    
                     <td style="text-align:center;width:100%;" colspan="12">
                        
-                        @foreach ($pedidoherras as $pedido)
+                        @foreach ($pedidomaterials as $pedido)
                         
-                            @if ($pedido->idph == $pedidoh->id)
-                                @foreach ($herramientas as $herramienta)
+                            @if ($pedido->idregpedido == $pedidocom->id)
+                                @foreach ($materials as $material)
                                 
-                                    @if ($pedido->herramienta == $herramienta->id)
+                                    @if ($pedido->idmaterial == $material->id)
                                     
                                     <tr>
                                         
                                         <td style="text-align:left;width:100%; " colspan="6">
                                             
-                                            <font size=3>{{ $herramienta->descripcion }}</font>
-                                                <hr style="width: 100%;height: 0.5px;">
+                                            <font size=2>{{ $material->descripcion }}</font>
+                                                <hr style="width: 100%;height: 0.1px;">
                                         </td>
                                         <td style="text-align:left;width:100%; " colspan="3">
-                                            
-                                            <font size=3>{{ $herramienta->unidad }}</font>
-                                            <hr style="width: 100%;height: 0.5px;">
+                                           
+                                            <font size=2>{{ $material->unidad }}</font>
+                                                <hr style="width: 100%;height: 0.1px;">
                                         </td>
                                         <td style="text-align:center;width:100%; " colspan="3">
-                                            <
-                                            <font size=3>{{ $pedido->cantidad }}</font>
-                                            <hr style="width: 100%;height: 0.5px;">
+                                            
+                                            <font size=2>{{ $pedido->cantidad }}</font>
+                                            <hr style="width: 100%;height: 0.1px;">
                                         </td>
 
                                     </tr>
@@ -225,9 +233,7 @@
                                  @endforeach
                             @endif
                      @endforeach
-                    </td>
-                    
-                    <tr>
+                     <tr>
                         <img id="firma" src="img/firma.png">
                         
                       
@@ -235,14 +241,13 @@
                             <img id="qr"
                                 src="data:image/png;base64, {{ base64_encode(QrCode::size(130)->generate('CONSULTORA & CONSTRUCTORA PEÑA-ANDRADE - PLANILLA GENERAL DE LOS TRABAJADORES')) }} ">
                         </td>
-                    </tr>       
-                </tr>
+                    </tr>        
+                    </tr>
+                
             </table>
         </div>
     </main>
-    
     <footer>
-        
     </footer>
 </body>
 

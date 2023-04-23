@@ -41,7 +41,13 @@
         <p>{{ Session::get('success') }}</p>
     </div>
     @endif
-    <table class="table table-bordered" id="addremove">
+    @if (Auth::user()->id == 47)
+    <table class="table table-bordered" id="addremove1">
+    @endif
+    @if (Auth::user()->id == 46)
+    <table class="table table-bordered" id="addremove21">
+    @endif
+   
         <tr>
             <th>Herramienta</th>
             <th>cantidad</th>

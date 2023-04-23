@@ -6,20 +6,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Materiales Por Obra
+                    Usuario
                 </div>
                 <div class="card-body">
-
-                    {!! Form::open(['route'=>'pedidomaterials.store']) !!}
-
-                    @include('pedidomaterials.partials.form')
-                    {!! Form::close() !!}
+                    <p><strong>Nombre:</strong> {{$user->name}}</p>
+                    <p><strong>Correo Electronico: </strong> {{$user->email}}</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-
-

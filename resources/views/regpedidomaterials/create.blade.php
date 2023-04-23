@@ -6,13 +6,13 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Materiales Por Obra
+                   CREAR PEDIDO
                 </div>
                 <div class="card-body">
 
-                    {!! Form::open(['route'=>'pedidomaterials.store']) !!}
+                    {!! Form::open(['route'=>'regpedidomaterials.store']) !!}
 
-                    @include('pedidomaterials.partials.form')
+                    @include('regpedidomaterials.partials.form')
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -20,6 +20,4 @@
     </div>
 </div>
 @endsection
-
-
 

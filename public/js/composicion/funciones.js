@@ -1,70 +1,3 @@
-// Buscador dentro del select
-$(document).ready(function() {
-    $(".select-municipio").select2();
-    $(".select-cargo").select2();
-    $(".select-provincia").select2();
-    $(".select_antecedente").select2();
-});
-
-// Traer municipio
-$(document).ready(function() {
-    provincia = $('select[name="provincia"]');
-    municipio = $('select[name="municipioajax"]');
-    var loader = $('#loader');
-    loader.hide();
-    municipio.attr('disabled', 'disabled')
-    municipio.change(function() {
-        var id = $(this).val();
-        // if(!id){
-        //     municipio.attr('disabled','disabled')
-        // }
-        if (id === "") {
-            id = '100000';
-        }
-        $("#id_municipio").val(id)
-    })
-    provincia.change(function() {
-        var id = $(this).val();
-        $("#id_provincia").val(id)
-        if (id === "Seleccionar provincia") {
-            municipio.attr('disabled', 'disabled')
-            municipio.html('')
-            $("#id_municipio").val('100000')
-            console.log('vacio')
-            return;
-        }
-        if (id) {
-            loader.show();
-            municipio.attr('disabled', 'disabled')
-
-            $.get('municipios_ajax?IdProvincia=' + id)
-                .done(function(data) {
-                    var s = '<option value="">Seleccionar municipio</option>';
-                    console.log(data);
-                    $.each(data.data, function(i, row) {
-                        console.log(row);
-                        s += '<option value="' + row.IdMunicipio + '">' + row.NombreMunicipio + '</option>'
-                    })
-                    municipio.removeAttr('disabled')
-                    municipio.html(s);
-                    loader.hide();
-                    if ($("#id_municipio").val() !== '100000') {
-                        console.log($("#id_municipio").val() + 'entro')
-                        municipio.attr('enabled', 'enabled')
-                        $('#municipioajax').val($("#id_municipio").val()).trigger("change")
-                    }
-                })
-        }
-
-    })
-
-    if ($("#id_provincia").val() !== '100000') {
-        $('#provincia').val($("#id_provincia").val()).trigger("change")
-    }
-
-
-});
-
 $(document).ready(function() {
 
     $('body').on('click', '#eliminar', function(e) {
@@ -136,7 +69,7 @@ $(document).on('click', '.remove-input-field', function() {
 var i = 0;
 $("#dynamic-ar").click(function() {
     ++i;
-    $("#dynamicAddRemove1").append('<tr><td> <select class="form-control" name="addMoreInputFields[' + i +
+    $("#dynamicAddRemove").append('<tr><td> <select class="form-control" name="addMoreInputFields[' + i +
         '][material]" > <option value="1">  ALAMBRE DE AMARRE</option><option value="2"> CEMENTO PORTLAND</option><option value="3"> CEMENTO COLA</option><option value="4">FIERRO CORRUGADO DE 1/2"</option><option value="5"> FIERRO CORRUGADO DE 1/4"</option><option value="6">FIERRO CORRUGADO DE 1/8"</option><option value="7"> CERAMICA NACIONAL</option><option value="8">  PINTURA LATEX (BALDE 18 LT)</select></td>" placeholder="Enter subject" class="form-control" /></td><td><input type="text" name="addMoreInputFields[' + i +
         '][cantidad]" placeholder="Ingrese una Cantidad" class="form-control" /></td><td><button type="button" class="btn btn-sm btn-primary mb-1 remove-input-field">ELIMINAR</button></td></tr>'
     );
@@ -149,10 +82,68 @@ $(document).on('click', '.remove-input-field', function() {
 $("#dynamic-ar").click(function() {
     ++i;
     $("#addremove2").append('<tr><td> <select class="form-control" name="adicionar[' + i +
-        '][herramienta]" >@foreach($herramientas as $item)<option value="53">Alicate</option><option value="54">Martillo</option><option value="58">Flexo 10m de primera</option><option value="63">Taladro</option><option value="68">Plomada   300 gr.</option><option value="69">Plomada   300 gr.</option></select></td>" placeholder="Enter subject" class="form-control" /></td><td><input type="text" name="adicionar[' + i +
+        '][herramienta]" >@foreach($herramientas as $item)<option value="43">Alicate</option><option value="44">Martillo</option><option value="45">Plomada   300 gr.</option><option value="46">Taladro</option><option value="47">Martillo</option><option value="48">Alicate</option><option value="49">Taladro</option><option value="50">Plomada   300 gr.</option><option value="51">Llave Stilson</option><option value="52">Pico y Mango</option><option value="53">Guantes de seguridad (especial)</option></select></td>" placeholder="Enter subject" class="form-control" /></td><td><input type="text" name="adicionar[' + i +
         '][cantidad]" placeholder="Enter cantidad" class="form-control" /></td><td><button type="button" class="btn btn-sm btn-primary mb-1 remove-input-field">Eliminar</button></td></tr>'
     );
 });
 $(document).on('click', '.remove-input-field', function() {
     $(this).parents('tr').remove();
 });
+$("#dynamic-ar").click(function() {
+    ++i;
+    $("#addremove21").append('<tr><td> <select class="form-control" name="adicionar[' + i +
+        '][herramienta]" >@foreach($herramientas as $item)<option value="43">Alicate</option><option value="44">Martillo</option></select></td>" placeholder="Enter subject" class="form-control" /></td><td><input type="text" name="adicionar[' + i +
+        '][cantidad]" placeholder="Enter cantidad" class="form-control" /></td><td><button type="button" class="btn btn-sm btn-primary mb-1 remove-input-field">Eliminar</button></td></tr>'
+    );
+});
+$(document).on('click', '.remove-input-field', function() {
+    $(this).parents('tr').remove();
+});
+//ADICIONAR ELIMINAR 3
+$("#dynamic-ar").click(function() {
+    ++i;
+    $("#dynamicAddRemove3").append('<tr><td> <select class="form-control" name="adicionar[' + i +
+        '][herramienta]" ><option value="1">  ALAMBRE DE AMARRE</option><option value="2"> CEMENTO PORTLAND</option><option value="3"> FIERRO CORRUGADO 1/2</option><option value="5"> FIERRO CORRUGADO DE 1/4"</option><option value="4">CEMENTO BLANCO"</option></select></td>" placeholder="Enter subject" class="form-control" /></td><td><input type="text" name="adicionar[' + i +
+        '][cantidad]" placeholder="Enter cantidad" class="form-control" /></td><td><button type="button" class="btn btn-sm btn-primary mb-1 remove-input-field">Eliminar</button></td></tr>'
+    );
+});
+$(document).on('click', '.remove-input-field', function() {
+    $(this).parents('tr').remove();
+});
+
+//ADICIONAR ELIMINAR 4
+$("#dynamic-ar").click(function() {
+    ++i;
+    $("#dynamicAddRemove4").append('<tr><td> <select class="form-control" name="adicionar[' + i +
+        '][herramienta]" ><option value="1">  ALAMBRE DE AMARRE</option><option value="2"> CEMENTO PORTLAND</option><option value="3"> FIERRO CORRUGADO 1/2</option><option value="5"> FIERRO CORRUGADO DE 1/4"</option><option value="4">CERAMICA NACIONAL"</option></select></td>" placeholder="Enter subject" class="form-control" /></td><td><input type="text" name="adicionar[' + i +
+        '][cantidad]" placeholder="Enter cantidad" class="form-control" /></td><td><button type="button" class="btn btn-sm btn-primary mb-1 remove-input-field">Eliminar</button></td></tr>'
+    );
+});
+$(document).on('click', '.remove-input-field', function() {
+    $(this).parents('tr').remove();
+});
+
+//ADICIONAR ELIMINAR 5
+$("#dynamic-ar").click(function() {
+    ++i;
+    $("#dynamicAddRemove5").append('<tr><td> <select class="form-control" name="adicionar[' + i +
+        '][herramienta]" ><option value="1"> CEMENTO PORTLLAND</option><option value="2"> ABRAZADERA DE 3</option><option value="3"> FIERRO CORRUGADO 3/8</option><option value="5"> FIERRO CORRUGADO DE 1/4"</option><option value="4">PINTURA LATEX (BALDE 18 LT)"</option><option value="5"> FIERRO CORRUGADO DE 1/4"</option></select></td>" placeholder="Enter subject" class="form-control" /></td><td><input type="text" name="adicionar[' + i +
+        '][cantidad]" placeholder="Enter cantidad" class="form-control" /></td><td><button type="button" class="btn btn-sm btn-primary mb-1 remove-input-field">Eliminar</button></td></tr>'
+    );
+});
+$(document).on('click', '.remove-input-field', function() {
+    $(this).parents('tr').remove();
+});
+
+//ADICIONAR ELIMINAR 4
+$("#dynamic-ar").click(function() {
+    ++i;
+    $("#dynamicAddRemove6").append('<tr><td> <select class="form-control" name="adicionar[' + i +
+        '][herramienta]" ><option value="1">  ALAMBRE DE AMARRE</option><option value="2"> CEMENTO PORTLAND</option><option value="3"> FIERRO CORRUGADO 1/2</option><option value="5"> FIERRO CORRUGADO DE 1/4"</option><option value="4">FIERRO CORRUGADO 3/8"</option></select></td>" placeholder="Enter subject" class="form-control" /></td><td><input type="text" name="adicionar[' + i +
+        '][cantidad]" placeholder="Enter cantidad" class="form-control" /></td><td><button type="button" class="btn btn-sm btn-primary mb-1 remove-input-field">Eliminar</button></td></tr>'
+    );
+});
+
+
+
+//multiples inputs add o remove en herrramientas

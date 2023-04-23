@@ -11,21 +11,7 @@
                     </div>
                     <div class="card-body">
                         <a href="{{ route('pedidohs.create') }}" class="btn btn-sm btn-primary mb-1">Crear Nuevo Pedido</a>
-                        <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal12">
-                            Reporte Total
-                        </button>
-                        <div class="modal fade" id="modal12" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <embed src="{{ route('pedidohs.reportespdf') }}" type="application/pdf"
-                                            width="100%" height="750px" />
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
                         <br>
                         <div class="table-responsive">
                             <table id="usuario" class="table table-bordered table-sm" style="width:100%">
@@ -80,7 +66,7 @@
                                                         class="btn btn-sm btn-info">Editar</a>
                                                 @endcan
                                             </td>
-                                            <td width=10px>
+                                           
                                                 @can('pedidohs.destroy')
                                                 <td width=10px>
                                                     <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
@@ -113,7 +99,7 @@
 
                                                 </td>
                                                 @endcan
-                                            </td>
+                                          
                                         </tr>
                                     @endforeach
 

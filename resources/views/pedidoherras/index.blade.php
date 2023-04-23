@@ -14,9 +14,9 @@
                 @can('pedidoherras.create')
                 <a href="{{ route('pedidoherras.create') }}" class="btn btn-sm btn-primary mb-1">Prestamo Herramientas</a>
                 @endcan
-                
+               
                 <button type="button" class="btn btn-sm btn-primary mb-1" data-toggle="modal" data-target="#modal12">
-                    Reporte Total
+                    Reporte de Herramientas Prestadas
                 </button>
                 <div class="modal fade" id="modal12" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -35,7 +35,7 @@
                     <table id="usuario" class="table table-bordered table-sm" style="width:100%">
                         <thead>
                             <tr class="grid">
-                                <th scope="col">Nº Pedido</th>
+                                <th scope="col">Almacen</th>
                                 <th scope="col">Herramienta</th>
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">U. Medida</th>

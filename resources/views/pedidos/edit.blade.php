@@ -10,8 +10,8 @@
                 </div>
                 <div class="card-body">
 
-                    {!! Form::model($material, ['route'=>['materials.update',$material->id],'method'=>'PUT' ]) !!}
-                    @include('materials.partials.form')
+                    {!! Form::model($pedidomaterial, ['route'=>['pedidomaterials.update',$pedidomaterial->id],'method'=>'PUT' ]) !!}
+                    @include('pedidomaterials.partials.form')
                     {!! Form::close() !!}
                 </div>
             </div>

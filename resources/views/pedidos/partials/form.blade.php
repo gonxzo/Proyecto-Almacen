@@ -2,8 +2,8 @@
 <div class="form-row">
 
     <div class="form-group col-md-3">
-        <strong>{!! Form::label('asunto', 'Nro. de Pedido') !!}</strong><br>
-        <input type="text" name="idpedidocom" value="{{ Auth::User()->id }}" class="form-control" />
+        <strong>{!! Form::label('detalle', 'Nro. de Pedido') !!}</strong><br>
+        <input type="text" name="idregpedido" value="{{ Auth::User()->id }}" class="form-control" />
         
     </div>
     <div class="form-group col-md-5">
@@ -34,8 +34,20 @@
             <p>{{ Session::get('success') }}</p>
         </div>
     @endif
-    <table class="table table-bordered" id="dynamicAddRemove1">
 
+    @if (Auth::user()->id == 47)
+    <table class="table table-bordered" id="dynamicAddRemove3">
+    @endif
+    @if (Auth::user()->id == 46)
+    <table class="table table-bordered" id="dynamicAddRemove4">
+    @endif
+    @if (Auth::user()->id == 45)
+    <table class="table table-bordered" id="dynamicAddRemove5">
+    @endif
+    @if (Auth::user()->id == 22)
+    <table class="table table-bordered" id="dynamicAddRemove6">
+    @endif
+    
         <tr>
             <th>MATERIAL EN ALMACEN</th>
             <th>CANTIDAD A SALIR</th>
@@ -45,14 +57,14 @@
                     @foreach ($trabajadors as $trab)
                        @if ($trab->idusuario == Auth::User()->id)
                        
-                            @foreach ($pedidocoms as $pedcom)
-                                @if ($pedcom->idtrab == $trab->id)
+                            @foreach ($regpedidomaterials as $pedcom)
+                                @if ($pedcom->idtrabajador == $trab->id)
                                
-                                    @foreach ($pedidos as $ped)
-                                        @if ($ped->idpedidocom == $pedcom->id)
+                                    @foreach ($pedidomaterials as $pedido)
+                                        @if ($pedido->idregpedido == $pedcom->id)
                                       
                                             @foreach ($materials as $material)
-                                                @if ($material->id == $ped->material)
+                                                @if ($material->id == $pedido->idmaterial)
                                                     <option value="{{ $material['id'] }}">{{ $material['descripcion'] }}
                                                     </option>
                                                 @endif

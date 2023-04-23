@@ -10,12 +10,16 @@
         }
 
         body {
-            margin-top: 0.5cm;
-            margin-left: 1cm;
-            margin-right: 1cm;
-            margin-bottom: 0.5cm;
-            background-color: #ffffff;
-            padding: 50px;
+            width:100%;
+  
+  margin-top: 0.5cm;
+  margin-left: 1cm;
+  margin-right: 1cm;
+  margin-bottom: 0.5cm; 
+  background-image: url(img/fondopdf2h.png);
+  background-repeat:no-repeat;
+  background-color: #ffffff;
+  padding: 10px;
         }
 
         header { 
@@ -35,7 +39,30 @@
             width: 270px;
 
         }
+        #qr {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            background-image: url("../img/pin1.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 6px;
+            border: solid rgba(255, 255, 255, 1.0) 3px;
+            box-shadow: 0 1px 7px #999;
+            bottom: 500px;
+            right: -30px;
+            top: 597px;
+            z-index: 99999;
+        }
 
+        #firma {
+            position: absolute;
+            bottom: 500px;
+            left: 50px;
+            top: 670px;
+            z-index: 99999;
+        }
 
 
         footer {
@@ -55,27 +82,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
     <title>TABLA DE PRODUCTOS</title>
 </head>
 
 
 <body>
+    <br><br>   <br><br>  <br><br>   <br><br>
      <table width="100%">
-        <tr>
-            <td colspan="6" style="text-align:center;width:100%;;">
-                @include('pedidocoms.imagen')
-            </td>
-            <br>
-            <td style="text-align:center;width:100%; size=1" colspan="6">
-                <br>
-                <P>
-                <h3>CONSULTORA & CONSTRUCTORA PEÑA-ANDRADE </h3>
-                <h3>REPORTE DE PEDIDOS</h3>
-                </P>
-            </td>
-          </tr>
+   
+      
     
 
     @foreach ($pedidohs as $pedcom)
@@ -118,22 +134,22 @@
                             @if ($pedido->herramienta == $herramienta->id)
                             
                                 <td style="text-align:left;width:100%; " colspan="3">
-                                    <hr style="width: 100%;height: -20px;">
+                                    <hr style="width: 100%;height: 0px;">
                                     <font size=1>{{ $herramienta->descripcion }}</font>
                                 </td>
                                 <td style="text-align:left;width:100%; " colspan="3">
-                                    <hr style="width: 100%;height: -20px;">
+                                    <hr style="width: 100%;height: 0px;">
                                     <font size=1>{{ $pedido->cantidad }}</font>
                                 </td>
                                 <td style="text-align:left;width:100%; " colspan="3">
-                                    <hr style="width: 100%;height: -20px;">
+                                    <hr style="width: 100%;height: 0px;">
                                     <font size=1>{{ $herramienta->unidad }}</font>
                                 </td>
                             @endif
                         @endforeach
                        
                         <td style="text-align:left;width:100%; " colspan="3">
-                            <hr style="width: 100%;height: -20px;">
+                            <hr style="width: 100%;height: 0px;">
                             <font size=1>{{ $pedido->created_at }}</font>
                         </td>
                     </tr>
@@ -147,7 +163,15 @@
     </tr>
     @endforeach
 </table>
-        
+<table>
+    <tr>
+            <img id="firma" src="img/firma.png">
+        <td>
+            <img id="qr"
+                src="data:image/png;base64, {{ base64_encode(QrCode::size(130)->generate('CONSULTORA & CONSTRUCTORA PEÑA-ANDRADE - PLANILLA GENERAL DE LOS TRABAJADORES')) }} ">
+        </td>
+    </tr>       
+</table>
     <footer>
     </footer>
 </body>

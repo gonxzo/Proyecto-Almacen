@@ -9,7 +9,7 @@
                         ENVIO MATERIALES
                     </div>
                     <div class="card-body">
-                        <a href="{{ route('pedidocoms.create') }}" class="btn btn-sm btn-primary mb-1">Nuevo Envio</a>
+                        <a href="{{ route('regpedidomaterials.create') }}" class="btn btn-sm btn-primary mb-1">Nuevo Envio</a>
                        
                         <br>
                         <div class="table-responsive">
@@ -27,11 +27,11 @@
                                 </thead>
                         </div>
                         <tbody>
-                            @foreach ($pedidocoms as $item)
+                            @foreach ($regpedidomaterials as $item)
                                 <tr>
                                     <td>{{ $item->id }} </td>
                                     @foreach ($trabajadors as $trab)
-                                        @if ($item->idtrab == $trab->id)
+                                        @if ($item->idtrabajador == $trab->id)
                                             @foreach ($users as $user)
                                                 @if ($user->id == $trab->idusuario)
                                                     <td>{{ $user->name }} </td>
@@ -58,13 +58,13 @@
                                             </div>
                                         </div>
                                     </td>
-                                    @can('pedidocoms.edit')
+                                    @can('regpedidomaterials.edit')
                                         <td width=10px>
-                                            <a href="{{ route('pedidocoms.edit', $item->id) }}"
+                                            <a href="{{ route('regpedidomaterials.edit', $item->id) }}"
                                                 class="btn btn-sm btn-info">Editar</a>
                                         </td>
                                     @endcan
-                                    @can('pedidocoms.destroy')
+                                    @can('regpedidomaterials.destroy')
                                     <td width=10px>
                                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
                                         data-target="#modal2{{ $item->id }}">
@@ -83,7 +83,7 @@
                                                         height="50">
                                                     ¿Desea Eliminar el Proyecto y todos sus Registros...?
                                                     <div class="modal-footer">
-                                                        {!! Form::open(['route' => ['pedidocoms.destroy', $item->id], 'method' => 'DELETE']) !!}
+                                                        {!! Form::open(['route' => ['regpedidomaterials.destroy', $item->id], 'method' => 'DELETE']) !!}
                                                         <button class="btn btn-sm btn-info">Eliminar</button>
                                                         {!! Form::close() !!}
                                                         <button type="button" class="btn btn-sm btn-info"

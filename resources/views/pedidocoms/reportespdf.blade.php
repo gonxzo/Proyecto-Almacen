@@ -16,6 +16,7 @@
             margin-bottom: 0.5cm;
             background-color: #ffffff;
             padding: 50px;
+            background-image: url(img/fondopdf2.png);
         }
 
         header {
@@ -36,7 +37,30 @@
 
         }
 
+        #qr {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            background-image: url("../img/pin1.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 6px;
+            border: solid rgba(255, 255, 255, 1.0) 3px;
+            box-shadow: 0 1px 7px #999;
+            bottom: 500px;
+            right: 10px;
+            top: 600px;
+            z-index: 99999;
+        }
 
+        #firma {
+            position: absolute;
+            bottom: 500px;
+            left: 50px;
+            top: 670px;
+            z-index: 99999;
+        }
 
         footer {
             position: fixed;
@@ -54,33 +78,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   
     <title>TABLA DE PRODUCTOS</title>
 </head>
 
 
 <body>
 
-
-    <table width="100%">
-        <tr>
-            <td colspan="6" style="text-align:center;width:100%;;">
-                @include('pedidocoms.imagen')
-            </td>
-            <br>
-            <td style="text-align:center;width:100%; size=1" colspan="6">
-                <br>
-                <P>
-                <h3>CONSULTORA & CONSTRUCTORA PEÑA-ANDRADE </h3>
-                <h3>REPORTE DE PEDIDOS</h3>
-                </P>
-            </td>
-        </tr>
-    </table>
-
-    <hr style="width: 100%;height: 2px;">
-
+<br><br>
+<br>
+<br>
+<br>
     @foreach ($trabajadors as $trab)
         @if ($trab->idusuario == Auth::user()->id)
             @foreach ($pedidocoms as $pedcom)
@@ -97,9 +105,9 @@
             @endforeach
         @endif
     @endforeach
-    <h3 style="text-align:center;width:100%; height=1">MATERIALES USADOS EN CONSTRUCCION}</strong></h3>
+    <h3 style="text-align:center;width:100%; height=1">MATERIALES USADOS EN CONSTRUCCION</strong></h3>
     <table width="100%">
-        <hr style="width: 100%;height: 2px; ">
+       
         <tr>
             <td style="text-align:left;width:100%;" colspan="4">
                 <h5>MATERIAL</h5>
@@ -123,21 +131,21 @@
                     @foreach ($materials as $material)
                         @if ($material->id == $gasto->idmaterial)
                             <td style="text-align:left;width:100%; " colspan="4">
-                                <hr style="width: 100%;height: -20px;">
-                                <font size=1>{{ $material->descripcion }}</font>
+                                <hr style="width: 100%;height: 0px;">
+                                <font size=3>{{ $material->descripcion }}</font>
                             </td>
                             <td style="text-align:center;width:100%; " colspan="4">
-                                <hr style="width: 100%;height: -20px;">
-                                <font size=1>{{ $material->unidad }}</font>
+                                <hr style="width: 100%;height: 0px;">
+                                <font size=3>{{ $material->unidad }}</font>
                             </td>
                         @endif
                     @endforeach
                     <td style="text-align:left;width:100%; " colspan="4">
-                        <hr style="width: 100%;height: -20px;">
-                        <font size=1>{{ $gasto->cantidad }}</font>
+                        <hr style="width: 100%;height: 0px;">
+                        <font size=3>{{ $gasto->cantidad }}</font>
                     </td>
                     <td style="text-align:left;width:100%; " colspan="4">
-                        <hr style="width: 100%;height: -20px;">
+                        <hr style="width: 100%;height: 0px;">
                         <font size=3>{{ $gasto->created_at }}</font>
                     </td>
                 </tr>
@@ -146,22 +154,16 @@
 
            
         @endforeach
-
-
-        <tr>
-            <td style="text-align:center;width:100%; " colspan="6">
-                <br><br><br><br><br>
-                <hr style="width: 50%;height: -20px; size:100px; color:blue">
-                <strong>Firma Trabajador</strong>
-                <strong></strong>
-            </td>
-            <td style="text-align:center;width:100%; " colspan="6">
-                <br><br><br><br><br>
-                <hr style="width: 50%;height: -20px; size:100px">
-                <strong>Firma Almacenero</strong>
-        </tr>
     </table>
-
+    <table>
+        <tr>
+                <img id="firma" src="img/firma.png">
+            <td>
+                <img id="qr"
+                    src="data:image/png;base64, {{ base64_encode(QrCode::size(130)->generate('CONSULTORA & CONSTRUCTORA PEÑA-ANDRADE - PLANILLA GENERAL DE LOS TRABAJADORES')) }} ">
+            </td>
+        </tr>       
+    </table>
     <footer>
     </footer>
 </body>

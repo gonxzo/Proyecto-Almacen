@@ -54,39 +54,41 @@
                     <strong> <ul class="navbar-nav mr-auto ">
                         @can('materials.index')
                         <li class="nav-item dropdown">
-                           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ALM. MATERIALES</a>
+                           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">MATERIALES</a>
                            <div class="dropdown-menu" style="background-color: #b1b1b3">
                                @can('materials.index')
                                <a class="dropdown-item" href="{{ route('materials.index') }} ">MATERIAL GENERAL</a>
                                @endcan
+                               @if (Auth::user()->id <> 22 )
                                @can('pedidos.index')
-                                   <a class="dropdown-item" href="{{ route('pedidos.index') }} ">MATERIAL POR OBRA</a>
-                               @endcan
+                               <a class="dropdown-item" href="{{ route('pedidos.index') }} ">MATERIALES EN ALMACEN</a>
+                           @endcan
+                               @endif
+                             
 
                            </div> 
                        </li>
                        @endcan
                        @can('herramientas.index')
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ALM. HERRAMIENTAS</a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">HERRAMIENTAS</a>
                            <div class="dropdown-menu" style="background-color: #b1b1b3">
-                               @can('pedidoherras.index')
-                               <a class="dropdown-item" href="{{ route('pedidoherras.index') }} ">HERRAMIENTA POR OBRA</a>
-                               @endcan
-                               @can('herramientas.index')
-                               <a class="dropdown-item" href="{{ route('herramientas.index') }} ">HERRAMIENTAS GENERAL</a>
-                                @endcan
-                                @can('clasherramientas.index')
-                                    <a class="dropdown-item" href="{{ route('clasherramientas.index') }} ">CLASIFICACION
-                                        HERRAMIENTAS</a>
-                                @endcan
-
+                            @can('clasherramientas.index')
+                            <a class="dropdown-item" href="{{ route('clasherramientas.index') }} ">CLASIFICACION
+                                HERRAMIENTAS</a>
+                        @endcan
+                        @can('herramientas.index')
+                        <a class="dropdown-item" href="{{ route('herramientas.index') }} ">HERRAMIENTAS GENERAL</a>
+                         @endcan
+                         @if ( Auth::user()->id <> 22 )
+                            @can('pedidoherras.index')
+                            <a class="dropdown-item" href="{{ route('pedidoherras.index') }} ">HERRAMIENTAS EN ALMACEN</a>
+                            @endcan
+                         @endif
+                              
                            </div>
                        </li>
                        @endcan
-
-                      
-                       
                          @can('proyectos.index')
                          <li class="nav-item">
                              <a class="nav-link dropdown-toggle" href="{{ route('proyectos.index') }} ">PROYECTOS</a>
@@ -95,7 +97,7 @@
                        
                         @can('pedidocoms.index')
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ENVIO ALMACENES</a>
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ENVIO A ALMACENES</a>
                             <div class="dropdown-menu" style="background-color: #b1b1b3">
                                 @can('pedidocoms.index')
                                     <a class="dropdown-item" href="{{ route('pedidocoms.index') }} ">ENVIO MATERIALES</a>
@@ -140,13 +142,13 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('INGRESAR') }}</a>
-                        </li>
+                        </li> --}}
                             @if (Route::has('register'))
-                            <li class="nav-item">
+                           {{--  <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('REGISTRARSE') }}</a>
-                            </li>
+                            </li> --}}
                             @endif
                         @else
                             <li class="nav-item dropdown">
