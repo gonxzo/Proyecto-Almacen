@@ -38,7 +38,7 @@
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-body">
-                                                    <embed src="{{ route('pedidocoms.reportefechas') }}"
+                                                    <embed src="{{ route('regpedidomaterials.reportefechas') }}"
                                                         type="application/pdf" width="100%" height="750px" />
                                                 </div>
                                             </div>
@@ -80,7 +80,7 @@
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-body">
-                                                    <embed src="{{ route('pedidohs.reportefechas') }}"
+                                                    <embed src="{{ route('regpedidoherramientas.reportefechas') }}"
                                                         type="application/pdf" width="100%" height="750px" />
 
                                                 </div>

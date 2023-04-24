@@ -1,9 +1,15 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+
+@section('title', 'PEÑA - ANDRADE')
+@section('plugins.Datatables, true')
+@section('content_header')
+    <img src="img/imagen.jpg" height="100px" width="100%">
+@stop
 
 @section('content')
-<div class="container">
+
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Bienvenido') }}</div>
 
@@ -19,5 +25,15 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
+
+

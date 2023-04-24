@@ -61,7 +61,7 @@
                                @endcan
                                @if (Auth::user()->id <> 22 )
                                @can('pedidos.index')
-                               <a class="dropdown-item" href="{{ route('pedidos.index') }} ">MATERIALES EN ALMACEN</a>
+                               <a class="dropdown-item" href="{{ route('pedidomaterials.index') }} ">MATERIALES EN ALMACEN</a>
                            @endcan
                                @endif
                              
@@ -82,7 +82,7 @@
                          @endcan
                          @if ( Auth::user()->id <> 22 )
                             @can('pedidoherras.index')
-                            <a class="dropdown-item" href="{{ route('pedidoherras.index') }} ">HERRAMIENTAS EN ALMACEN</a>
+                            <a class="dropdown-item" {{-- href="{{ route('pedidoherramientas.index') }} " --}}>HERRAMIENTAS EN ALMACEN</a>
                             @endcan
                          @endif
                               
@@ -95,25 +95,25 @@
                           </li>
                           @endcan
                        
-                        @can('pedidocoms.index')
+                        @can('regpedidomaterials.index')
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ENVIO A ALMACENES</a>
                             <div class="dropdown-menu" style="background-color: #b1b1b3">
                                 @can('pedidocoms.index')
-                                    <a class="dropdown-item" href="{{ route('pedidocoms.index') }} ">ENVIO MATERIALES</a>
+                                    <a class="dropdown-item" href="{{ route('regpedidomaterials.index') }} ">ENVIO MATERIALES</a>
                                 @endcan
                                 @can('pedidohs.index')
-                                    <a class="dropdown-item" href="{{ route('pedidohs.index') }} ">ENVIO HERRAMIENTAS</a>
+                                    <a class="dropdown-item" {{-- href="{{ route('regpedidoherramientas.index') }} " --}}>ENVIO HERRAMIENTAS</a>
                                 @endcan
                             </div>
                         </li>
                         @endcan
-                        @can('pedidocoms.reporte')
+                        @can('regpedidomaterials.reporte')
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">REPORTES</a>
                             <div class="dropdown-menu" style="background-color: #b1b1b3">
                                 @can('clasherramientas.index')
-                                    <a class="dropdown-item" href="{{ route('pedidocoms.reporte') }} ">REPORTES POR FECHA</a>
+                                    <a class="dropdown-item" href="{{ route('regpedidomaterials.reporte') }} ">REPORTES POR FECHA</a>
                                 @endcan
 
                             </div>
